@@ -3,6 +3,8 @@ import { initializeApp } from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
 
+// view this
+
 const firebaseConfig = {
     apiKey: "AIzaSyB_ZPnhP8TzOAbHt8Qa2XaGgbtCFuy3uOY",
     authDomain: "astrobooks-aa565.firebaseapp.com",
