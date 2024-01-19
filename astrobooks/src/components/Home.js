@@ -11,25 +11,24 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('api/booksinfo/allBooks');
-        const data = await response.json();
-
-        // Adicione este log para verificar a resposta
+        const response = await fetch('/api/bookdata');
+        const data = await response.json();  // Mude de .text() para .json()
         console.log('Response from API:', data);
-
+  
         if (!response.ok) {
           throw new Error(`Error fetching all books data: ${JSON.stringify(data)}`);
         }
-
+  
         setAllBooks(data);
       } catch (error) {
         console.error(error.message);
       }
     };
-
+  
     fetchData();
   }, []);
-
+  
+  
   return (
     <div className="home">
       <Header />

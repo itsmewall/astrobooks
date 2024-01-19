@@ -1,48 +1,30 @@
 const express = require('express');
 const path = require('path');
-const cors = require('cors');
 const fs = require('fs');
+
 const app = express();
+const port = 5000; 
 
-const booksFolderPath = path.join(__dirname, 'booksInfo');
-const PORT = 5000;
+app.use(express.json());
 
-app.use(cors());
+const booksInfoFolderPath = path.join(__dirname, 'booksInfo');
+const allBooksFilePath = path.join(booksInfoFolderPath, 'allBooks.json');
 
-app.use(express.static(booksFolderPath));
-
-app.get('/api/booksinfo/:id', (req, res) => {
-  const bookId = req.params.id;
-  const bookPath = path.join(booksFolderPath, bookId, 'data.json');
-
+// Rota para obter dados de todos os livros
+app.get('/api/bookdata', (req, res) => {
   try {
-    const data = require(bookPath);
-
-    // Leia o conteúdo HTML do livro
-    const htmlPath = path.join(booksFolderPath, data.content);
-    const htmlContent = fs.readFileSync(htmlPath, 'utf-8');
-
-    // Adicione o conteúdo HTML à resposta
-    data.content = htmlContent;
-
-    res.json(data);
-  } catch (error) {
-    console.error(`Error reading data for book ${bookId}:`, error);
-    res.status(500).send('Internal Server Error');
-  }
-});
-
-app.get('/api/booksinfo/allBooks', (req, res) => {
-  try {
-    const allBooksPath = path.join(booksFolderPath, 'allBooks.json');
-    const allBooksData = require(allBooksPath);
+    const fileContent = fs.readFileSync(allBooksFilePath, 'utf-8');
+    console.log('File Content:', fileContent);
+    const allBooksData = JSON.parse(fileContent);
     res.json(allBooksData);
   } catch (error) {
-    console.error('Error reading all books data:', error);
-    res.status(500).send('Internal Server Error');
+    console.error('Error reading or parsing JSON file:', error);
+    res.status(500).json({ error: 'Internal server error', details: error.message });
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+
+// Inicie o servidor
+app.listen(port, () => {
+  console.log(`Servidor rodando em http://localhost:${port}`);
 });

@@ -22,15 +22,12 @@ const generateBookData = (bookFolder) => {
     // Extraia informações do HTML conforme necessário
     const title = $('title').text().trim();
     const author = $('meta[name="author"]').attr('content');
-    const coverImage = $('meta[property="og:image"]').attr('content');
 
     // Crie o objeto de dados do livro
     const bookData = {
       id: generateUniqueId(),
       title,
       author,
-      cover: coverImage,
-      content: htmlFile,
     };
 
     allBooksData.push(bookData);
