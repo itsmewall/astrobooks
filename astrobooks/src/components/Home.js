@@ -11,16 +11,17 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const fetchBooks = async (endpoint) => {
-          const response = await fetch(`/api/books/${endpoint}`);
-          const data = await response.json();
+        const response = await fetch('api/booksinfo/allBooks');
+        const data = await response.json();
 
-          if (!response.ok) {
-            throw new Error(`Error fetching ${endpoint} data: ${JSON.stringify(data)}`);
-          }
+        // Adicione este log para verificar a resposta
+        console.log('Response from API:', data);
 
-          return data;
-        };
+        if (!response.ok) {
+          throw new Error(`Error fetching all books data: ${JSON.stringify(data)}`);
+        }
+
+        setAllBooks(data);
       } catch (error) {
         console.error(error.message);
       }
