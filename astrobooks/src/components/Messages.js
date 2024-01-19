@@ -11,7 +11,6 @@ import {
   onSnapshot,
   addDoc,
   serverTimestamp,
-  query,
 } from 'firebase/firestore';
 import firebaseApp from './firebase';
 
@@ -33,7 +32,7 @@ const Messages = () => {
         const usersCollection = collection(firestore, 'users');
         const unsubscribeUsers = onSnapshot(usersCollection, snapshot => {
           const usersData = snapshot.docs
-            .filter(doc => doc.id !== authUser.uid)  // Exclui o usuário atual
+            .filter(doc => doc.id !== authUser.uid)
             .map(doc => ({
               id: doc.id,
               ...doc.data(),
@@ -95,9 +94,7 @@ const Messages = () => {
             <h3>Usuários Disponíveis</h3>
             <ul>
               {users.map(user => (
-                <li key={user.id}>
-                  {user.name}
-                </li>
+                <li key={user.id}>{user.name}</li>
               ))}
             </ul>
           </div>
