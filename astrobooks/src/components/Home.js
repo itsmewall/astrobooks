@@ -3,27 +3,30 @@ import React, { useState, useEffect } from 'react';
 import Header from './Header';
 import Navbar from './Navbar';
 import BookList from './BookList';
+import '../styles/Home.css';
 
 const Home = () => {
   const [allBooks, setAllBooks] = useState([]);
 
   useEffect(() => {
-    const fetchAllBooks = async () => {
+    const fetchData = async () => {
       try {
-        const response = await fetch('/api/books/all');
-        const data = await response.json();
+        const fetchBooks = async (endpoint) => {
+          const response = await fetch(`/api/books/${endpoint}`);
+          const data = await response.json();
 
-        if (!response.ok) {
-          throw new Error(`Error fetching all books data: ${JSON.stringify(data)}`);
-        }
+          if (!response.ok) {
+            throw new Error(`Error fetching ${endpoint} data: ${JSON.stringify(data)}`);
+          }
 
-        setAllBooks(data);
+          return data;
+        };
       } catch (error) {
         console.error(error.message);
       }
     };
 
-    fetchAllBooks();
+    fetchData();
   }, []);
 
   return (
