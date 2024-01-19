@@ -3,12 +3,15 @@ const path = require('path');
 const fs = require('fs');
 
 const app = express();
+const cors = require('cors');
 const port = 5000;
 
 app.use(express.json());
+app.use(cors());
 
 const booksInfoFolderPath = path.join(__dirname, 'booksInfo');
 const allBooksFilePath = path.join(booksInfoFolderPath, 'allBooks.json');
+
 
 // Rota para obter dados de todos os livros
 app.get('/api/bookdata', (req, res) => {
