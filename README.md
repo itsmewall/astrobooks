@@ -61,6 +61,7 @@ Estamos abertos a contribuições! Se você quiser participar do desenvolvimento
 - Wallace
 - João
 
+
 ## Feedback
 
 Temos o prazer de receber feedback. Por favor, compartilhe suas ideias, sugestões e relatórios de bugs no [tracker de problemas](https://github.com/itsmewall/AstroBooks/issues).
