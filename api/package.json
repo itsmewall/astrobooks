@@ -2,7 +2,6 @@
   "name": "astrobooksapi",
   "version": "0.1.1",
   "private": true,
-
   "dependencies": {
     "cheerio": "^1.0.0-rc.12",
     "cors": "^2.8.5",

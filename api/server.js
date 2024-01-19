@@ -28,3 +28,20 @@ app.get('/api/books/:id', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
+//Teste
+
+
+
+app.get('/api/books/all', (req, res) => {
+  try {
+    const allBooksPath = path.join(booksFolderPath, 'allBooks.json');
+    const allBooksData = require(allBooksPath);
+    res.json(allBooksData);
+  } catch (error) {
+    console.error('Error reading all books data:', error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+

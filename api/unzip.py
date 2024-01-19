@@ -6,8 +6,8 @@ def extrair_zip(caminho_zip, pasta_destino):
         zip_ref.extractall(pasta_destino)
 
 # Substitua os caminhos pelos seus caminhos específicos
-pasta_arquivos_zip = r"./books"
-pasta_destino_unzip = r"./BooksUnzip"
+pasta_arquivos_zip = r"./Livros"
+pasta_destino_unzip = r"./LivrosUnzip"
 
 # Iterar sobre os arquivos ZIP na pasta
 for arquivo_zip in os.listdir(pasta_arquivos_zip):

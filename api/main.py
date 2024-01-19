@@ -52,7 +52,7 @@ def main():
     url = "https://www.gutenberg.org/browse/languages/pt"
     
     # Diretório para salvar os livros
-    save_path = r"./books"
+    save_path = r"./Livros"
 
     # Verifica se a pasta existe
     if not os.path.exists(save_path):

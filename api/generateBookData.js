@@ -2,17 +2,17 @@ const fs = require('fs');
 const path = require('path');
 const cheerio = require('cheerio');
 
-const booksFolderPath = path.join(__dirname, 'BooksUnzip');
-const outputPath = path.join(__dirname, 'booksInfo');
+const booksUnzipFolderPath = path.join(__dirname, 'LivrosUnzip');
+const booksInfoFolderPath = path.join(__dirname, 'booksInfo');
 const allBooksData = [];
 
 // Crie o diretório de saída se não existir
-if (!fs.existsSync(outputPath)) {
-  fs.mkdirSync(outputPath);
+if (!fs.existsSync(booksInfoFolderPath)) {
+  fs.mkdirSync(booksInfoFolderPath);
 }
 
 const generateBookData = (bookFolder) => {
-  const bookFolderPath = path.join(booksFolderPath, bookFolder);
+  const bookFolderPath = path.join(booksUnzipFolderPath, bookFolder);
   const htmlFile = fs.readdirSync(bookFolderPath).find(file => file.endsWith('.html'));
 
   if (htmlFile) {
@@ -34,15 +34,6 @@ const generateBookData = (bookFolder) => {
     };
 
     allBooksData.push(bookData);
-
-    // Salve o arquivo de dados JSON para o livro
-    const outputPathForBook = path.join(outputPath, bookFolder);
-    if (!fs.existsSync(outputPathForBook)) {
-      fs.mkdirSync(outputPathForBook);
-    }
-    const dataFilePath = path.join(outputPathForBook, 'data.json');
-    fs.writeFileSync(dataFilePath, JSON.stringify(bookData, null, 2));
-
     console.log(`Dados do livro ${bookFolder} gerados com sucesso!`);
   } else {
     console.log(`HTML não encontrado para o livro ${bookFolder}`);
@@ -56,12 +47,12 @@ const generateUniqueId = () => {
 };
 
 // Iterar sobre cada pasta de livro
-fs.readdirSync(booksFolderPath).forEach(bookFolder => {
+fs.readdirSync(booksUnzipFolderPath).forEach(bookFolder => {
   generateBookData(bookFolder);
 });
 
 // Salvar todos os dados em um arquivo JSON único
-const allBooksFilePath = path.join(outputPath, 'allBooks.json');
+const allBooksFilePath = path.join(booksInfoFolderPath, 'allBooks.json');
 fs.writeFileSync(allBooksFilePath, JSON.stringify(allBooksData, null, 2));
 
 console.log('Todos os dados dos livros foram gerados com sucesso!');
