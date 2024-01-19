@@ -11,6 +11,7 @@ import {
   onSnapshot,
   addDoc,
   serverTimestamp,
+  query,
 } from 'firebase/firestore';
 import firebaseApp from './firebase';
 
