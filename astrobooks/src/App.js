@@ -2,7 +2,6 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './components/Home';
 import Messages from './components/Messages';
-import Header from './components/Header';
 
 const App = () => {
   return (
