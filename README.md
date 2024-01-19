@@ -56,7 +56,10 @@ AstroBooks é uma aplicação que oferece aos usuários a oportunidade de person
 ## Contribuição
 
 Estamos abertos a contribuições! Se você quiser participar do desenvolvimento do AstroBooks, siga as diretrizes de contribuição no nosso [Guia de Contribuição](CONTRIBUTING.md).
-- Programadores:
+
+##  Programadores:
+- Wallace
+- João
 
 ## Feedback
 
