@@ -1,9 +1,10 @@
-// src/components/Home.js
+// Em Home.js
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Header from './Header';
 import Navbar from './Navbar';
-import BookList from './BookList';
 import '../styles/Home.css';
+import BookList from './BookList';
 
 const Home = () => {
   const [allBooks, setAllBooks] = useState([]);
@@ -11,24 +12,17 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('/api/bookdata');
-        const data = await response.json();  // Mude de .text() para .json()
-        console.log('Response from API:', data);
-  
-        if (!response.ok) {
-          throw new Error(`Error fetching all books data: ${JSON.stringify(data)}`);
-        }
-  
-        setAllBooks(data);
+        const response = await fetch('./allBooks.json');
+        const booksData = await response.json();
+        setAllBooks(booksData);
       } catch (error) {
         console.error(error.message);
       }
     };
-  
+
     fetchData();
   }, []);
-  
-  
+
   return (
     <div className="home">
       <Header />
@@ -37,6 +31,7 @@ const Home = () => {
         <div className="content">
           <section className="all-books">
             <h2>Todos os Livros</h2>
+            {/* Passe os dados diretamente para o componente BookList */}
             <BookList books={allBooks} />
           </section>
         </div>
