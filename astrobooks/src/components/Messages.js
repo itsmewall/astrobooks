@@ -9,6 +9,8 @@ import {
   getFirestore,
   collection,
   onSnapshot,
+  addDoc,
+  serverTimestamp,
 } from 'firebase/firestore';
 import firebaseApp from './firebase';
 
