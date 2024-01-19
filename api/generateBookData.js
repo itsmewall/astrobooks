@@ -3,7 +3,7 @@ const path = require('path');
 const cheerio = require('cheerio');
 
 const booksUnzipFolderPath = path.join(__dirname, 'LivrosUnzip');
-const booksInfoFolderPath = path.join(__dirname, 'booksInfo');
+const booksInfoFolderPath = path.join(__dirname, '../astrobooks/src/components');
 const allBooksData = [];
 
 // Crie o diretório de saída se não existir
