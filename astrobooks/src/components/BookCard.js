@@ -10,7 +10,7 @@ const BookCard = ({ book }) => {
     <div className="card">
       <h3>{book.title}</h3>
       {imagePath ? (
-        <img src={`./${imagePath}`} alt={book.title} />
+        <img src={`/${imagePath}`} alt={book.title} />
       ) : (
         <p>Imagem não disponível</p>
       )}
