@@ -23,11 +23,24 @@ const generateBookData = (bookFolder) => {
     const title = $('title').text().trim();
     const author = $('meta[name="author"]').attr('content');
 
+    // Lista para armazenar informações sobre as imagens
+    const images = [];
+
+    // Iterar sobre todos os arquivos na pasta do livro
+    fs.readdirSync(bookFolderPath).forEach(file => {
+      const imagePath = path.join(bookFolderPath, file);
+      // Verifique se o arquivo é uma imagem (pode ajustar para outros tipos de imagens)
+      if (fs.statSync(imagePath).isFile() && /\.(jpg|jpeg|png|gif)$/i.test(file)) {
+        images.push(imagePath);
+      }
+    });
+
     // Crie o objeto de dados do livro
     const bookData = {
       id: generateUniqueId(),
       title,
       author,
+      images,
     };
 
     allBooksData.push(bookData);
