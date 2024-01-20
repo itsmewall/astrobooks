@@ -1,6 +1,7 @@
 // Em BookList.js
 import React, { useState, useEffect } from 'react';
 import BookCard from './BookCard';
+import '../styles/BookList.css';
 
 const BookList = () => {
   const [books, setBooks] = useState([]);
@@ -21,7 +22,6 @@ const BookList = () => {
 
   return (
     <div className="book-list">
-      {/* Renderize o componente BookCard para cada livro */}
       {books.map((book) => (
         <BookCard key={book.id} book={book} />
       ))}

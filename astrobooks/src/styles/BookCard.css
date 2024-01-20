@@ -1,0 +1,25 @@
+/* Em BookCard.css */
+  
+  .card {
+    flex: 0 0 calc(25% - 16px); /* Ajuste conforme necessário */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 8px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
+  
+  .card h3 {
+    font-size: 16px; /* Ajuste conforme necessário */
+    margin-bottom: 8px;
+  }
+  
+  .card p {
+    font-size: 14px; /* Ajuste conforme necessário */
+    color: #555;
+  }
+  
+  /* Adicione estilos adicionais conforme necessário */
+  
