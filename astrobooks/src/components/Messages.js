@@ -13,6 +13,8 @@ import {
   serverTimestamp,
 } from 'firebase/firestore';
 import firebaseApp from './firebase';
+import '../styles/Messages.css';
+import Header from './Header';
 
 const Messages = () => {
   const [user, setUser] = useState(null);
@@ -85,6 +87,7 @@ const Messages = () => {
 
   return (
     <div>
+      <Header />
       <h2>Conversa</h2>
       {user ? (
         <>

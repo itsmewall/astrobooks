@@ -1,0 +1,23 @@
+/* Em SearchBar.css */
+
+.search-bar {
+    display: flex;
+    align-items: center;
+  }
+  
+  input {
+    flex: 1; /* Ocupa todo o espaço disponível */
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 12px;
+  }
+  
+  button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2em;
+    color: #fff;
+  }
+  
