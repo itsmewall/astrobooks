@@ -14,7 +14,6 @@ const Home = () => {
         <div className="content">
           <section className="all-books">
             <h2>Todos os Livros</h2>
-            {/* Renderize o componente BookList */}
             <BookList />
           </section>
         </div>

@@ -12,8 +12,9 @@ import {
   addDoc,
   serverTimestamp,
 } from 'firebase/firestore';
-import firebaseApp from './firebase';
+
 import '../styles/Messages.css';
+import firebaseApp from './firebase';
 import Header from './Header';
 
 const Messages = () => {
@@ -88,75 +89,91 @@ const Messages = () => {
   return (
     <div>
       <Header />
-      <h2>Conversa</h2>
-      {user ? (
-        <>
-          <p>Logado como: {user.displayName}</p>
-          <button onClick={handleSignOut}>Sair</button>
-          <div>
-            <h3>Usuários Disponíveis</h3>
-            <ul>
-              {users.map(user => (
-                <li key={user.id}>{user.name}</li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <label htmlFor="contacts">Escolha um contato:</label>
-            <select
-              id="contacts"
-              value={selectedContact ? selectedContact.id : ''}
-              onChange={e =>
-                setSelectedContact(
-                  users.find(user => user.id === e.target.value)
-                )
-              }
-            >
-              <option value="">Selecione um contato</option>
-              {users.map(user => (
-                <option key={user.id} value={user.id}>
-                  {user.name}
-                </option>
-              ))}
-            </select>
-          </div>
-          {selectedContact ? (
-            <>
-              <h3>Conversa com {selectedContact.name}</h3>
-              <ul>
-                {messages
-                  .filter(
-                    msg =>
-                      (msg.sender === user.displayName &&
-                        msg.recipient === selectedContact.name) ||
-                      (msg.sender === selectedContact.name &&
-                        msg.recipient === user.displayName)
-                  )
-                  .map(message => (
-                    <li key={message.id}>
-                      <strong>{message.sender}:</strong> {message.text}
-                    </li>
-                  ))}
+      <div className="messages-container">
+        <h2>Conversa</h2>
+        {user ? (
+          <>
+            <div className="user-info">
+              <p>Logado como: {user.displayName}</p>
+            </div>
+            <div className="button-container">
+              <button onClick={handleSignOut}>Sair</button>
+            </div>
+            <div>
+              <h3>Usuários Disponíveis</h3>
+              <ul className="users-list">
+                {users.map((user) => (
+                  <li key={user.id} className="users-list-item">
+                    {user.name}
+                  </li>
+                ))}
               </ul>
-              <div>
-                <input
-                  type="text"
-                  placeholder="Digite sua mensagem"
-                  value={message}
-                  onChange={e => setMessage(e.target.value)}
-                />
-                <button onClick={sendMessage}>Enviar</button>
-              </div>
-            </>
-          ) : (
-            <p>Escolha um contato para começar a conversar.</p>
-          )}
-        </>
-      ) : (
-        <button onClick={signIn}>Entrar com o Google</button>
-      )}
+            </div>
+            <div>
+              <label htmlFor="contacts">Escolha um contato:</label>
+              <select
+                id="contacts"
+                value={selectedContact ? selectedContact.id : ''}
+                onChange={(e) =>
+                  setSelectedContact(
+                    users.find((user) => user.id === e.target.value)
+                  )
+                }
+              >
+                <option value="">Selecione um contato</option>
+                {users.map((user) => (
+                  <option key={user.id} value={user.id}>
+                    {user.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+            {selectedContact ? (
+              <>
+                <div className="conversation-container">
+                  <h3>Conversa com {selectedContact.name}</h3>
+                  <ul className="messages-list">
+                    {messages
+                      .filter(
+                        (msg) =>
+                          (msg.sender === user.displayName &&
+                            msg.recipient === selectedContact.name) ||
+                          (msg.sender === selectedContact.name &&
+                            msg.recipient === user.displayName)
+                      )
+                      .map((message) => (
+                        <li key={message.id} className="message-item">
+                          <strong>{message.sender}:</strong> {message.text}
+                        </li>
+                      ))}
+                  </ul>
+                </div>
+                <div className="message-input-container">
+                  <input
+                    type="text"
+                    placeholder="Digite sua mensagem"
+                    className="message-input"
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                  />
+                  <button className="send-button" onClick={sendMessage}>
+                    Enviar
+                  </button>
+                </div>
+              </>
+            ) : (
+              <p>Escolha um contato para começar a conversar.</p>
+            )}
+          </>
+        ) : (
+          <button className="google-signin-button" onClick={signIn}>
+            Entrar com o Google
+          </button>
+        )}
+      </div>
     </div>
   );
 };
+
 
 export default Messages;

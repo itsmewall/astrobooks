@@ -1,0 +1,71 @@
+/* Messages.css */
+
+.messages-container {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .user-info {
+    margin-bottom: 20px;
+  }
+  
+  .user-info p {
+    margin: 0;
+  }
+  
+  .button-container {
+    margin-bottom: 20px;
+  }
+  
+  .users-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .users-list-item {
+    margin-bottom: 10px;
+  }
+  
+  .conversation-container {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .messages-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .message-item {
+    margin-bottom: 10px;
+  }
+  
+  .message-input-container {
+    display: flex;
+    margin-top: 10px;
+  }
+  
+  .message-input {
+    flex: 1;
+    padding: 5px;
+  }
+  
+  .send-button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .send-button:hover {
+    background-color: #45a049;
+  }
+  
