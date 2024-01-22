@@ -14,11 +14,12 @@
     padding: 20px;
     max-width: 400px;
     width: 100%;
+    text-align: center;
   }
   
   h2 {
-    text-align: center;
     margin-bottom: 20px;
+    color: #4285f4;
   }
   
   .google-button {
@@ -44,6 +45,7 @@
   
   label {
     margin-bottom: 5px;
+    color: #333;
   }
   
   input {
@@ -62,18 +64,11 @@
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
+    margin-bottom: 10px;
   }
   
   .email-password-button:hover,
   .create-account-button:hover {
     background-color: #357ae8;
-  }
-  
-  .email-password-button {
-    margin-bottom: 10px;
-  }
-  
-  .create-account-button {
-    background-color: #34a853;
   }
   
