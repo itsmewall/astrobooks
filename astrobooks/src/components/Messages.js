@@ -76,8 +76,19 @@ const Messages = () => {
 
   const signIn = async () => {
     const provider = new GoogleAuthProvider();
-    await signInWithPopup(getAuth(firebaseApp), provider);
+    try {
+      await signInWithPopup(getAuth(firebaseApp), provider);
+    } catch (error) {
+      if (error.code === 'auth/cancelled-popup-request') {
+        // Lidar com o cancelamento da janela pop-up
+        console.log('Janela pop-up cancelada pelo usuário.');
+      } else {
+        // Outro tratamento de erro
+        console.error('Erro durante a autenticação:', error);
+      }
+    }
   };
+  
 
   const handleSignOut = async () => {
     await signOut(getAuth(firebaseApp));

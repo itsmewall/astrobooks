@@ -18,6 +18,11 @@
   
   .button-container {
     margin-bottom: 20px;
+    color: blue;
+  }
+
+  .button {
+    color: blue;
   }
   
   .users-list {
