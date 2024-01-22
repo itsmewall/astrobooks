@@ -1,17 +1,34 @@
 const express = require('express');
+const http = require('http');
 const path = require('path');
 const fs = require('fs');
+const { Server } = require('socket.io'); 
+const cors = require('cors');
 
 const app = express();
-const cors = require('cors');
+const server = http.createServer(app);
 const port = 5000;
 
 app.use(express.json());
-app.use(cors());
+
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true,
+  optionsSuccessStatus: 204,
+};
+
+app.use(cors(corsOptions));
+
+const io = new Server(server, {
+  cors: {
+    origin: "http://localhost:3000",
+    methods: ["GET", "POST"]
+  }
+});
 
 const booksInfoFolderPath = path.join(__dirname, 'booksInfo');
 const allBooksFilePath = path.join(booksInfoFolderPath, 'allBooks.json');
-
 
 // Rota para obter dados de todos os livros
 app.get('/api/bookdata', (req, res) => {
@@ -23,6 +40,20 @@ app.get('/api/bookdata', (req, res) => {
     console.error('Error reading or parsing JSON file:', error);
     res.status(500).json({ error: 'Internal server error', details: error.message });
   }
+});
+
+// Configuração do servidor WebSocket
+io.on('connection', (socket) => {
+  console.log('Cliente conectado via WebSocket');
+  
+  // Exemplo: ouvir mensagens do cliente
+  socket.on('message', (message) => {
+    console.log('Mensagem do cliente via WebSocket:', message);
+    // Lógica adicional conforme necessário
+  });
+
+  // Exemplo: enviar mensagem para o cliente
+  socket.emit('message', 'Bem-vindo ao servidor WebSocket!');
 });
 
 // Middleware para lidar com rotas não encontradas (404)
@@ -37,6 +68,6 @@ app.use((err, req, res, next) => {
 });
 
 // Inicie o servidor
-app.listen(port, () => {
+server.listen(port, () => {
   console.log(`Servidor rodando em http://localhost:${port}`);
 });

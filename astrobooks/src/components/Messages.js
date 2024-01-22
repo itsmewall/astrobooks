@@ -12,6 +12,7 @@ import {
   addDoc,
   serverTimestamp,
 } from 'firebase/firestore';
+import { io } from 'socket.io-client';
 
 import '../styles/Messages.css';
 import firebaseApp from './firebase';
@@ -23,10 +24,18 @@ const Messages = () => {
   const [messages, setMessages] = useState([]);
   const [users, setUsers] = useState([]);
   const [selectedContact, setSelectedContact] = useState(null);
+  const [socket, setSocket] = useState(null);
 
   useEffect(() => {
+    const socket = io('http://localhost:5000', { withCredentials: true });
     const auth = getAuth(firebaseApp);
     const firestore = getFirestore(firebaseApp);
+
+    // Evento de recebimento de mensagem do WebSocket
+    socket.on('message', (message) => {
+      console.log(`Mensagem recebida do servidor: ${message}`);
+      // Faça algo com a mensagem recebida, por exemplo, atualizar o estado do componente
+    });
 
     const unsubscribeAuth = auth.onAuthStateChanged(authUser => {
       setUser(authUser);
@@ -61,6 +70,7 @@ const Messages = () => {
 
     return () => {
       unsubscribeAuth();
+      socket.disconnect();
     };
   }, []);
 
@@ -82,6 +92,14 @@ const Messages = () => {
         text: message,
         timestamp: serverTimestamp(),
       });
+
+      // Envie a mensagem também para o servidor WebSocket
+      const socketMessage = {
+        sender: user.displayName,
+        recipient: selectedContact.name,
+        text: message,
+      };
+      socket.emit('message', socketMessage);
       setMessage('');
     }
   };
@@ -174,6 +192,5 @@ const Messages = () => {
     </div>
   );
 };
-
 
 export default Messages;
