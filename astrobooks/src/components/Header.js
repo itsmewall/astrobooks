@@ -29,7 +29,9 @@ const Header = () => {
             </Link>
           </nav>
           <button className="login-button">
-            <FaUser /> {/* Adiciona o ícone de usuário */}
+            <Link to="/login">
+              <FaUser />
+            </Link>
           </button>
         </div>
       </div>

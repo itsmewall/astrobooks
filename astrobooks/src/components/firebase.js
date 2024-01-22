@@ -1,9 +1,6 @@
-// firebase.js
 import { initializeApp } from 'firebase/app';
-import 'firebase/auth';
-import 'firebase/firestore';
-
-// view this
+import { getAuth } from 'firebase/auth';
+import { getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
     apiKey: "AIzaSyB_ZPnhP8TzOAbHt8Qa2XaGgbtCFuy3uOY",
@@ -13,8 +10,11 @@ const firebaseConfig = {
     messagingSenderId: "42748164126",
     appId: "1:42748164126:web:4bc680ec9bd42ff23bd60f",
     measurementId: "G-4EW3SD16RP"
-};
+  };
 
+// Inicializa o Firebase e exporta as instâncias necessárias
 const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const firestore = getFirestore(app);
 
-export default app;
+export { auth, firestore };
