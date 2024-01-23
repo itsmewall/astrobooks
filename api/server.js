@@ -53,7 +53,7 @@ app.get('/api/bookdata', async (req, res) => {
         // Identifica a capa dentro do conteúdo HTML (isso é um exemplo básico, você pode precisar de uma lógica mais avançada)
         const match = /<img.*?src=['"](.*?)['"].*?>/i.exec(htmlContent);
         const coverImage = match ? match[1] : null;
-
+        
         return {
           ...book,
           coverImage: coverImage ? path.join('LivrosUnzip', book.folder, coverImage.replace(/\\/g, '/')) : null,
