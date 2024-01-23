@@ -1,5 +1,10 @@
+/* eslint-disable no-undef */
+/* global doc, getDoc, setDoc */
+
 // Login.js
+
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { auth, firestore } from './firebase';
 import { getAuth, signInWithPopup, signOut, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { io } from 'socket.io-client';
@@ -7,6 +12,7 @@ import Header from './Header';
 import '../styles/Login.css';
 
 const Login = () => {
+  const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const [socket, setSocket] = useState(null);
   const [email, setEmail] = useState('');
@@ -34,13 +40,15 @@ const Login = () => {
 
       if (authUser) {
         setupWebSocket(authUser);
+
+        navigate('/profile');
       }
     });
 
     return () => {
       unsubscribeAuth();
     };
-  }, []);
+  }, [navigate]);
 
   const signInWithGoogle = async () => {
     const provider = new GoogleAuthProvider();
@@ -58,6 +66,22 @@ const Login = () => {
   const signInWithEmailAndPasswordHandler = async () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
+
+      // Após o login bem-sucedido, obtenha o usuário autenticado
+      const authUser = auth.currentUser;
+
+      // Crie o documento do usuário na coleção "users" se ele não existir
+      const userRef = doc(firestore, 'users', authUser.uid);
+      const userSnapshot = await getDoc(userRef);
+
+      if (!userSnapshot.exists()) {
+        const userData = {
+          uid: authUser.uid,
+          // Outros campos do perfil do usuário
+        };
+        await setDoc(userRef, userData);
+      }
+
     } catch (error) {
       console.error('Erro durante a autenticação por e-mail e senha:', error);
     }
@@ -76,8 +100,8 @@ const Login = () => {
   };
 
   return (
-      <>
-        <Header />
+    <>
+      <Header />
       <div className="login-container">
         <div className="login-content">
           <h2>Login</h2>
