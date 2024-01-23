@@ -3,3 +3,4 @@ api/node_modules
 firebase.settings
 astrobooks/node_modules
 api/Livros/*
+api/.env
