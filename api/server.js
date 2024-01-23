@@ -1,8 +1,8 @@
 const express = require('express');
 const http = require('http');
 const path = require('path');
-const fs = require('fs');
-const { Server } = require('socket.io'); 
+const fs = require('fs').promises;
+const { Server } = require('socket.io');
 const cors = require('cors');
 
 const app = express();
@@ -22,21 +22,50 @@ app.use(cors(corsOptions));
 
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:3000",
-    methods: ["GET", "POST"],
-    credentials: true
-  }
+    origin: 'http://localhost:3000',
+    methods: ['GET', 'POST'],
+    credentials: true,
+  },
 });
 
 const booksInfoFolderPath = path.join(__dirname, 'booksInfo');
 const allBooksFilePath = path.join(booksInfoFolderPath, 'allBooks.json');
+const livrosUnzipFolderPath = path.join(__dirname, 'LivrosUnzip');
 
-// Rota para obter dados de todos os livros
-app.get('/api/bookdata', (req, res) => {
+// Rota para obter dados de todos os livros com informações de imagem da capa e conteúdo HTML
+app.get('/api/bookdata', async (req, res) => {
   try {
-    const fileContent = fs.readFileSync(allBooksFilePath, 'utf-8');
+    const fileContent = await fs.readFile(allBooksFilePath, 'utf-8');
     const allBooksData = JSON.parse(fileContent);
-    res.json(allBooksData);
+
+    // Adiciona informações de imagem da capa para cada livro
+    const booksWithImages = await Promise.all(allBooksData.map(async book => {
+      const bookFolderPath = path.join(livrosUnzipFolderPath, book.folder);
+
+      try {
+        // Encontra um arquivo HTML no diretório do livro
+        const htmlFiles = (await fs.readdir(bookFolderPath)).filter(file => /\.html$/i.test(file));
+        const htmlFilePath = htmlFiles.length > 0 ? path.join(bookFolderPath, htmlFiles[0]) : null;
+
+        // Lê o conteúdo do arquivo HTML
+        const htmlContent = htmlFilePath ? await fs.readFile(htmlFilePath, 'utf-8') : null;
+
+        // Identifica a capa dentro do conteúdo HTML (isso é um exemplo básico, você pode precisar de uma lógica mais avançada)
+        const match = /<img.*?src=['"](.*?)['"].*?>/i.exec(htmlContent);
+        const coverImage = match ? match[1] : null;
+
+        return {
+          ...book,
+          coverImage: coverImage ? path.join('LivrosUnzip', book.folder, coverImage.replace(/\\/g, '/')) : null,
+          htmlContent: htmlContent,
+        };
+      } catch (error) {
+        console.error('Error reading or parsing HTML file:', error);
+        return null; // Trata o erro e continua com os próximos livros
+      }
+    }));
+
+    res.json(booksWithImages.filter(book => book !== null));
   } catch (error) {
     console.error('Error reading or parsing JSON file:', error);
     res.status(500).json({ error: 'Internal server error', details: error.message });
@@ -46,7 +75,7 @@ app.get('/api/bookdata', (req, res) => {
 // Configuração do servidor WebSocket
 io.on('connection', (socket) => {
   console.log('Cliente conectado via WebSocket');
-  
+
   // Exemplo: ouvir mensagens do cliente
   socket.on('message', (message) => {
     console.log('Mensagem do cliente via WebSocket:', message);

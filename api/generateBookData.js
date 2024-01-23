@@ -20,8 +20,11 @@ const generateBookData = (bookFolder) => {
     const $ = cheerio.load(fs.readFileSync(htmlFilePath, 'utf-8'));
 
     // Extraia informações do HTML conforme necessário
-    const title = $('title').text().trim();
+    let title = $('title').text().trim();
     const author = $('meta[name="author"]').attr('content');
+
+    // Elimine o termo "The Project Gutenberg eBook Of" do título
+    title = title.replace(/The Project Gutenberg eBook Of/i, '').trim();
 
     // Lista para armazenar informações sobre as imagens
     const images = [];
@@ -41,6 +44,7 @@ const generateBookData = (bookFolder) => {
       title,
       author,
       images,
+      folder: bookFolder, // Adicionando a pasta de origem como campo 'folder'
     };
 
     allBooksData.push(bookData);

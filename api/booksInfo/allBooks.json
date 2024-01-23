@@ -1,665 +1,157 @@
 [
   {
-    "id": 1705715714090,
-    "title": "The Project Gutenberg eBook of A Alma Nova, by Guilherme Avelino Chave de Azevedo",
+    "id": 1706034617782,
+    "title": "A Engomadeira: Novela Vulgar Lisboeta, by José de Almada Negreiros",
     "images": [
-      "home/wallace/Workspace/astrobooks/api/LivrosUnzip/A Alma Nova by Guilherme Avelino Chave de Azevedo/17639-cover.png"
-    ]
+      "C:\\Users\\joaovitor.santos\\Documents\\Workspace\\astrobooks\\api\\LivrosUnzip\\A Engomadeira_ Novela Vulgar Lisboeta by José de Almada Negreiros\\23879-cover.png"
+    ],
+    "folder": "A Engomadeira_ Novela Vulgar Lisboeta by José de Almada Negreiros"
   },
   {
-    "id": 1705715716222,
-    "title": "The Project Gutenberg eBook of A Biblia Sagrada, by João Ferreira d’Almeida (tradutor).",
-    "images": []
-  },
-  {
-    "id": 1705715716305,
-    "title": "A casa do Saltimbanco, por Madame de Stolz",
+    "id": 1706034617823,
+    "title": "A Invenção do Dia Claro, by José de Almada Negreiros",
     "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/A Casa do Saltimbanco by Mme. de Stolz/30777-cover.png"
-    ]
+      "C:\\Users\\joaovitor.santos\\Documents\\Workspace\\astrobooks\\api\\LivrosUnzip\\A Invenção do Dia Claro by José de Almada Negreiros\\22801-cover.png"
+    ],
+    "folder": "A Invenção do Dia Claro by José de Almada Negreiros"
   },
   {
-    "id": 1705715716316,
-    "title": "The Project Gutenberg eBook of A Engomadeira: Novela Vulgar Lisboeta, by José de Almada Negreiros",
-    "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/A Engomadeira_ Novela Vulgar Lisboeta by José de Almada Negreiros/23879-cover.png"
-    ]
+    "id": 1706034617888,
+    "title": "A Pata da Gazella, by José de Alencar.",
+    "images": [],
+    "folder": "A Pata da Gazella_ romance brasileiro. by José Martiniano de Alencar"
   },
   {
-    "id": 1705715716377,
-    "title": "The Project Gutenberg eBook of A Instrusa, by Julia Lopes de Almeida.",
-    "images": []
-  },
-  {
-    "id": 1705715716395,
-    "title": "The Project Gutenberg eBook of A Invenção do Dia Claro, by José de Almada Negreiros",
-    "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/A Invenção do Dia Claro by José de Almada Negreiros/22801-cover.png"
-    ]
-  },
-  {
-    "id": 1705715716401,
-    "title": "The Project Gutenberg eBook of A Morte de D. Ignez de Castro\nCantata por Manoel Maria Barbosa du Bucage; A Que Se Ajunta o Episódio, Ao Mesmo Assumpto, do Immortal Luiz de Camões, by Manuel Maria Barbosa du Bocage and Luís de Camões",
-    "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/A Morte de D. Ignez de Castro by Manuel Maria Barbosa du Bocage and Luís de Camões/23110-cover.png"
-    ]
-  },
-  {
-    "id": 1705715716433,
-    "title": "The Project Gutenberg eBook of A Pata da Gazella, by José de Alencar.",
-    "images": []
-  },
-  {
-    "id": 1705715716437,
-    "title": "A Pata no Choco",
-    "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/A Pata no Choco by Anonymous/31575-cover.png"
-    ]
-  },
-  {
-    "id": 1705715716450,
-    "title": "The Project Gutenberg eBook of A Pavorosa Illusão, by Manuel Maria Barbosa du Bocage",
-    "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/A Pavorosa Illusão by Manuel Maria Barbosa du Bocage/22614-cover.png"
-    ]
-  },
-  {
-    "id": 1705715716490,
+    "id": 1706034617961,
     "title": "A Revolução Portugueza:O 31 de janeiro, por Jorge d'Abreu.",
     "author": "Jorge d'Abreu",
     "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/A Revolução Portugueza_ O 31 de Janeiro (Porto 1891) by Francisco Jorge de Abreu/29484-cover.png"
-    ]
+      "C:\\Users\\joaovitor.santos\\Documents\\Workspace\\astrobooks\\api\\LivrosUnzip\\A Revolução Portugueza_ O 31 de Janeiro (Porto 1891) by Francisco Jorge de Abreu\\29484-cover.png"
+    ],
+    "folder": "A Revolução Portugueza_ O 31 de Janeiro (Porto 1891) by Francisco Jorge de Abreu"
   },
   {
-    "id": 1705715716545,
+    "id": 1706034618018,
     "title": "A Revolução Portugueza: O 5 de Outubro (Lisboa 1910) por Jorge de Abreu",
     "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/A Revolução Portugueza_ O 5 de Outubro (Lisboa 1910) by Francisco Jorge de Abreu/26777-cover.png"
-    ]
+      "C:\\Users\\joaovitor.santos\\Documents\\Workspace\\astrobooks\\api\\LivrosUnzip\\A Revolução Portugueza_ O 5 de Outubro (Lisboa 1910) by Francisco Jorge de Abreu\\26777-cover.png"
+    ],
+    "folder": "A Revolução Portugueza_ O 5 de Outubro (Lisboa 1910) by Francisco Jorge de Abreu"
   },
   {
-    "id": 1705715716548,
-    "title": "The Project Gutenberg eBook of A Scena do Odio, by José de Almada Negreiros",
+    "id": 1706034618025,
+    "title": "Bases da ortografia portuguesa, by G. de Vasconcellos Abreu and A. R. Gonçalves Viana",
     "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/A Scena do Odio by José de Almada Negreiros/22615-cover.png"
-    ]
+      "C:\\Users\\joaovitor.santos\\Documents\\Workspace\\astrobooks\\api\\LivrosUnzip\\Bases da ortografia portuguesa by Abreu and Gonçalves Viana\\15047-cover.png"
+    ],
+    "folder": "Bases da ortografia portuguesa by Abreu and Gonçalves Viana"
   },
   {
-    "id": 1705715716563,
-    "title": "The Project Gutenberg eBook of A batalha de Toro, by António Francisco Barata",
-    "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/A batalha de Toro by António Francisco Barata/25238-cover.png"
-    ]
-  },
-  {
-    "id": 1705715716648,
-    "title": "The Project Gutenberg eBook of A cidade do vicio, by Fialho D’Almeida.",
-    "images": []
-  },
-  {
-    "id": 1705715716659,
-    "title": "A dissolução do regimen capitalista",
-    "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/A dissolução do regimen capitalista by Teixeira Bastos/24701-cover.png"
-    ]
-  },
-  {
-    "id": 1705715716666,
-    "title": "A Estatua do Poeta: Ode Nacional",
-    "author": "Pedro Saborano",
-    "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/A estatua do poeta by Joaquim de Araújo/24845-cover.png"
-    ]
-  },
-  {
-    "id": 1705715716743,
-    "title": "The Project Gutenberg eBook of A fallencia,\n      by Júlia Lopes de Almeida.",
-    "images": []
-  },
-  {
-    "id": 1705715716750,
-    "title": "ALBUM CHULO-GAIATO",
-    "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/Album chulo-gaiato ou collecção de receitas para fazer rir by Anonymous/21289-cover.png"
-    ]
-  },
-  {
-    "id": 1705715716785,
-    "title": "As relações luso-brasileiras",
-    "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/As relações luso-brasileiras by José Barbosa/30424-cover.png"
-    ]
-  },
-  {
-    "id": 1705715716838,
-    "title": "The Project Gutenberg e-Book of Aves Migradoras Author: Fialho D'Almeida",
-    "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/Aves Migradoras by Fialho de Almeida/22622-cover.png"
-    ]
-  },
-  {
-    "id": 1705715716854,
-    "title": "The Project Gutenberg eBook of Bases da ortografia portuguesa, by G. de Vasconcellos Abreu and A. R. Gonçalves Viana",
-    "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/Bases da ortografia portuguesa by Abreu and Gonçalves Viana/15047-cover.png"
-    ]
-  },
-  {
-    "id": 1705715716889,
-    "title": "Bases para a unificação da\nortografia",
-    "images": []
-  },
-  {
-    "id": 1705715716915,
-    "title": "Cantos Sagrados",
-    "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/Cantos Sagrados by Manuel de Arriaga/22299-cover.png"
-    ]
-  },
-  {
-    "id": 1705715716921,
-    "title": "The Project Gutenberg eBook of Canções, by António Tomás Boto",
-    "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/Canções by António Tomás Boto/22679-cover.png"
-    ]
-  },
-  {
-    "id": 1705715716924,
-    "title": "The Project Gutenberg E-text of Carta da Companhia de Jesus para o seráfico São Francisco,\nby José de Anchieta",
-    "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/Carta da Companhia de Jesus para o seráfico São Francisco by José de Anchieta/7384-cover.png"
-    ]
-  },
-  {
-    "id": 1705715716929,
-    "title": "The Project Gutenberg eBook of Carta de hum cidadam de Genova a hum seu correspondente em Londres, by Anonymous",
-    "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/Carta de hum cidadam de Genova a hum seu correspondente em Londres by Anonymous/18528-cover.png"
-    ]
-  },
-  {
-    "id": 1705715716942,
-    "title": "Cervantes e Portugal: Curiosidade Litteraria",
-    "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/Cervantes e Portugal by Carlos Barroso/22378-cover.png"
-    ]
-  },
-  {
-    "id": 1705715716955,
+    "id": 1706034618042,
     "title": "Cinco Minutos",
-    "images": []
+    "images": [],
+    "folder": "Cinco minutos by José Martiniano de Alencar"
   },
   {
-    "id": 1705715716969,
-    "title": "The Project Gutenberg eBook of Cintra, by Mário Pires Gomes Beirão",
-    "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/Cintra by Mário Pires Gomes Beirão/22468-cover.png"
-    ]
-  },
-  {
-    "id": 1705715716979,
+    "id": 1706034618056,
     "title": "Como e porque sou romancista, José de Alencar",
     "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/Como e porque sou romancista by José Martiniano de Alencar/29040-cover.png"
-    ]
+      "C:\\Users\\joaovitor.santos\\Documents\\Workspace\\astrobooks\\api\\LivrosUnzip\\Como e porque sou romancista by José Martiniano de Alencar\\29040-cover.png"
+    ],
+    "folder": "Como e porque sou romancista by José Martiniano de Alencar"
   },
   {
-    "id": 1705715716984,
-    "title": "The Project Gutenberg eBook of Compendio da relaçam, que veyo da India o anno de 1691, by Vicente Barbosa",
-    "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/Compendio da relaçam, que veyo da India o anno de 1691 by Vicente Barbosa/19947-cover.png"
-    ]
-  },
-  {
-    "id": 1705715717063,
-    "title": "Contos | Project Gutenberg",
-    "images": []
-  },
-  {
-    "id": 1705715717090,
-    "title": "Contos Escolhidos",
-    "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/Contos escolhidos de D. Antonio de Trueba by Antonio de Trueba/25593-cover.png"
-    ]
-  },
-  {
-    "id": 1705715717141,
-    "title": "Cultura e opulencia do Brazil, por suas drogas e minas | Project Gutenberg",
-    "images": []
-  },
-  {
-    "id": 1705715717167,
+    "id": 1706034618085,
     "title": "O Descobrimento das Filippinas, por Caetano Alberto",
     "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/Descobrimento das Filippinas pelo navegador portuguez Fernão de Magalhães/29243-cover.png"
-    ]
+      "C:\\Users\\joaovitor.santos\\Documents\\Workspace\\astrobooks\\api\\LivrosUnzip\\Descobrimento das Filippinas pelo navegador portuguez Fernão de Magalhães\\29243-cover.png"
+    ],
+    "folder": "Descobrimento das Filippinas pelo navegador portuguez Fernão de Magalhães"
   },
   {
-    "id": 1705715717201,
-    "title": "Dicionario de João Fernandes",
+    "id": 1706034618092,
+    "title": "Exposição Amadeo de Souza Cardoso - Liga Naval de Lisboa, by José de Almada Negreiros",
     "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/Diccionario de João Fernandes by Francisco Gomes de Amorim/34718-cover.png"
-    ]
+      "C:\\Users\\joaovitor.santos\\Documents\\Workspace\\astrobooks\\api\\LivrosUnzip\\Exposição Amadeo de Souza Cardoso - Liga Naval de Lisboa by Almada Negreiros\\22969-cover.png"
+    ],
+    "folder": "Exposição Amadeo de Souza Cardoso - Liga Naval de Lisboa by Almada Negreiros"
   },
   {
-    "id": 1705715717209,
-    "title": "Diffiniçaõ da Sécia",
-    "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/Diffinição da sécia by Anonymous/26676-cover.png"
-    ]
+    "id": 1706034618135,
+    "title": "Iracema, by José de Alencar.",
+    "images": [],
+    "folder": "Iracema by José Martiniano de Alencar"
   },
   {
-    "id": 1705715717321,
-    "title": "Educação nova : as bases - O corpo da criança",
-    "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/Educação nova_ As bases by Augusto Joaquim Alves dos Santos/39086-cover.png"
-    ]
-  },
-  {
-    "id": 1705715717329,
-    "title": "Effeitos do Hipnotysmo, por A. Armando",
-    "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/Effeitos do Hypnotismo by A. Armando/27543-cover.png"
-    ]
-  },
-  {
-    "id": 1705715717391,
-    "title": "The Project Gutenberg eBook of Elegia, by Manuel Maria Barbosa du Bocage",
-    "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/Elegia by Manuel Maria Barbosa du Bocage/22898-cover.png"
-    ]
-  },
-  {
-    "id": 1705715717414,
-    "title": "The Project Gutenberg eBook of Era uma vez...,\n      by Júlia Lopes de Almeida.",
-    "images": []
-  },
-  {
-    "id": 1705715717420,
-    "title": "The Project Gutenberg eBook of Exposição Amadeo de Souza Cardoso - Liga Naval de Lisboa, by José de Almada Negreiros",
-    "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/Exposição Amadeo de Souza Cardoso - Liga Naval de Lisboa by Almada Negreiros/22969-cover.png"
-    ]
-  },
-  {
-    "id": 1705715717605,
-    "title": "The Project Gutenberg eBook of Four Plays of Gil Vicente, by Gil Vicente.",
-    "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/Four Plays of Gil Vicente by Gil Vicente/28399-cover.png"
-    ]
-  },
-  {
-    "id": 1705715717644,
-    "title": "The Project Gutenberg eBook of Frei Luiz de Sousa, by Visconde de João Batista da Silva Leitão de Almeida Garrett Almeida Garrett",
-    "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/Frei Luiz de Sousa by Almeida Garrett/17591-cover.png"
-    ]
-  },
-  {
-    "id": 1705715717702,
-    "title": "Fábulas--folhas cahidas | Project Gutenberg",
-    "images": []
-  },
-  {
-    "id": 1705715717722,
-    "title": "Habitações Operarias",
-    "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/Habitações Operarias by Teixeira Bastos/24853-cover.png"
-    ]
-  },
-  {
-    "id": 1705715717726,
-    "title": "The Project Gutenberg eBook of Homenagem ao Marquez De Pombal 1782-1882, by Maximiliano de Azevedo",
-    "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/Homenagem ao Marquez De Pombal 1782-1882 by Maximiliano de Azevedo/25239-cover.png"
-    ]
-  },
-  {
-    "id": 1705715717731,
-    "title": "The Project Gutenberg eBook of Improvisos de Bocage\nNa Sua Mui Perigosa Enfermidade Dedicados a Seus Bons Amigos, by Manuel Maria Barbosa du Bocage",
-    "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/Improvisos de Bocage by Manuel Maria Barbosa du Bocage/23109-cover.png"
-    ]
-  },
-  {
-    "id": 1705715717765,
-    "title": "Instrvcçam Sobre a Cvltvra Das Amoreiras, & Criação Dos Bichos Da Seda por Rafael Blvteav—A Project Gutenberg eBook",
-    "images": []
-  },
-  {
-    "id": 1705715717816,
-    "title": "The Project Gutenberg eBook of Iracema, by José de Alencar.",
-    "images": []
-  },
-  {
-    "id": 1705715717824,
-    "title": "Isabel de Aragão: a rainha Santa",
-    "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/Isabel d'Aragão a Rainha Santa by Anonymous/35324-cover.png"
-    ]
-  },
-  {
-    "id": 1705715717833,
+    "id": 1706034618145,
     "title": "Jaime de Magalhães Lima, por José Agostinho",
     "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/Jaime de Magalhães Lima by José Agostinho/27689-cover.png"
-    ]
+      "C:\\Users\\joaovitor.santos\\Documents\\Workspace\\astrobooks\\api\\LivrosUnzip\\Jaime de Magalhães Lima by José Agostinho\\27689-cover.png"
+    ],
+    "folder": "Jaime de Magalhães Lima by José Agostinho"
   },
   {
-    "id": 1705715717850,
-    "title": "The Project Gutenberg eBook of K4 O Quadrado Azul, by José de Almada Negreiros and Amadeu de Sousa-Cardoso",
+    "id": 1706034618158,
+    "title": "K4 O Quadrado Azul, by José de Almada Negreiros and Amadeu de Sousa-Cardoso",
     "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/K4 O Quadrado Azul by José de Almada Negreiros/23133-cover.png"
-    ]
+      "C:\\Users\\joaovitor.santos\\Documents\\Workspace\\astrobooks\\api\\LivrosUnzip\\K4 O Quadrado Azul by José de Almada Negreiros\\23133-cover.png"
+    ],
+    "folder": "K4 O Quadrado Azul by José de Almada Negreiros"
   },
   {
-    "id": 1705715717856,
-    "title": "The\nProject Gutenberg eBook of Ley, porque V. Magestade ha por bem\nrestituir aos Indios do Graõ Pará, e Maranhaõ a liberdade das suas\npessoas, e bens, e commercio, by Anonymous.",
+    "id": 1706034618162,
+    "title": "Litoral\nA Amadeo de Souza Cardoso, by José de Almada Negreiros",
     "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/Ley, porque V. Magestade ha por bem restituir aos indios do Grão Pará,…/24289-cover.png"
-    ]
+      "C:\\Users\\joaovitor.santos\\Documents\\Workspace\\astrobooks\\api\\LivrosUnzip\\Litoral by José de Almada Negreiros\\22802-cover.png"
+    ],
+    "folder": "Litoral by José de Almada Negreiros"
   },
   {
-    "id": 1705715717860,
-    "title": "The Project Gutenberg eBook of Litoral\nA Amadeo de Souza Cardoso, by José de Almada Negreiros",
-    "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/Litoral by José de Almada Negreiros/22802-cover.png"
-    ]
+    "id": 1706034618184,
+    "title": "Lupe, by Affonso Celso.",
+    "images": [],
+    "folder": "Lupe by conde de Affonso Celso de Assis Figueiredo Affonso Celso"
   },
   {
-    "id": 1705715717890,
-    "title": "The Project Gutenberg eBook of Lupe, by Affonso Celso.",
-    "images": []
-  },
-  {
-    "id": 1705715717895,
-    "title": "The Project Gutenberg eBook of Manifesto anti-Dantas e por extenso\npor José de Almada Negreiros poeta d'Orpheu futurista e tudo, by José de Almada Negreiros",
-    "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/Manifesto anti-Dantas e por extenso by José de Almada Negreiros/23961-cover.png"
-    ]
-  },
-  {
-    "id": 1705715717931,
-    "title": "Memoria dos feitos macaenses contra os piratas da China",
-    "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/Memoria dos feitos macaenses contra os piratas da China by José Ignacio de Andrade/36163-cover.png"
-    ]
-  },
-  {
-    "id": 1705715717948,
-    "title": "Memoria sobre a cultura da Urumbeba e sobre criação da Cochonilha",
-    "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/Memoria sobre a cultura da Urumbeba e sobre criação da Cochonilha by Berthollet et al./40093-cover.png"
-    ]
-  },
-  {
-    "id": 1705715717956,
-    "title": "Memoria sobre a descoberta das Ilhas de Porto Santo e Madeira, por\n  Emiliano Augusto de Bettencourt",
-    "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/Memoria sobre a descoberta das ilhas de Porto Santo e Madeira 1418-1419/31576-cover.png"
-    ]
-  },
-  {
-    "id": 1705715717964,
-    "title": "Memoria sobre o melhoramento da cultura da Beira e da navegação do Mondego",
-    "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/Memoria sobre o melhoramento da cultura da Beira e da navegação do Mondego/41389-cover.png"
-    ]
-  },
-  {
-    "id": 1705715717983,
-    "title": "Memória sobre a plantação dos algodões",
-    "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/Memória sobre a plantação dos algodões by José de Sá Bettencourt/31093-cover.png"
-    ]
-  },
-  {
-    "id": 1705715717989,
-    "title": "Miragaia: Romance Popular",
-    "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/Miragaia_ Romance Popular by Almeida Garrett/24411-cover.png"
-    ]
-  },
-  {
-    "id": 1705715717992,
-    "title": "The Project Gutenberg eBook of Mágoas Amorosas de Elmano\nIdyllio Por Bocage, by Manuel Maria Barbosa du Bocage",
-    "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/Mágoas Amorosas de Elmano by Manuel Maria Barbosa du Bocage/22817-cover.png"
-    ]
-  },
-  {
-    "id": 1705715718026,
-    "title": "Nas Cinzas, por Gontran Borys",
-    "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/Nas Cinzas by Eugène Berthoud/30543-cover.png"
-    ]
-  },
-  {
-    "id": 1705715718183,
-    "title": "Noções botanicas das especies de nicociana mais usadas nas fabricas de tabaco, e da sua cultura",
-    "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/Noções botanicas das especies de Nicociana mais usadas nas fabricas de tabaco,…/39107-cover.png"
-    ]
-  },
-  {
-    "id": 1705715718320,
-    "title": "The Project Gutenberg eBook of Noções Elementares de Archeologia, por J.P.N. da Silva.",
-    "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/Noções elementares de archeologia by Joaquim Possidónio Narciso da Silva/17186-cover.png"
-    ]
-  },
-  {
-    "id": 1705715718431,
-    "title": "The Project Gutenberg eBook of O cortiço, by Aluísio Azevedo.",
-    "images": []
-  },
-  {
-    "id": 1705715718524,
+    "id": 1706034618245,
     "title": "O Guarany - Tomo Primeiro, by J. De Alencar—A Project Gutenberg eBook",
-    "images": []
+    "images": [],
+    "folder": "O Guarany_ romance brazileiro, Vol. 1 (of 2) by José Martiniano de Alencar"
   },
   {
-    "id": 1705715718628,
+    "id": 1706034618279,
     "title": "O Guarany - Tomo Segundo, by J. De Alencar—A Project Gutenberg eBook",
-    "images": []
+    "images": [],
+    "folder": "O Guarany_ romance brazileiro, Vol. 2 (of 2) by José Martiniano de Alencar"
   },
   {
-    "id": 1705715718661,
-    "title": "The Project Gutenberg eBook of O Jardim da Pierrette, by José de Almada Negreiros",
+    "id": 1706034618281,
+    "title": "O Jardim da Pierrette, by José de Almada Negreiros",
     "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/O Jardim da Pierrette by José de Almada Negreiros/22730-cover.png"
-    ]
+      "C:\\Users\\joaovitor.santos\\Documents\\Workspace\\astrobooks\\api\\LivrosUnzip\\O Jardim da Pierrette by José de Almada Negreiros\\22730-cover.png"
+    ],
+    "folder": "O Jardim da Pierrette by José de Almada Negreiros"
   },
   {
-    "id": 1705715718699,
-    "title": "The Project Gutenberg eBook of O descobrimento do Brasil por Pedro Alvares Cabral, by Antonio Artur Baldaque da Silva",
-    "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/O descobrimento do Brasil por Pedro Alvares Cabral by Baldaque da Silva/35131-cover.png"
-    ]
-  },
-  {
-    "id": 1705715718769,
-    "title": "O retrato de Venus e estudos de historia litteraria, por Almeida Garrett—A Project Gutenberg eBook",
-    "images": []
-  },
-  {
-    "id": 1705715718873,
+    "id": 1706034618291,
     "title": "OCTAVIA",
     "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/Octavia_ Tragedia em 5 Actos by Vittorio Alfieri/21563-cover.png"
-    ]
+      "C:\\Users\\joaovitor.santos\\Documents\\Workspace\\astrobooks\\api\\LivrosUnzip\\Octavia_ Tragedia em 5 Actos by Vittorio Alfieri\\21563-cover.png"
+    ],
+    "folder": "Octavia_ Tragedia em 5 Actos by Vittorio Alfieri"
   },
   {
-    "id": 1705715718917,
-    "title": "Oliveira Martins: Estudo de psychologia, por G. Moniz Barreto",
-    "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/Oliveira Martins_ Estudo de Psychologia by Moniz Barreto/31379-cover.png"
-    ]
-  },
-  {
-    "id": 1705715718970,
-    "title": "The Project Gutenberg eBook of Orpheu Nº1\nRevista Trimestral de Literatura, by José de Almada Negreiros et al.",
-    "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/Orpheu Nº1 by José de Almada Negreiros et al/23620-cover.png"
-    ]
-  },
-  {
-    "id": 1705715719053,
-    "title": "The Project Gutenberg eBook of Orpheu Nº1\nRevista Trimestral de Literatura, by José de Almada Negreiros et al.",
-    "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/Orpheu Nº1 by José de Almada Negreiros et al./23620-cover.png"
-    ]
-  },
-  {
-    "id": 1705715719251,
+    "id": 1706034618422,
     "title": "Os Filhos do Padre Anselmo",
     "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/Os Filhos do Padre Anselmo by António José da Costa Couto Sá de Albergaria/24625-cover.png"
-    ]
+      "C:\\Users\\joaovitor.santos\\Documents\\Workspace\\astrobooks\\api\\LivrosUnzip\\Os Filhos do Padre Anselmo by António José da Costa Couto Sá de Albergaria\\24625-cover.png"
+    ],
+    "folder": "Os Filhos do Padre Anselmo by António José da Costa Couto Sá de Albergaria"
   },
   {
-    "id": 1705715719357,
-    "title": "Os Jardins, by Jacques Delille—A Project Gutenberg eBook",
-    "images": []
-  },
-  {
-    "id": 1705715719546,
-    "title": "The Project Gutenberg eBook of Poesias Eroticas, Burlescas, e Satyricas de M.M. de Barbosa du Bocage não comprehendidas na edição que das obras deste poeta se publicou em Lisboa, no anno de MDCCCLIII., by Manuel Maria Barbosa du Bocage.",
-    "images": []
-  },
-  {
-    "id": 1705715719700,
-    "title": "Prosas Bárbaras, by Eça de Queiroz—A Project Gutenberg eBook",
-    "images": []
-  },
-  {
-    "id": 1705715719718,
-    "title": "Ramalho Ortigão, por Hemetério Arantes",
-    "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/Ramalho Ortigão by Hemeterio Arantes/34292-cover.png"
-    ]
-  },
-  {
-    "id": 1705715719754,
-    "title": "The Project Gutenberg eBook of Relação do formidavel, e lastimoso terremoto succedido no Reino de Valença\nNo dia 23 de Março deste presente anno de 1748 pelas 6.\nhoras, e tres quartos da manhã, by Anonymous",
-    "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/Relação do formidavel, e lastimoso terremoto succedido no Reino de Valença/20042-cover.png"
-    ]
-  },
-  {
-    "id": 1705715719774,
-    "title": "The Project Gutenberg eBook of Reprezentação à Academia Real das Ciências sobre a refórma da ortografia, by Anonymous",
-    "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/Reprezentação à Academia Real das Ciências sobre a refórma da ortografia/19663-cover.png"
-    ]
-  },
-  {
-    "id": 1705715719870,
-    "title": "The Project Gutenberg eBook of Robur, o conquistador, by Julio (Jules) Verne.",
-    "images": []
-  },
-  {
-    "id": 1705715719951,
-    "title": "The Project Gutenberg eBook of Romanceiro III: Romances Cavalherescos Antigos, by V. de Almeida Garrett.",
-    "images": []
-  },
-  {
-    "id": 1705715720043,
-    "title": "The Project Gutenberg eBook of Romanceiro I: Romances da Renascença, by V. de Almeida Garrett.",
-    "images": []
-  },
-  {
-    "id": 1705715720078,
-    "title": "The Project Gutenberg eBook of Sciências Naturaes\nPela Redacção da «Educação Nacional», by Anonymous",
-    "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/Sciências Naturaes by Anonymous/19013-cover.png"
-    ]
-  },
-  {
-    "id": 1705715720092,
-    "title": "Sá de Miranda. Com uma carta ácerca da\n\"Bibliographia Camilliana\" de Henrique Marques, por Joaquim de\nAraujo",
-    "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/Sá de Miranda by Joaquim de Araújo, Camilo Castelo Branco, and Antero de Quental/25845-cover.png"
-    ]
-  },
-  {
-    "id": 1705715720249,
-    "title": "The Project Gutenberg eBook of Textos Biblicos, by Anonymous.",
-    "images": []
-  },
-  {
-    "id": 1705715720579,
-    "title": "Tribunaes de Árbitros-Avindores, por Teixeira Bastos",
-    "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/Tribunaes de Arbitros-Avindores by Teixeira Bastos/28962-cover.png"
-    ]
-  },
-  {
-    "id": 1705715720659,
-    "title": "The Project Gutenberg eBook of Triste Fim de Polycarpo Quaresma,\n      by Lima Barreto.",
-    "images": []
-  },
-  {
-    "id": 1705715720670,
-    "title": "Trovas Ineditas de Bandarra",
-    "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/Trovas Inedìtas de Bandarra by Gonçalo Anes Bandarra/21545-cover.png"
-    ]
-  },
-  {
-    "id": 1705715720702,
-    "title": "The Project Gutenberg eBook of Trovas do Bandarra\nnatural da Villa de Trancoso, apuradas e impressas por ordem de um grande senhor de Portugal, by Gonçalo Anes Bandarra",
-    "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/Trovas do Bandarra by Gonçalo Anes Bandarra/20581-cover.png"
-    ]
-  },
-  {
-    "id": 1705715720758,
+    "id": 1706034618452,
     "title": "Ubirajara, by José De Alencar -- a Project Gutenberg eBook.",
-    "images": []
-  },
-  {
-    "id": 1705715720785,
-    "title": "The Project Gutenberg eBook of Um meeting na parvonia: poemeto escripto num canto, by Anonymous",
-    "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/Um meeting na parvonia_ poemeto escripto num canto by Anonymous/20495-cover.png"
-    ]
-  },
-  {
-    "id": 1705715720850,
-    "title": "The Project Gutenberg eBook of Viagens na Minha Terra (Completo), by Visconde de João Batista da Silva Leitão de Almeida Garrett Almeida Garrett",
-    "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/Viagens na Minha Terra (Completo) by Almeida Garrett/24401-cover.png"
-    ]
-  },
-  {
-    "id": 1705715720912,
-    "title": "Viagens na minha terra (Volume I)",
-    "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/Viagens na Minha Terra (Volume I) by Almeida Garrett/24164-cover.png"
-    ]
-  },
-  {
-    "id": 1705715721001,
-    "title": "Viagens na minha terra (Volume II)",
-    "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/Viagens na Minha Terra (Volume II) by Almeida Garrett/24319-cover.png"
-    ]
-  },
-  {
-    "id": 1705715721151,
-    "title": "The Project Gutenberg eBook of Viamos e não veremos\nalegoria moral, acompanhada de outras diversas maximas relativas a nossa liberdade constitucional, by Anonymous",
-    "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/Viamos e não veremos by Anonymous/20701-cover.png"
-    ]
-  },
-  {
-    "id": 1705715721275,
-    "title": "Vida de Takla Haymanot, por P. Manuel de Almeida",
-    "author": "P. Manuel de Almeida",
-    "images": [
-      "/home/wallace/Workspace/astrobooks/api/LivrosUnzip/Vida de Takla Haymanot by Manuel de Almeida and F. M. Esteves Pereira/28692-cover.png"
-    ]
+    "images": [],
+    "folder": "Ubirajara_ Lenda Tupi by José Martiniano de Alencar"
   }
 ]
