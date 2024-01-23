@@ -6,7 +6,7 @@ const BookCard = ({ book }) => {
     <div className="card">
       <h3>{book.title}</h3>
       {book.coverImage ? (
-        <img src={`http://localhost:5000/${book.coverImage}`} alt={book.title} />
+        <img src={`http://localhost:5000${book.coverImage}`} alt={book.title} />
       ) : (
         <p>Imagem não disponível</p>
       )}
