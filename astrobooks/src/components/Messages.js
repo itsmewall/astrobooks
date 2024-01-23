@@ -4,6 +4,7 @@ import {
   signInWithPopup,
   signOut,
   GoogleAuthProvider,
+  onAuthStateChanged,
 } from 'firebase/auth';
 import {
   getFirestore,
@@ -12,7 +13,8 @@ import {
   addDoc,
   serverTimestamp,
 } from 'firebase/firestore';
-import firebaseApp from './firebase';
+import { auth, firestore } from './firebase'; // Import auth and firestore directly
+
 import '../styles/Messages.css';
 import Header from './Header';
 
@@ -24,18 +26,15 @@ const Messages = () => {
   const [selectedContact, setSelectedContact] = useState(null);
 
   useEffect(() => {
-    const auth = getAuth(firebaseApp);
-    const firestore = getFirestore(firebaseApp);
-
-    const unsubscribeAuth = auth.onAuthStateChanged(authUser => {
+    const unsubscribeAuth = onAuthStateChanged(auth, (authUser) => {
       setUser(authUser);
 
       if (authUser) {
         const usersCollection = collection(firestore, 'users');
-        const unsubscribeUsers = onSnapshot(usersCollection, snapshot => {
+        const unsubscribeUsers = onSnapshot(usersCollection, (snapshot) => {
           const usersData = snapshot.docs
-            .filter(doc => doc.id !== authUser.uid)
-            .map(doc => ({
+            .filter((doc) => doc.id !== authUser.uid)
+            .map((doc) => ({
               id: doc.id,
               ...doc.data(),
             }));
@@ -43,8 +42,8 @@ const Messages = () => {
         });
 
         const messagesCollection = collection(firestore, 'messages');
-        const unsubscribeMessages = onSnapshot(messagesCollection, snapshot => {
-          const messagesData = snapshot.docs.map(doc => ({
+        const unsubscribeMessages = onSnapshot(messagesCollection, (snapshot) => {
+          const messagesData = snapshot.docs.map((doc) => ({
             id: doc.id,
             ...doc.data(),
           }));
@@ -65,16 +64,15 @@ const Messages = () => {
 
   const signIn = async () => {
     const provider = new GoogleAuthProvider();
-    await signInWithPopup(getAuth(firebaseApp), provider);
+    await signInWithPopup(auth, provider);
   };
 
   const handleSignOut = async () => {
-    await signOut(getAuth(firebaseApp));
+    await signOut(auth);
   };
 
   const sendMessage = async () => {
     if (user && message.trim() !== '' && selectedContact) {
-      const firestore = getFirestore(firebaseApp);
       await addDoc(collection(firestore, 'messages'), {
         sender: user.displayName,
         recipient: selectedContact.name,
@@ -96,7 +94,7 @@ const Messages = () => {
           <div>
             <h3>Usuários Disponíveis</h3>
             <ul>
-              {users.map(user => (
+              {users.map((user) => (
                 <li key={user.id}>{user.name}</li>
               ))}
             </ul>
@@ -106,14 +104,14 @@ const Messages = () => {
             <select
               id="contacts"
               value={selectedContact ? selectedContact.id : ''}
-              onChange={e =>
+              onChange={(e) =>
                 setSelectedContact(
-                  users.find(user => user.id === e.target.value)
+                  users.find((user) => user.id === e.target.value)
                 )
               }
             >
               <option value="">Selecione um contato</option>
-              {users.map(user => (
+              {users.map((user) => (
                 <option key={user.id} value={user.id}>
                   {user.name}
                 </option>
@@ -126,13 +124,13 @@ const Messages = () => {
               <ul>
                 {messages
                   .filter(
-                    msg =>
+                    (msg) =>
                       (msg.sender === user.displayName &&
                         msg.recipient === selectedContact.name) ||
                       (msg.sender === selectedContact.name &&
                         msg.recipient === user.displayName)
                   )
-                  .map(message => (
+                  .map((message) => (
                     <li key={message.id}>
                       <strong>{message.sender}:</strong> {message.text}
                     </li>
@@ -143,7 +141,7 @@ const Messages = () => {
                   type="text"
                   placeholder="Digite sua mensagem"
                   value={message}
-                  onChange={e => setMessage(e.target.value)}
+                  onChange={(e) => setMessage(e.target.value)}
                 />
                 <button onClick={sendMessage}>Enviar</button>
               </div>
