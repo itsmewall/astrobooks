@@ -41,9 +41,42 @@ app.get('/api/bookdata', (req, res) => {
     const fileContent = fs.readFileSync(allBooksFilePath, 'utf-8');
     const allBooksData = JSON.parse(fileContent);
 
-    // Adicione esta linha para fornecer o caminho correto para as imagens
     allBooksData.forEach((book) => {
-      book.coverImage = `/api/bookdata/images/${encodeURIComponent(book.folder)}/${book.images[0]}`;
+      // Use the book folder from the JSON to construct the book path
+      const bookFolderPath = path.join(booksUnzipFolderPath, book.folder);
+      const imagesFolderPath = path.join(bookFolderPath, 'images');
+      let coverImagePath;
+
+      // Log para verificar o caminho do livro
+      console.log('Book folder path:', bookFolderPath);
+
+      // Verificar se o diretório do livro existe
+      if (!fs.existsSync(bookFolderPath)) {
+        console.error(`Directory not found: ${bookFolderPath}`);
+        return;
+      }
+
+      // Verificar se a pasta "images" existe e contém um arquivo .png
+      if (fs.existsSync(imagesFolderPath)) {
+        const imageFiles = fs.readdirSync(imagesFolderPath);
+        const pngFile = imageFiles.find(file => file.toLowerCase().endsWith('.png'));
+
+        if (pngFile) {
+          coverImagePath = `/api/bookdata/images/${encodeURIComponent(book.folder)}/images/${encodeURIComponent(pngFile)}`;
+        }
+      }
+
+      // Se não encontrou na pasta "images", buscar diretamente na pasta do livro
+      if (!coverImagePath) {
+        const allBookFiles = fs.readdirSync(bookFolderPath);
+        const imageFile = allBookFiles.find(file => file.toLowerCase().endsWith('.png') || file.toLowerCase().endsWith('.jpg'));
+
+        if (imageFile) {
+          coverImagePath = `/api/bookdata/images/${encodeURIComponent(book.folder)}/${encodeURIComponent(imageFile)}`;
+        }
+      }
+
+      book.coverImage = coverImagePath || '/api/bookdata/images/default-placeholder.png';
     });
 
     res.json(allBooksData);
@@ -56,7 +89,7 @@ app.get('/api/bookdata', (req, res) => {
 // Configuração do servidor WebSocket
 io.on('connection', (socket) => {
   console.log('Cliente conectado via WebSocket');
-  
+
   // Exemplo: ouvir mensagens do cliente
   socket.on('message', (message) => {
     console.log('Mensagem do cliente via WebSocket:', message);
