@@ -1,25 +1,29 @@
-/* Em BookCard.css */
-  
-  .card {
-    flex: 0 0 calc(25% - 16px); /* Ajuste conforme necessário */
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 16px;
-    margin: 8px;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
-  }
-  
-  .card h3 {
-    font-size: 16px; /* Ajuste conforme necessário */
-    margin-bottom: 8px;
-  }
-  
-  .card p {
-    font-size: 14px; /* Ajuste conforme necessário */
-    color: #555;
-  }
-  
-  /* Adicione estilos adicionais conforme necessário */
-  
+.card {
+  flex: 0 0 calc(30% - 16px); /* Ajuste conforme necessário */
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 16px;
+  margin: 8px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  display: flex;
+  flex-direction: column; /* Os elementos internos serão organizados em coluna */
+}
+
+.card h3 {
+  font-size: 20px; /* Ajuste conforme necessário */
+  margin-bottom: 8px;
+}
+
+.card img {
+  max-width: 100%; /* A imagem não ultrapassará a largura do contêiner */
+  height: auto; /* A altura se ajustará automaticamente à largura mantendo a proporção */
+  border-radius: 4px; /* Adiciona borda arredondada à imagem, se desejado */
+}
+
+.card p {
+  font-size: 14px; /* Ajuste conforme necessário */
+  color: #555;
+  margin-top: 8px; /* Espaço entre o título e o parágrafo */
+}
