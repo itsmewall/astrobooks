@@ -40,6 +40,7 @@ app.get('/api/bookdata', (req, res) => {
   try {
     const fileContent = fs.readFileSync(allBooksFilePath, 'utf-8');
     const allBooksData = JSON.parse(fileContent);
+    // console.log('Dados de todos os livros:', allBooksData);
 
     allBooksData.forEach((book) => {
       // Use the book folder from the JSON to construct the book path
@@ -48,7 +49,7 @@ app.get('/api/bookdata', (req, res) => {
       let coverImagePath;
 
       // Log para verificar o caminho do livro
-      console.log('Book folder path:', bookFolderPath);
+      // console.log('Pasta do livro:', bookFolderPath);
 
       // Verificar se o diretório do livro existe
       if (!fs.existsSync(bookFolderPath)) {
