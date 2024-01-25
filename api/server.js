@@ -40,16 +40,14 @@ app.get('/api/bookdata', (req, res) => {
   try {
     const fileContent = fs.readFileSync(allBooksFilePath, 'utf-8');
     const allBooksData = JSON.parse(fileContent);
-    // console.log('Dados de todos os livros:', allBooksData);
 
     allBooksData.forEach((book) => {
       // Use the book folder from the JSON to construct the book path
       const bookFolderPath = path.join(booksUnzipFolderPath, book.folder);
       const imagesFolderPath = path.join(bookFolderPath, 'images');
+      const bookId = book.id.toString();
       let coverImagePath;
-
-      // Log para verificar o caminho do livro
-      // console.log('Pasta do livro:', bookFolderPath);
+      const filePath = path.join(booksInfoFolderPath, `${bookId}.json`);
 
       // Verificar se o diretório do livro existe
       if (!fs.existsSync(bookFolderPath)) {
@@ -86,6 +84,27 @@ app.get('/api/bookdata', (req, res) => {
     res.status(500).json({ error: 'Internal server error', details: error.message });
   }
 });
+
+// Rota para obter detalhes de um livro específico
+app.get('/api/bookdata/:id', (req, res) => {
+  try {
+    const { id } = req.params;
+    const filePath = path.join(booksInfoFolderPath, `${id}.json`);
+
+    if (!fs.existsSync(filePath)) {
+      console.error(`File not found: ${filePath}`);
+      return res.status(404).json({ error: 'Not Found', details: 'Book details not found' });
+    }
+
+    const fileContent = fs.readFileSync(filePath, 'utf-8');
+    const bookDetails = JSON.parse(fileContent);
+    res.json(bookDetails);
+  } catch (error) {
+    console.error('Error reading or parsing JSON file:', error);
+    res.status(500).json({ error: 'Internal server error', details: error.message });
+  }
+});
+
 
 // Configuração do servidor WebSocket
 io.on('connection', (socket) => {

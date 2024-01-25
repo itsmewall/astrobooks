@@ -4,6 +4,7 @@ import Home from './components/Home';
 import Messages from './components/Messages';
 import Login from './components/Login';
 import Profile from './components/Profile';
+import BookDetails from './components/BookDetails';
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/messages" element={<Messages />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/book/:id" element={<BookDetails />} />
         </Routes>
       </div>
     </Router>

@@ -1,5 +1,5 @@
-// Em BookList.js
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import BookCard from './BookCard';
 import '../styles/BookList.css';
 
@@ -23,7 +23,9 @@ const BookList = () => {
   return (
     <div className="book-list">
       {books.map((book) => (
-        <BookCard key={book.id} book={book} />
+        <Link to={`/book/${book.id}`} key={book.id} style={{ textDecoration: 'none' }}>
+          <BookCard book={book} />
+        </Link>
       ))}
     </div>
   );
