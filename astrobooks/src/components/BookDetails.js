@@ -1,3 +1,4 @@
+// BookDetails.js
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
@@ -8,15 +9,21 @@ const BookDetails = () => {
   useEffect(() => {
     const fetchBookDetails = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/bookdata/${id}`);
-        if (!response.ok) {
-          console.error(`Failed to fetch book details with ID ${id}`);
-          return;
+        const response = await fetch(`http://localhost:5000/api/books/${id}`); // Rota modificada para obter detalhes de um livro específico
+        const contentType = response.headers.get("content-type");
+
+        if (contentType && contentType.indexOf("application/json") !== -1) {
+          // Se a resposta for JSON, interpretar normalmente
+          const data = await response.json();
+          setBookDetails(data);
+        } else {
+          // Se a resposta não for JSON, interpretar como texto
+          const data = await response.text();
+          // Aqui você pode manipular ou exibir o HTML como necessário
+          console.log(data);
         }
-        const bookDetailsData = await response.json();
-        setBookDetails(bookDetailsData);
       } catch (error) {
-        console.error(error.message);
+        console.error(error);
       }
     };
 
@@ -24,17 +31,17 @@ const BookDetails = () => {
   }, [id]);
 
   if (!bookDetails) {
-    return <div>Loading...</div>;
+    return <p>Loading...</p>;
   }
 
   return (
     <div>
       <h2>{bookDetails.title}</h2>
-      {bookDetails.coverImage && (
-        <img src={`http://localhost:5000${bookDetails.coverImage}`} alt={bookDetails.title} />
+      {bookDetails.images && bookDetails.images.length > 0 && (
+        <img src={`http://localhost:5000${bookDetails.images[0]}`} alt={bookDetails.title} />
       )}
-      {bookDetails.author && <p>Autor: {bookDetails.author}</p>}
-      {/* Adicione outros detalhes do livro conforme necessário */}
+      <p>ID: {bookDetails.id}</p>
+      <p>Folder: {bookDetails.folder}</p>
     </div>
   );
 };

@@ -20,6 +20,13 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
+// Middleware para lidar com a rota raiz
+app.get('/', (req, res) => {
+  console.log('Pelo menos até aqui o server funcionou kkkkkkkkk');
+  res.send('Hello, this is the root endpoint!');
+});
+
+
 const io = new Server(server, {
   cors: {
     origin: 'http://localhost:3000',
@@ -51,7 +58,7 @@ app.get('/api/bookdata', (req, res) => {
 
       // Verificar se o diretório do livro existe
       if (!fs.existsSync(bookFolderPath)) {
-        console.error(`Directory not found: ${bookFolderPath}`);
+        console.error(`Não achei essa pasta sua não: ${bookFolderPath}`);
         return;
       }
 
@@ -80,35 +87,35 @@ app.get('/api/bookdata', (req, res) => {
 
     res.json(allBooksData);
   } catch (error) {
-    console.error('Error reading or parsing JSON file:', error);
+    console.error('Deu erro ao ler seu arquivo JSON :( .......:', error);
     res.status(500).json({ error: 'Internal server error', details: error.message });
   }
 });
 
-// Rota para obter detalhes de um livro específico
-app.get('/api/bookdata/:id', (req, res) => {
-  try {
-    const { id } = req.params;
-    const filePath = path.join(booksInfoFolderPath, `${id}.json`);
+app.get('/api/books/:id', (req, res) => {
+  const { id } = req.params;
 
-    if (!fs.existsSync(filePath)) {
-      console.error(`File not found: ${filePath}`);
-      return res.status(404).json({ error: 'Not Found', details: 'Book details not found' });
+  try {
+    const fileContent = fs.readFileSync(allBooksFilePath, 'utf-8');
+    const allBooksData = JSON.parse(fileContent);
+
+    const book = allBooksData.find((b) => b.id.toString() === id);
+
+    if (!book) {
+      return res.status(404).json({ error: 'Livro não encontrado' });
     }
 
-    const fileContent = fs.readFileSync(filePath, 'utf-8');
-    const bookDetails = JSON.parse(fileContent);
-    res.json(bookDetails);
+    res.json(book);
   } catch (error) {
-    console.error('Error reading or parsing JSON file:', error);
+    console.error('Deu erro ao ler seu arquivo JSON :( .......:', error);
     res.status(500).json({ error: 'Internal server error', details: error.message });
   }
 });
-
 
 // Configuração do servidor WebSocket
 io.on('connection', (socket) => {
   console.log('Cliente conectado via WebSocket');
+  console.log('WebSocket ta Sockando com sucesso!')
 
   // Exemplo: ouvir mensagens do cliente
   socket.on('message', (message) => {
@@ -117,7 +124,7 @@ io.on('connection', (socket) => {
   });
 
   // Exemplo: enviar mensagem para o cliente
-  socket.emit('message', 'Bem-vindo ao servidor WebSocket!');
+  socket.emit('message', 'Deu bom o WebSocket!');
 });
 
 // Middleware para lidar com rotas não encontradas (404)
