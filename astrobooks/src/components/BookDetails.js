@@ -1,4 +1,5 @@
 // BookDetails.js
+import Header from './Header';
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
@@ -36,6 +37,7 @@ const BookDetails = () => {
 
   return (
     <div>
+      <Header />
       <h2>{bookDetails.title}</h2>
       {bookDetails.images && bookDetails.images.length > 0 && (
         <img src={`http://localhost:5000${bookDetails.images[0]}`} alt={bookDetails.title} />
