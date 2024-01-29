@@ -1,5 +1,5 @@
 .card {
-  flex: 0 0 calc(30% - 16px); /* Ajuste conforme necessário */
+  flex: 0 0 calc(30% - 16px);
   border: 1px solid #ccc;
   border-radius: 10px;
   padding: 16px;
@@ -8,22 +8,22 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   background-color: #fff;
   display: flex;
-  flex-direction: column; /* Os elementos internos serão organizados em coluna */
+  flex-direction: column;
 }
 
 .card h3 {
-  font-size: 20px; /* Ajuste conforme necessário */
+  font-size: 20px;
   margin-bottom: 8px;
 }
 
 .card img {
-  max-width: 100%; /* A imagem não ultrapassará a largura do contêiner */
-  height: auto; /* A altura se ajustará automaticamente à largura mantendo a proporção */
-  border-radius: 4px; /* Adiciona borda arredondada à imagem, se desejado */
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
 }
 
 .card p {
-  font-size: 14px; /* Ajuste conforme necessário */
+  font-size: 14px;
   color: #555;
-  margin-top: 8px; /* Espaço entre o título e o parágrafo */
+  margin-top: 8px;
 }

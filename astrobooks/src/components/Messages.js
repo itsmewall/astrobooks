@@ -13,7 +13,7 @@ import {
   addDoc,
   serverTimestamp,
 } from 'firebase/firestore';
-import { auth, firestore } from './firebase'; // Import auth and firestore directly
+import { auth, firestore } from './firebase'; 
 
 import '../styles/Messages.css';
 import Header from './Header';
