@@ -21,50 +21,84 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
+const caminhoDoArquivoLivros = path.join(__dirname, 'booksInfo', 'livro.json');
+const caminhoDoArquivoResumos = path.join(__dirname, 'booksInfo', 'resumos.json');
+let livros;
+
+try {
+  livros = JSON.parse(fs.readFileSync(caminhoDoArquivoLivros, 'utf-8'));
+} catch (error) {
+  console.error('Erro ao ler o arquivo de livros:', error);
+  process.exit(1); // Encerrar o processo em caso de erro
+}
+
 // Rota para obter todos os livros
 app.get('/livros', (req, res) => {
-    // Lógica para obter os dados do livro do JSON
-    const caminhoDoArquivo = path.join(__dirname, 'booksInfo', 'livro.json');
-  
     try {
-      const livros = JSON.parse(fs.readFileSync(caminhoDoArquivo, 'utf-8'));
+      const livros = JSON.parse(fs.readFileSync(caminhoDoArquivoLivros, 'utf-8'));
       res.json(livros.livro);
     } catch (error) {
-      console.error('Erro ao ler o arquivo:', error);
-      res.status(500).json({ error: 'Erro ao ler o arquivo' });
+      console.error('Erro ao ler o arquivo de livros:', error);
+      res.status(500).json({ error: 'Erro ao ler o arquivo de livros' });
     }
   });
-// Rota para obter um livro específico pelo ID
+  
+  // Rota para obter um livro específico pelo ID
 app.get('/livros/:id', (req, res) => {
-  const livroId = parseInt(req.params.id);
-  const livro = livros.livro.find((livro) => livro.id === livroId);
-
-  if (livro) {
-    res.json(livro);
-  } else {
-    res.status(404).json({ message: 'Livro não encontrado' });
-  }
-});
-
-// Rota para obter os resumos dos capítulos de um livro específico pelo ID
+    const livroId = parseInt(req.params.id);
+  
+    try {
+      const livros = JSON.parse(fs.readFileSync(caminhoDoArquivoLivros, 'utf-8'));
+      const livro = livros.livro.find((livro) => livro.id === livroId);
+  
+      if (livro) {
+        res.json(livro);
+      } else {
+        res.status(404).json({ message: 'Livro não encontrado' });
+      }
+    } catch (error) {
+      console.error('Erro ao ler o arquivo de livros:', error);
+      res.status(500).json({ error: 'Erro ao ler o arquivo de livros' });
+    }
+  });
+  
 app.get('/livros/:id/resumos', (req, res) => {
-  const livroId = parseInt(req.params.id);
-  const livro = livros.livro.find((livro) => livro.id === livroId);
-
-  if (livro && livro.capitulos) {
-    const resumos = {};
-    livro.capitulos.forEach((capitulo) => {
-      resumos[capitulo.titulo] = {
-        conteudo: capitulo.conteudo,
-        livro_id: capitulo.livro_id,
-      };
-    });
-
-    res.json({ resumos });
-  } else {
-    res.status(404).json({ message: 'Livro ou capítulos não encontrados' });
-  }
+    const livroId = parseInt(req.params.id);
+  
+    try {
+      const resumos = JSON.parse(fs.readFileSync(caminhoDoArquivoResumos, 'utf-8'));
+  
+      if (resumos && resumos.resumos) {
+        const resumosDoLivro = resumos.resumos;
+  
+        if (resumosDoLivro) {
+          const resumosComIDs = {};
+  
+          Object.keys(resumosDoLivro).forEach((tituloCapitulo) => {
+            const resumo = resumosDoLivro[tituloCapitulo];
+  
+            if (resumo.livro_id === livroId) {
+              resumosComIDs[tituloCapitulo] = {
+                conteudo: resumo.conteudo,
+                livro_id: resumo.livro_id,
+                capitulo_id: resumo.capitulo_id,
+              };
+            }
+          });
+  
+          res.json({ resumos: resumosComIDs });
+        } else {
+          res.status(404).json({ message: 'Resumos do livro não encontrados' });
+        }
+      } else {
+        res.status(404).json({ message: 'Estrutura do arquivo de resumos inválida' });
+      }
+    } catch (error) {
+      console.error('Erro ao ler o arquivo de resumos:', error);
+      res.status(500).json({ error: 'Erro ao ler o arquivo de resumos' });
+    }
 });
+  
 
 // Configuração do servidor WebSocket
 io.on('connection', (socket) => {

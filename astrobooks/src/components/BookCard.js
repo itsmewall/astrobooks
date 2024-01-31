@@ -12,10 +12,11 @@ const BookCard = ({ book }) => {
   return (
     <div className="card" onClick={handleCardClick}>
       <h3>{book.titulo}</h3>
+      <h5>{book.id}</h5> //teste
       {book.capitulos && book.capitulos.length > 0 ? (
-        <p>Capítulos: {book.capitulos.length}</p>
+        <p>Partes: {book.capitulos.length}</p>
       ) : (
-        <p>Sem capítulos disponíveis</p>
+        <p>Sem partes disponíveis</p>
       )}
       {book.autor && <p>Autor: {book.autor}</p>}
       {book.coverImage ? (
