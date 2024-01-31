@@ -22,7 +22,8 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 const caminhoDoArquivoLivros = path.join(__dirname, 'booksInfo', 'livro.json');
-const caminhoDoArquivoResumos = path.join(__dirname, 'booksInfo', 'resumos.json');
+
+// Carregar livros do arquivo
 let livros;
 
 try {
@@ -34,71 +35,59 @@ try {
 
 // Rota para obter todos os livros
 app.get('/livros', (req, res) => {
-    try {
-      const livros = JSON.parse(fs.readFileSync(caminhoDoArquivoLivros, 'utf-8'));
-      res.json(livros.livro);
-    } catch (error) {
-      console.error('Erro ao ler o arquivo de livros:', error);
-      res.status(500).json({ error: 'Erro ao ler o arquivo de livros' });
-    }
-  });
-  
-  // Rota para obter um livro específico pelo ID
-app.get('/livros/:id', (req, res) => {
-    const livroId = parseInt(req.params.id);
-  
-    try {
-      const livros = JSON.parse(fs.readFileSync(caminhoDoArquivoLivros, 'utf-8'));
-      const livro = livros.livro.find((livro) => livro.id === livroId);
-  
-      if (livro) {
-        res.json(livro);
-      } else {
-        res.status(404).json({ message: 'Livro não encontrado' });
-      }
-    } catch (error) {
-      console.error('Erro ao ler o arquivo de livros:', error);
-      res.status(500).json({ error: 'Erro ao ler o arquivo de livros' });
-    }
-  });
-  
-app.get('/livros/:id/resumos', (req, res) => {
-    const livroId = parseInt(req.params.id);
-  
-    try {
-      const resumos = JSON.parse(fs.readFileSync(caminhoDoArquivoResumos, 'utf-8'));
-  
-      if (resumos && resumos.resumos) {
-        const resumosDoLivro = resumos.resumos;
-  
-        if (resumosDoLivro) {
-          const resumosComIDs = {};
-  
-          Object.keys(resumosDoLivro).forEach((tituloCapitulo) => {
-            const resumo = resumosDoLivro[tituloCapitulo];
-  
-            if (resumo.livro_id === livroId) {
-              resumosComIDs[tituloCapitulo] = {
-                conteudo: resumo.conteudo,
-                livro_id: resumo.livro_id,
-                capitulo_id: resumo.capitulo_id,
-              };
-            }
-          });
-  
-          res.json({ resumos: resumosComIDs });
-        } else {
-          res.status(404).json({ message: 'Resumos do livro não encontrados' });
-        }
-      } else {
-        res.status(404).json({ message: 'Estrutura do arquivo de resumos inválida' });
-      }
-    } catch (error) {
-      console.error('Erro ao ler o arquivo de resumos:', error);
-      res.status(500).json({ error: 'Erro ao ler o arquivo de resumos' });
-    }
+  try {
+    res.json(livros.livro);
+  } catch (error) {
+    console.error('Erro ao obter livros:', error);
+    res.status(500).json({ error: 'Erro ao obter livros' });
+  }
 });
-  
+
+// Rota para obter um livro específico pelo ID
+app.get('/livros/:id', (req, res) => {
+  const livroId = parseInt(req.params.id);
+
+  try {
+    const livro = livros.livro.find((livro) => livro.id === livroId);
+
+    if (livro) {
+      res.json(livro);
+    } else {
+      res.status(404).json({ message: 'Livro não encontrado' });
+    }
+  } catch (error) {
+    console.error('Erro ao obter livro:', error);
+    res.status(500).json({ error: 'Erro ao obter livro' });
+  }
+});
+
+// Rota para obter resumos de um livro específico pelo ID
+app.get('/livros/:id/resumos', (req, res) => {
+  const livroId = parseInt(req.params.id);
+
+  try {
+    const resumosDoLivro = livros.livro.find((livro) => livro.id === livroId)?.capitulos;
+
+    if (resumosDoLivro) {
+      const resumosComIDs = {};
+
+      resumosDoLivro.forEach((capitulo) => {
+        resumosComIDs[capitulo.titulo] = {
+          conteudo: capitulo.resumo,
+          livro_id: livroId,
+          capitulo_id: capitulo.id,
+        };
+      });
+
+      res.json({ resumos: resumosComIDs });
+    } else {
+      res.status(404).json({ message: 'Resumos do livro não encontrados' });
+    }
+  } catch (error) {
+    console.error('Erro ao obter resumos:', error);
+    res.status(500).json({ error: 'Erro ao obter resumos' });
+  }
+});
 
 // Configuração do servidor WebSocket
 io.on('connection', (socket) => {

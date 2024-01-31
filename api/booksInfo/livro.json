@@ -4,35 +4,45 @@
       "id": 1,
       "titulo": "O Alquimista",
       "autor": "Paulo Coelho",
+      "Editora": "Rocco",
+      "edicao": "1ª",
+      "ano": 1988,
+      "genero": "Romance",
+      "idioma": "Português Brasileiro",
+      "resenha": "O Alquimista é um romance do escritor brasileiro Paulo Coelho que foi publicado pela primeira vez em 1988. Nele, o personagem Santiago viaja pelo deserto do Saara em busca de um tesouro enterrado no Egito, e durante a sua jornada, ele encontra personagens que o ajudam a entender melhor a sua vida e a encontrar o seu verdadeiro propósito.",
       "capitulos": [
         {
           "id": 1,
           "titulo": "O Sonho Recorrente",
-          "conteudo": "A história começa com Santiago, um pastor andaluz, que tem um sonho recorrente sobre encontrar um tesouro nas Pirâmides do Egito.",
+          "resumo": "A história começa com Santiago, um pastor andaluz, que tem um sonho recorrente sobre encontrar um tesouro nas Pirâmides do Egito.",
           "livro_id": 1,
-          "capitulo_id": 1
+          "capitulo_id": 1,
+          "conteudo": "O início da história se concentra em Santiago, um jovem pastor andaluz. Ele leva uma vida simples, viajando pelas terras da Andaluzia com suas ovelhas, porém é frequentemente perturbado por um sonho recorrente. Neste sonho, ele se vê próximo às Pirâmides do Egito, onde uma criança lhe revela a existência de um tesoro enterrado. O sonho é tão vívido e recorrente que Santiago começa a considerar seriamente a possibilidade de que seja um sinal ou um chamado para algo maior na sua vida. Este sonho atua como um catalisador na vida de Santiago, levando-o a questionar sua existência pacata e rotineira. Ele começa a ponderar sobre a natureza dos sonhos e seu significado, além de refletir sobre a ideia de destino e propósito na vida. Este sonho se torna o ponto de partida para a jornada de Santiago, incentivando-o a buscar um significado maior para sua vida e a perseguir sua 'Lenda Pessoal', que é um tema central em todo o livro. Este tópico é crucial porque estabelece o mote principal do livro: a busca pelo significado da vida e a realização pessoal. O sonho de Santiago simboliza a inquietação interior que muitos sentem sobre seguir seus verdadeiros chamados ou destinos."
         },
         {
           "id": 2,
           "titulo": "A Interpretação do Sonho",
-          "conteudo": "Santiago procura a interpretação de seu sonho e encontra uma cigana que o aconselha a ir ao Egito em busca do tesouro.",
+          "resumo": "Santiago procura a interpretação de seu sonho e encontra uma cigana que o aconselha a ir ao Egito em busca do tesouro.",
           "livro_id": 1,
-          "capitulo_id": 2
+          "capitulo_id": 2,
+          "conteudo": "Após ser repetidamente perturbado pelo sonho sobre as Pirâmides, Santiago decide buscar a interpretação desse sonho misterioso. Ele encontra uma cigana, que se oferece para interpretar seu sonho. A cigana escuta atentamente a descrição do sonho de Santiago e conclui que o sonho é profético, indicando que, de fato, existe um tesouro real esperando por ele nas Pirâmides do Egito. A cigana, contudo, cobra um preço pela interpretação: ela exige um décimo do tesouro se Santiago realmente o encontrar. Inicialmente, Santiago fica cético e desconfiado, questionando a veracidade da interpretação e a honestidade da cigana. Este encontro, no entanto, planta a semente da dúvida e da curiosidade em sua mente, fazendo-o ponderar sobre a possibilidade de uma grande aventura e a realização de algo extraordinário em sua vida. Este tópico é essencial na história, pois representa o momento em que Santiago começa a levar a sério a ideia de que seu sonho pode ser um chamado para uma jornada maior. A interpretação da cigana atua como um impulso para que ele aja em direção à realização de sua Lenda Pessoal, apesar de suas iniciais hesitações e dúvidas. Esta parte da narrativa ressalta temas como a crença no destino, a importância de ouvir e interpretar os sinais da vida, e o primeiro passo concreto de Santiago em direção à transformação pessoal e à descoberta do verdadeiro propósito de sua existência."
         },
         {
           "id": 3,
           "titulo": "O Encontro com Melquisedec",
-          "conteudo": "Santiago conhece um rei misterioso, Melquisedec, que fala sobre a importância de buscar sua 'Lenda Pessoal' e o encoraja a seguir seus sonhos.",
+          "resumo": "Santiago conhece um rei misterioso, Melquisedec, que fala sobre a importância de buscar sua 'Lenda Pessoal' e o encoraja a seguir seus sonhos.",
           "livro_id": 1,
-          "capitulo_id": 3
-        },
+          "capitulo_id": 3,
+          "conteudo": "Após a interpretação da cigana, Santiago encontra Melquisedec, o Rei de Salém, um personagem enigmático e sábio. Melquisedec fala a Santiago sobre a importância de buscar sua Lenda Pessoal, explicando que é a missão de cada pessoa na Terra descobrir e seguir seu verdadeiro propósito ou destino. Ele enfatiza que, ao buscar sua Lenda Pessoal, o indivíduo está alinhando-se com o Universo, o que leva à realização verdadeira e plena. Melquisedec também introduz a Santiago o conceito de que o mundo inteiro conspira para ajudar aqueles que buscam ativamente realizar sua Lenda Pessoal. Este encontro é um ponto de virada crucial na história, pois é aqui que Santiago decide seguir o chamado de seu sonho e embarcar na jornada para as Pirâmides do Egito. Além disso, Melquisedec fornece a Santiago duas pedras, Urim e Tumim, que servem como oráculos para ajudá-lo em sua jornada. Essas pedras simbolizam a orientação e o apoio que Santiago receberá em sua busca. Este tópico é fundamental para o desenvolvimento da história, pois não apenas solidifica a decisão de Santiago de buscar seu tesouro, mas também introduz elementos místicos e filosóficos que são explorados ao longo do livro. A interação com Melquisedec representa um momento de iluminação e compromisso para Santiago, marcando o início de sua transformação de um simples pastor para alguém que busca um propósito maior na vida."
+          },
         {
           "id": 4,
           "titulo": "A Jornada para o Norte da África",
-          "conteudo": "Santiago vende suas ovelhas e embarca em sua jornada para o Norte da África, onde começa a buscar seu tesouro.",
+          "resumo": "Santiago vende suas ovelhas e embarca em sua jornada para o Norte da África, onde começa a buscar seu tesouro.",
           "livro_id": 1,
-          "capitulo_id": 4
-        },
+          "capitulo_id": 4,
+          "conteudo": "Motivado pelo encontro com Melquisedec e armado com as pedras Urim e Tumim, Santiago inicia sua jornada em direção às Pirâmides do Egito. Ele viaja para o Norte da África após vender suas ovelhas, uma decisão que simboliza o abandono de sua vida antiga e confortável em busca de algo maior. Ao chegar na África, Santiago se encontra em um ambiente completamente diferente, enfrentando desafios e obstáculos que testam sua resiliência e determinação. Sua primeira experiência é na cidade de Tânger, onde ele é roubado por um homem que prometeu ajudá-lo a encontrar o caminho para as Pirâmides. Este incidente deixa Santiago desanimado e sem recursos, forçando-o a reconsiderar sua jornada e as decisões que tomou até aquele momento. Apesar desses contratempos, Santiago decide permanecer na África e trabalhar para reconstruir seus recursos financeiros. Este período de sua jornada destaca a importância da persistência e da capacidade de se adaptar às mudanças. Santiago aprende lições valiosas sobre a natureza humana, a confiança e a importância de estar aberto a novas experiências e aprendizados. Este tópico é essencial para a narrativa, pois não só coloca Santiago em uma trajetória de autoconhecimento e crescimento pessoal, mas também mostra a realidade desafiadora de perseguir sonhos e a importância de se manter fiel à própria Lenda Pessoal, apesar dos obstáculos e dificuldades."
+          },
         {
           "id": 5,
           "titulo": "Trabalhando na Loja de Cristais",

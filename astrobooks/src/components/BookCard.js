@@ -11,14 +11,15 @@ const BookCard = ({ book }) => {
 
   return (
     <div className="card" onClick={handleCardClick}>
-      <h3>{book.titulo}</h3>
-      <h5>{book.id}</h5> //teste
+      <h1>{book.titulo}</h1>
+      {book.autor && <h2>{book.autor}</h2>}
+      <p>{book.Editora}</p>
+      <p>{book.ano}</p>
       {book.capitulos && book.capitulos.length > 0 ? (
         <p>Partes: {book.capitulos.length}</p>
       ) : (
         <p>Sem partes disponíveis</p>
       )}
-      {book.autor && <p>Autor: {book.autor}</p>}
       {book.coverImage ? (
         <img src={`http://localhost:5000${book.coverImage}`} alt={book.titulo} />
       ) : (

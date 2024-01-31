@@ -1,0 +1,74 @@
+/* BookDetails.css */
+
+body {
+    font-family: 'Helvetica Neue', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .header {
+    background-color: #007bff;
+    color: white;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .error-message {
+    color: red;
+    font-size: 18px;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .book-details {
+    margin-top: 20px;
+  }
+  
+  .book-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .chapter-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .chapter-card {
+    background-color: #fff;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    padding: 15px;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .chapter-card:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .chapter-title {
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+  
+  .chapter-summary {
+    color: #555;
+    margin-bottom: 10px;
+  }
+  
+  .chapter-content {
+    display: none;
+    margin-top: 10px;
+  }
+  
+  .chapter-content.active {
+    display: block;
+  }
+  
