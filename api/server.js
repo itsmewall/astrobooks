@@ -7,6 +7,7 @@ const cors = require('cors');
 
 const app = express();
 const server = http.createServer(app);
+const io = new Server(server);
 const port = 5000;
 
 app.use(express.json());
@@ -20,102 +21,54 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-// Middleware para lidar com a rota raiz
-app.get('/', (req, res) => {
-  console.log('Pelo menos até aqui o server funcionou kkkkkkkkk');
-  res.send('Hello, this is the root endpoint!');
-});
+// Rota para obter todos os livros
+app.get('/livros', (req, res) => {
+    // Lógica para obter os dados do livro do JSON
+    const caminhoDoArquivo = path.join(__dirname, 'booksInfo', 'livro.json');
+  
+    try {
+      const livros = JSON.parse(fs.readFileSync(caminhoDoArquivo, 'utf-8'));
+      res.json(livros.livro);
+    } catch (error) {
+      console.error('Erro ao ler o arquivo:', error);
+      res.status(500).json({ error: 'Erro ao ler o arquivo' });
+    }
+  });
+// Rota para obter um livro específico pelo ID
+app.get('/livros/:id', (req, res) => {
+  const livroId = parseInt(req.params.id);
+  const livro = livros.livro.find((livro) => livro.id === livroId);
 
-
-const io = new Server(server, {
-  cors: {
-    origin: 'http://localhost:3000',
-    methods: ['GET', 'POST'],
-    credentials: true,
-  },
-});
-
-const booksInfoFolderPath = path.join(__dirname, 'booksInfo');
-const allBooksFilePath = path.join(booksInfoFolderPath, 'allBooks.json');
-const booksUnzipFolderPath = path.join(__dirname, 'LivrosUnzip');
-
-// Servir arquivos estáticos diretamente
-app.use('/api/bookdata/images', express.static(booksUnzipFolderPath));
-
-// Rota para obter dados de todos os livros
-app.get('/api/bookdata', (req, res) => {
-  try {
-    const fileContent = fs.readFileSync(allBooksFilePath, 'utf-8');
-    const allBooksData = JSON.parse(fileContent);
-
-    allBooksData.forEach((book) => {
-      // Use the book folder from the JSON to construct the book path
-      const bookFolderPath = path.join(booksUnzipFolderPath, book.folder);
-      const imagesFolderPath = path.join(bookFolderPath, 'images');
-      const bookId = book.id.toString();
-      let coverImagePath;
-      const filePath = path.join(booksInfoFolderPath, `${bookId}.json`);
-
-      // Verificar se o diretório do livro existe
-      if (!fs.existsSync(bookFolderPath)) {
-        console.error(`Não achei essa pasta sua não: ${bookFolderPath}`);
-        return;
-      }
-
-      // Verificar se a pasta "images" existe e contém um arquivo .png
-      if (fs.existsSync(imagesFolderPath)) {
-        const imageFiles = fs.readdirSync(imagesFolderPath);
-        const pngFile = imageFiles.find(file => file.toLowerCase().endsWith('.png'));
-
-        if (pngFile) {
-          coverImagePath = `/api/bookdata/images/${encodeURIComponent(book.folder)}/images/${encodeURIComponent(pngFile)}`;
-        }
-      }
-
-      // Se não encontrou na pasta "images", buscar diretamente na pasta do livro
-      if (!coverImagePath) {
-        const allBookFiles = fs.readdirSync(bookFolderPath);
-        const imageFile = allBookFiles.find(file => file.toLowerCase().endsWith('.png') || file.toLowerCase().endsWith('.jpg'));
-
-        if (imageFile) {
-          coverImagePath = `/api/bookdata/images/${encodeURIComponent(book.folder)}/${encodeURIComponent(imageFile)}`;
-        }
-      }
-
-      book.coverImage = coverImagePath || '/api/bookdata/images/default-placeholder.png';
-    });
-
-    res.json(allBooksData);
-  } catch (error) {
-    console.error('Deu erro ao ler seu arquivo JSON :( .......:', error);
-    res.status(500).json({ error: 'Internal server error', details: error.message });
+  if (livro) {
+    res.json(livro);
+  } else {
+    res.status(404).json({ message: 'Livro não encontrado' });
   }
 });
 
-app.get('/api/books/:id', (req, res) => {
-  const { id } = req.params;
+// Rota para obter os resumos dos capítulos de um livro específico pelo ID
+app.get('/livros/:id/resumos', (req, res) => {
+  const livroId = parseInt(req.params.id);
+  const livro = livros.livro.find((livro) => livro.id === livroId);
 
-  try {
-    const fileContent = fs.readFileSync(allBooksFilePath, 'utf-8');
-    const allBooksData = JSON.parse(fileContent);
+  if (livro && livro.capitulos) {
+    const resumos = {};
+    livro.capitulos.forEach((capitulo) => {
+      resumos[capitulo.titulo] = {
+        conteudo: capitulo.conteudo,
+        livro_id: capitulo.livro_id,
+      };
+    });
 
-    const book = allBooksData.find((b) => b.id.toString() === id);
-
-    if (!book) {
-      return res.status(404).json({ error: 'Livro não encontrado' });
-    }
-
-    res.json(book);
-  } catch (error) {
-    console.error('Deu erro ao ler seu arquivo JSON :( .......:', error);
-    res.status(500).json({ error: 'Internal server error', details: error.message });
+    res.json({ resumos });
+  } else {
+    res.status(404).json({ message: 'Livro ou capítulos não encontrados' });
   }
 });
 
 // Configuração do servidor WebSocket
 io.on('connection', (socket) => {
   console.log('Cliente conectado via WebSocket');
-  console.log('WebSocket ta Sockando com sucesso!')
 
   // Exemplo: ouvir mensagens do cliente
   socket.on('message', (message) => {
@@ -127,18 +80,6 @@ io.on('connection', (socket) => {
   socket.emit('message', 'Deu bom o WebSocket!');
 });
 
-// Middleware para lidar com rotas não encontradas (404)
-app.use((req, res) => {
-  res.status(404).json({ error: 'Not Found', details: 'Endpoint not found' });
-});
-
-// Middleware para lidar com erros (500)
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).json({ error: 'Internal server error', details: err.message });
-});
-
-// Inicie o servidor
 server.listen(port, () => {
-  console.log(`Servidor rodando em http://localhost:${port}`);
+  console.log(`Servidor rodando na porta http://localhost:${port}`);
 });

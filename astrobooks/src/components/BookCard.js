@@ -6,18 +6,23 @@ const BookCard = ({ book }) => {
   const navigate = useNavigate();
 
   const handleCardClick = () => {
-    navigate(`/bookdata/${book.id}`);
+    navigate(`/livros/${book.id}`);
   };
 
   return (
     <div className="card" onClick={handleCardClick}>
-      <h3>{book.title}</h3>
+      <h3>{book.titulo}</h3>
+      {book.capitulos && book.capitulos.length > 0 ? (
+        <p>Capítulos: {book.capitulos.length}</p>
+      ) : (
+        <p>Sem capítulos disponíveis</p>
+      )}
+      {book.autor && <p>Autor: {book.autor}</p>}
       {book.coverImage ? (
-        <img src={`http://localhost:5000${book.coverImage}`} alt={book.title} />
+        <img src={`http://localhost:5000${book.coverImage}`} alt={book.titulo} />
       ) : (
         <p>Imagem não disponível</p>
       )}
-      {book.author && <p>Autor: {book.author}</p>}
     </div>
   );
 };

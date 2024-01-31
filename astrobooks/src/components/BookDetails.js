@@ -10,9 +10,9 @@ const BookDetails = () => {
   useEffect(() => {
     const fetchBookDetails = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/books/${id}`); // Rota modificada para obter detalhes de um livro específico
+        const response = await fetch(`http://localhost:5000/livros/${id}/capitulos`); // Corrigido para a rota correta
         const contentType = response.headers.get("content-type");
-
+  
         if (contentType && contentType.indexOf("application/json") !== -1) {
           // Se a resposta for JSON, interpretar normalmente
           const data = await response.json();
@@ -27,7 +27,7 @@ const BookDetails = () => {
         console.error(error);
       }
     };
-
+  
     fetchBookDetails();
   }, [id]);
 
