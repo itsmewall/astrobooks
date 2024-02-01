@@ -12,13 +12,13 @@ const port = 5000;
 
 
 const corsOptions = {
-  origin: ['http://localhost:3000', 'http://192.168.64.114:3000'],
+  origin: ['http://localhost:3000', 'http://192.168.53.68:3000'],
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
   optionsSuccessStatus: 204,
 };
 
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 
 const caminhoDoArquivoLivros = path.join(__dirname, 'booksInfo', 'livro.json');

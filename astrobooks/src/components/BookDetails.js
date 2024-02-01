@@ -16,7 +16,7 @@ const BookDetails = () => {
   useEffect(() => {
     const fetchBookDetails = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/livros/${id}`);
+        const response = await axios.get(`http://192.168.53.68:5000/livros/${id}`);
         setBookDetails(response.data);
       } catch (error) {
         console.error('Erro ao obter dados:', error.message);
