@@ -11,20 +11,17 @@ body {
   padding: 0;
 }
 
+.header {
+  z-index: 2;
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
   padding: 20px;
+  display: flex;
 }
 
-.header {
-  background-color: #007bff;
-  color: white;
-  padding: 20px;
-  text-align: center;
-}
 
 .error-message {
   color: red;
@@ -40,6 +37,7 @@ body {
   border-radius: 10px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s ease;
+  margin-right: 20px;
 }
 
 .book-info:hover {
@@ -73,10 +71,11 @@ body {
 }
 
 .chapter-list {
-  flex-basis: 55%; /* Ajuste da largura da lista de capítulos */
+  flex-basis: 55%;
   padding: 20px;
   background-color: #fff;
   border-radius: 8px;
+  overflow-y: auto; /* Adiciona rolagem vertical à chapter-list se necessário */
 }
 
 .chapter-card {
@@ -121,6 +120,8 @@ body {
 
 .action-buttons button {
   padding: 10px;
+  margin: 10px;
+  background-color: #007bff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -128,6 +129,30 @@ body {
 }
 
 .action-buttons button:hover {
-  background-color: #007bff;
+  background-color: #001935;
   color: white;
+}
+
+.reading-progress {
+  flex-basis: 20%;
+  height: min-content;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  margin-left: 20px;
+}
+
+.progress-bar {
+  height: 20px;
+  background-color: #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  background-color: #4caf50;
+  border-radius: 10px;
+  transition: width 0.3s ease;
 }

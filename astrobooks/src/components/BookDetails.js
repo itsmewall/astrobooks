@@ -1,5 +1,4 @@
 // BookDetails.js
-
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import '../styles/BookDetails.css';
@@ -11,6 +10,7 @@ const BookDetails = () => {
   const [error, setError] = useState(null);
   const [selectedChapter, setSelectedChapter] = useState(null);
   const [showSummary, setShowSummary] = useState(true);
+  const [readingProgress, setReadingProgress] = useState(0);
 
   useEffect(() => {
     const fetchBookDetails = async () => {
@@ -41,8 +41,9 @@ const BookDetails = () => {
   };
 
   const handleMarkAsCompleted = () => {
-    // Lógica para marcar o capítulo como concluído
-    // Você pode adicionar sua própria lógica aqui
+    // Simulação de lógica para marcar o capítulo como concluído
+    // Atualiza o progresso de leitura
+    setReadingProgress((prevProgress) => prevProgress + 10);
   };
 
   const handleAddToFavorites = () => {
@@ -78,27 +79,38 @@ const BookDetails = () => {
               <p>Idioma: {bookDetails.idioma}</p>
               {showSummary && <p>Resenha: {bookDetails.resenha}</p>}
             </div>
-            <ul className="chapter-list">
-              {bookDetails.capitulos &&
-                bookDetails.capitulos.map((capitulo) => (
-                  <li key={capitulo.id}>
-                    <div className="chapter-card" onClick={() => handleChapterClick(capitulo)}>
-                      <h3 className="chapter-title">{capitulo.titulo}</h3>
-                      {showSummaryForChapter(capitulo) && (
-                        <p className="chapter-summary">Resumo: {capitulo.resumo}</p>
-                      )}
-                      <div className={`chapter-content ${selectedChapter === capitulo ? 'active' : ''}`}>
-                        <p>Conteúdo: {capitulo.conteudo}</p>
+            <div className="reading-section">
+              <div className="flipbook">
+                {/* Flipbook aqui */}
+              </div>
+              <div className="chapter-list">
+                {bookDetails.capitulos &&
+                  bookDetails.capitulos.map((capitulo) => (
+                    <li key={capitulo.id}>
+                      <div className="chapter-card" onClick={() => handleChapterClick(capitulo)}>
+                        <h3 className="chapter-title">{capitulo.titulo}</h3>
+                        {showSummaryForChapter(capitulo) && (
+                          <p className="chapter-summary">Resumo: {capitulo.resumo}</p>
+                        )}
+                        <div className={`chapter-content ${selectedChapter === capitulo ? 'active' : ''}`}>
+                          <p>{capitulo.conteudo}</p>
+                        </div>
+                        <div className="action-buttons">
+                          <button onClick={handleMarkAsCompleted}>Parte Concluída</button>
+                          <button onClick={handleAddToFavorites}>Adicionar aos Favoritos</button>
+                          <button onClick={handleReportError}>Reportar Erro</button>
+                        </div>
                       </div>
-                      <div className="action-buttons">
-                        <button onClick={handleMarkAsCompleted}>Parte Concluída</button>
-                        <button onClick={handleAddToFavorites}>Adicionar aos Favoritos</button>
-                        <button onClick={handleReportError}>Reportar Erro</button>
-                      </div>
-                    </div>
-                  </li>
-                ))}
-            </ul>
+                    </li>
+                  ))}
+              </div>
+            </div>
+            <div className="reading-progress">
+              <p>Progresso de Leitura: {readingProgress}%</p>
+              <div className="progress-bar">
+                <div className="progress" style={{ width: `${readingProgress}%` }}></div>
+              </div>
+            </div>
           </>
         )}
       </div>
