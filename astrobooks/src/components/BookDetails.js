@@ -1,5 +1,6 @@
 // BookDetails.js
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import '../styles/BookDetails.css';
 import Header from './Header';
@@ -15,19 +16,14 @@ const BookDetails = () => {
   useEffect(() => {
     const fetchBookDetails = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/livros/${id}`);
-        if (!response.ok) {
-          throw new Error(`Erro ao obter dados: ${response.statusText}`);
-        }
-
-        const livroData = await response.json();
-        setBookDetails(livroData);
+        const response = await axios.get(`http://localhost:5000/livros/${id}`);
+        setBookDetails(response.data);
       } catch (error) {
-        console.error(error.message);
+        console.error('Erro ao obter dados:', error.message);
         setError('Erro ao obter os detalhes do livro. Tente novamente mais tarde.');
       }
     };
-
+  
     fetchBookDetails();
   }, [id]);
 

@@ -10,7 +10,6 @@ const server = http.createServer(app);
 const io = new Server(server);
 const port = 5000;
 
-app.use(express.json());
 
 const corsOptions = {
   origin: ['http://localhost:3000', 'http://192.168.64.114:3000'],
@@ -19,7 +18,8 @@ const corsOptions = {
   optionsSuccessStatus: 204,
 };
 
-app.use(cors(corsOptions));
+app.use(cors());
+app.use(express.json());
 
 const caminhoDoArquivoLivros = path.join(__dirname, 'booksInfo', 'livro.json');
 

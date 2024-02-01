@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 import BookCard from './BookCard';
 import '../styles/BookList.css';
@@ -10,19 +11,14 @@ const BookList = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:5000/livros/');
-        if (!response.ok) {
-          throw new Error(`Erro ao obter dados: ${response.statusText}`);
-        }
-        
-        const booksData = await response.json();
-        setBooks(booksData);
+        const response = await axios.get('http://localhost:5000/livros/');
+        setBooks(response.data);
       } catch (error) {
         console.error(error.message);
         setError('Erro ao obter os livros. Tente novamente mais tarde.');
       }
     };
-
+  
     fetchData();
   }, []);
 
