@@ -1,74 +1,51 @@
 .book-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(calc(30% - 16px), 1fr));
-  gap: 16px;
-  max-width: 1000px;
-  margin: 0 auto; /* Center the grid horizontally */
-  padding: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+  background-color: #f9f9f9;
 }
 
-.card {
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  padding: 16px;
+.error-message {
+  color: #D32F2F;
   text-align: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-size: 18px;
+  padding: 20px;
+}
+
+.book-card {
   background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  text-decoration: none;
+  color: #333;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
-.card h3 {
-  font-size: 20px;
-  margin-bottom: 8px;
+.book-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
 }
 
-.card img {
-  max-width: 100%;
+.book-card img {
+  width: 100%;
   height: auto;
-  border-radius: 4px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
-.card p {
+.book-card-content {
+  padding: 15px;
+}
+
+.book-card-content h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+.book-card-content p {
   font-size: 14px;
-  color: #555;
-  margin-top: 8px;
-}
-
-.card {
-  flex: 1 0 calc(30% - 16px); /* Default style for larger screens */
-
-   /* Media queries for screens between 1600px and 2000px */
-  @media (min-width: 1601px) and (max-width: 2000px) {
-    flex: 1 0 calc(25% - 16px);
-  }
-
-  /* Media queries for screens between 1200px and 1600px */
-  @media (max-width: 1600px) {
-    flex: 1 0 calc(33.33% - 16px);
-  }
-
-  /* Media queries for smaller screens */
-  @media (max-width: 1200px) {
-    flex: 1 0 calc(40% - 16px);
-  }
-
-  @media (max-width: 800px) {
-    flex: 1 0 calc(50% - 16px);
-  }
-
-  @media (max-width: 600px) {
-    flex: 1 0 calc(100% - 16px);
-  }
-
-  /* Media queries for smaller screens */
-  @media (max-width: 1200px) {
-    flex: 1 0 calc(40% - 16px);
-  }
-
-  @media (max-width: 800px) {
-    flex: 1 0 calc(50% - 16px);
-  }
-
-  @media (max-width: 600px) {
-    flex: 1 0 calc(100% - 16px);
-  }
+  color: #666;
 }

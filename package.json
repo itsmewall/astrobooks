@@ -2,7 +2,8 @@
     "name": "astrobooks",
     "version": "1.0.0",
     "scripts": {
-        "start": "concurrently \"npm run start:backend\" \"npm run start:frontend\"",
+        "start": "concurrently \"npm run update\" \"npm run start:backend\" \"npm run start:frontend\"",
+        "update": "cd api && node generateResume.js",
         "start:backend": "cd api && node server.js",
         "start:frontend": "cd astrobooks && npm start"
     },

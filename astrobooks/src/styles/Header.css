@@ -2,80 +2,81 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Montserrat:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;1,100;1,300;1,400;1,500;1,700;1,800&display=swap');
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: 'Montserrat', sans-serif;
-  }
-
-header {
-  background-color: #333;
-  color: #fff;
-  padding: 10px;
-}
-
 .header-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 20px;
+  background-color: #fff; /* Considerar um esquema de cores que combine com o seu site */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-.menu-section {
+.left-section, .right-section {
   display: flex;
   align-items: center;
 }
 
-h1 {
-  margin-left: 20px;
-  font-family: 'Caveat', cursive;
-  font-size: 2.7em;
-}
-
-.left-section {
-  display: flex;
-  align-items: center;
-}
-
-.menu-button {
-  padding: 15px;
+.menu-button, .login-button {
   background: none;
   border: none;
   cursor: pointer;
-  color: #fff;
-  font-size: 1.5em;
+  padding: 10px;
+  margin-right: 20px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+.menu-button:hover, .login-button:hover {
+  background-color: rgba(0,0,0,0.1); /* Efeito leve ao passar o mouse */
+}
+
+h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
+}
+
 .nav-menu {
-  display: none;
+  display: none; /* Oculto por padrão */
+  position: absolute;
+  right: 20px;
+  top: 60px; /* Ajustar conforme necessário */
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  border-radius: 8px;
+  padding: 10px;
 }
 
 .nav-menu.open {
-  display: flex;
-  flex-direction: column;
+  display: block; /* Mostrar quando o menu está aberto */
 }
 
 .nav-menu a {
-  color: #fff;
+  display: block;
+  padding: 10px;
   text-decoration: none;
-  padding: 10px;
+  color: #333; /* Cor do texto dos ícones */
 }
 
-/* Adicione a seguinte regra para posicionar o ícone de mensagem à direita */
-.nav-menu {
-  display: flex;
-  align-items: center;
+.nav-menu a:hover {
+  background-color: rgba(0,0,0,0.05); /* Efeito ao passar o mouse sobre os links */
 }
 
-.right-section {
-  display: flex;
-  align-items: center;
-}
+/* Responsividade */
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+  }
 
-.login-button {
-  padding: 10px;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-left: 10px; /* Adiciona margem à esquerda para separar o botão de login */
+  .left-section, .right-section {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .nav-menu {
+    right: 10px;
+    top: 70px;
+  }
 }

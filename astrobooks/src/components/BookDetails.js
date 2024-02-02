@@ -1,5 +1,4 @@
 // BookDetails.js
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
@@ -24,7 +23,7 @@ const BookDetails = () => {
         setError('Erro ao obter os detalhes do livro. Tente novamente mais tarde.');
       }
     };
-
+  
     fetchBookDetails();
   }, [id]);
 
@@ -61,17 +60,11 @@ const BookDetails = () => {
           <div className="error-message">{error}</div>
         ) : (
           <>
-            <div className="reading-progress">
-              <p>Progresso de Leitura: {readingProgress}%</p>
-              <div className="progress-bar">
-                <div className="progress" style={{ width: `${readingProgress}%` }}></div>
-              </div>
-            </div>
             <div className="book-info">
               <h2 className="book-title">{bookDetails.titulo}</h2>
               <img
                 className="book-cover"
-                src={`${process.env.PUBLIC_URL}/capas/1.jpg`}
+                src={`http://localhost:5000${bookDetails.coverImage}`}
                 alt={`Capa de ${bookDetails.titulo}`}
               />
               <p>Autor: {bookDetails.autor}</p>
@@ -106,6 +99,12 @@ const BookDetails = () => {
                       </div>
                     </li>
                   ))}
+              </div>
+            </div>
+            <div className="reading-progress">
+              <p>Progresso de Leitura: {readingProgress}%</p>
+              <div className="progress-bar">
+                <div className="progress" style={{ width: `${readingProgress}%` }}></div>
               </div>
             </div>
           </>
