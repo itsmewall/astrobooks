@@ -16,7 +16,7 @@ const BookCard = ({ book }) => {
       ) : (
         <div className="placeholder-image">Imagem não disponível</div>
       )}
-      <h1>{book.titulo}</h1>
+      <h1>{book.nome}</h1>
       {book.autor && <h2>{book.autor}</h2>}
       <p>Editora: {book.Editora}</p>
       <p>Ano: {book.ano}</p>

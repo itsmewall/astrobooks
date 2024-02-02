@@ -22,6 +22,7 @@ fs.readdirSync(resumosFolderPath).forEach(file => {
         let capitulo = {};
         let resumo = '';
         let conteudoCapitulo = ''; // Adicionado para armazenar o conteúdo antes do resumo
+        let tituloEncontrado = false; // Variável para controlar se o título foi encontrado
 
         // Iterar sobre as linhas para extrair os dados do livro
         let ignoreFirstLine = true; // Variável para ignorar a primeira linha do conteúdo
@@ -42,6 +43,11 @@ fs.readdirSync(resumosFolderPath).forEach(file => {
                     id: numeroCapitulo,
                     titulo: tituloCapitulo
                 };
+            } else if (linha.startsWith('Titulo:')) {
+                if (!tituloEncontrado) {
+                    livro.nome = linha.replace('Titulo:', '').trim(); // Extrai o nome do livro
+                    tituloEncontrado = true; // Marca que o título foi encontrado
+                }
             } else if (linha.startsWith('Resumo:')) {
                 resumo = linha.replace('Resumo:', '').trim();
             } else if (linha.startsWith('Autor:')) {
@@ -76,7 +82,7 @@ fs.readdirSync(resumosFolderPath).forEach(file => {
         }
 
         livros.push(livro);
-        console.log(`Resumo do livro ${livro.titulo} processado com sucesso!`);
+        console.log(`Resumo do livro ${livro.nome} processado com sucesso!`);
     }
 });
 
