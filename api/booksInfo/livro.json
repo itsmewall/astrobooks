@@ -65,6 +65,7 @@
         }
       ],
       "nome": "1984",
+      "coverImage": "/capas/1984.jpg",
       "autor": "George Orwell",
       "editora": "",
       "edicao": "",
@@ -137,6 +138,7 @@
         }
       ],
       "nome": "A Revolução dos Bichos",
+      "coverImage": "/capas/a-revolucao-dos-bichos.jpg",
       "autor": "George Orwell",
       "editora": "Varia de acordo com a edição",
       "edicao": "Varia de acordo com a edição específica",
@@ -210,6 +212,7 @@
         }
       ],
       "nome": "O Alquimista",
+      "coverImage": "/capas/o-alquimista.jpg",
       "autor": "Paulo Coelho",
       "editora": "Editora Rocco",
       "edicao": "1",
@@ -283,10 +286,11 @@
         }
       ],
       "nome": "Pai Rico Pai Pobre",
-      "autor": "Robert T. Kiyosaki com Sharon L. Lechter",
+      "coverImage": "/capas/pai-rico-pai-pobre.jpg",
+      "autor": "Robert T. Kiyosaki",
       "editora": "Campus",
       "edicao": "10",
-      "ano": null,
+      "ano": 1997,
       "genero": "Educação Financeira, Autoajuda",
       "idioma": "Português",
       "resenha": "Pai Rico Pai Pobre destaca a importância da educação financeira através da comparação entre as filosofias de vida de dois pais: um rico e um pobre. Kiyosaki ensina lições valiosas sobre o poder do investimento, a diferença entre ativos e passivos, e a necessidade de desenvolver inteligência financeira para alcançar a independência financeira. A obra encoraja os leitores a pensar de forma diferente sobre dinheiro, salientando a importância de aprender a fazer o dinheiro trabalhar para você, ao invés de trabalhar pelo dinheiro."

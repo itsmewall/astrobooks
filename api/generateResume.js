@@ -12,13 +12,15 @@ fs.readdirSync(resumosFolderPath).forEach(file => {
     // Verificar se é um arquivo TXT
     if (path.extname(file) === '.txt') {
         const filePath = path.join(resumosFolderPath, file);
+        const nomeDoArquivoSemExtensao = path.parse(file).name; // Obter o nome do arquivo sem extensão
+
         let livro = {
             id: livros.length + 1,
-            capitulos: []
+            capitulos: [],
         };
         const conteudo = fs.readFileSync(filePath, 'utf-8');
         const linhas = conteudo.split('\n');
-        
+
         let capitulo = {};
         let resumo = '';
         let conteudoCapitulo = ''; // Adicionado para armazenar o conteúdo antes do resumo
@@ -41,11 +43,13 @@ fs.readdirSync(resumosFolderPath).forEach(file => {
                 const tituloCapitulo = linha.split('.')[1].trim();
                 capitulo = {
                     id: numeroCapitulo,
-                    titulo: tituloCapitulo
+                    titulo: tituloCapitulo,
                 };
             } else if (linha.startsWith('Titulo:')) {
                 if (!tituloEncontrado) {
                     livro.nome = linha.replace('Titulo:', '').trim(); // Extrai o nome do livro
+                    const nomeDaImagem = nomeDoArquivoSemExtensao.toLowerCase().replace(/\s+/g, '-'); // Converte para minúsculas e substitui espaços por hífens
+                    livro.coverImage = `/capas/${nomeDaImagem}.jpg`; // Adiciona o caminho da imagem
                     tituloEncontrado = true; // Marca que o título foi encontrado
                 }
             } else if (linha.startsWith('Resumo:')) {
@@ -77,7 +81,7 @@ fs.readdirSync(resumosFolderPath).forEach(file => {
         // Adicionar o último capítulo
         if (Object.keys(capitulo).length !== 0) {
             capitulo.resumo = resumo.trim();
-            capitulo.conteudo = conteudoCapitulo.trim(); // Adicionado para incluir o conteúdo antes do resumo
+            capitulo.conteudo = conteudoCapitulo.trim(); 
             livro.capitulos.push(capitulo);
         }
 
@@ -88,7 +92,7 @@ fs.readdirSync(resumosFolderPath).forEach(file => {
 
 // Objeto para armazenar os livros no formato JSON
 const data = {
-    livro: livros
+    livro: livros,
 };
 
 // Caminho para o arquivo de saída JSON

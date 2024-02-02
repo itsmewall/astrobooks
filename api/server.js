@@ -21,6 +21,9 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 
+// Servir a pasta capas como arquivos estáticos
+app.use('/capas', express.static(path.join(__dirname, 'public', 'capas')))
+
 const caminhoDoArquivoLivros = path.join(__dirname, 'booksInfo', 'livro.json');
 
 // Carregar livros do arquivo
