@@ -18,7 +18,6 @@ const BookCard = ({ book }) => {
       )}
       <h1>{book.nome}</h1>
       {book.autor && <h2>{book.autor}</h2>}
-      <p>Editora: {book.Editora}</p>
       <p>Ano: {book.ano}</p>
       {book.capitulos && book.capitulos.length > 0 ? (
         <p>Partes: {book.capitulos.length}</p>

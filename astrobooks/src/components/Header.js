@@ -1,7 +1,7 @@
 // Em Header.js
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaBars, FaEnvelope, FaUser } from 'react-icons/fa'; // Importa o ícone de usuário
+import { FaBars, FaEnvelope, FaUser } from 'react-icons/fa';
 import SearchBar from './SearchBar';
 import '../styles/Header.css';
 
@@ -14,7 +14,7 @@ const Header = () => {
 
   return (
     <header>
-      <div className="header-container">
+      <div className={`header-container ${isMenuOpen ? 'menu-open' : ''}`}>
         <div className="left-section">
           <button className="menu-button" onClick={handleMenuToggle}>
             <FaBars />
@@ -23,7 +23,7 @@ const Header = () => {
         </div>
         <div className="right-section">
           <SearchBar />
-          <nav className={`nav-menu ${isMenuOpen ? 'open' : ''}`}>
+          <nav className="nav-menu">
             <Link to="/messages">
               <FaEnvelope />
             </Link>

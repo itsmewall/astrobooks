@@ -1,17 +1,14 @@
 .book-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-  padding: 20px;
-  background-color: #f9f9f9;
+  justify-content: space-around;
 }
 
 .error-message {
-  color: #D32F2F;
-  text-align: center;
+  color: red;
   font-size: 18px;
-  padding: 20px;
+  text-align: center;
+  margin-top: 20px;
 }
 
 .book-card {
