@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import classNames from 'classnames';
-import '../styles/FlipPage.css'; // Make sure to adjust the path as needed
+import '../styles/FlipPage.css'; // Assegure-se de que o caminho está correto
 
 const FlipPage = ({ chapters, onClose }) => {
   const [currentPage, setCurrentPage] = useState(0);
@@ -10,54 +9,58 @@ const FlipPage = ({ chapters, onClose }) => {
 
   const handlePrevPage = () => setCurrentPage((prevPage) => Math.max(prevPage - 1, 0));
   const handleNextPage = () => setCurrentPage((prevPage) => Math.min(prevPage + 1, chapters.length - 1));
+  const toggleDarkMode = () => setDarkMode(!darkMode);
 
   const contentStyle = {
     fontSize: `${fontSize}px`,
     fontFamily: fontFamily,
-    color: darkMode ? '#FFFFFF' : '#000000',
-    backgroundColor: darkMode ? '#333333' : '#FFFFFF',
-    transition: 'font-size 0.3s ease-in-out',
+    color: darkMode ? '#FFFFFF' : '#000000', // Cor do texto baseada no modo escuro
+    backgroundColor: darkMode ? '#333333' : '#FFFFFF', // Cor de fundo baseada no modo escuro
   };
 
   return (
-    <div className="flipbook-overlay">
+    <div className={`flipbook-overlay ${darkMode ? 'dark-mode' : ''}`}>
       <div className="settings-panel">
-        <button onClick={onClose} className="close-button">
-          X
-        </button>
-        <h4>Configurações</h4>
-        <div className="font-size-controls">
-          <button onClick={() => setFontSize((prevSize) => prevSize - 1)}>-</button>
-          <span>{fontSize}px</span>
-          <button onClick={() => setFontSize((prevSize) => prevSize + 1)}>+</button>
+        <button onClick={onClose} className="close-button">Fechar</button>
+        <div className="settings-card">
+          <h4>Tamanho da Fonte</h4>
+          <div className="settings-control">
+            <button onClick={() => setFontSize(fontSize + 1)}>+</button>
+            <span>{fontSize}px</span>
+            <button onClick={() => setFontSize(Math.max(fontSize - 1, 12))}>-</button>
+          </div>
         </div>
-        <div className="font-family-selection">
-          {['Arial', 'Georgia', 'Times New Roman'].map((font) => (
-            <button
-              key={font}
-              className={classNames({ 'font-active': fontFamily === font })}
-              onClick={() => setFontFamily(font)}
-            >
-              {font}
-            </button>
-          ))}
+        <div className="settings-card">
+          <h4>Tipo de Fonte</h4>
+          <div className="settings-control font-family">
+            {['Arial', 'Georgia', 'Times New Roman'].map((font) => (
+              <button
+                key={font}
+                className={`font-button ${fontFamily === font ? 'active' : ''}`}
+                onClick={() => setFontFamily(font)}
+              >
+                {font}
+              </button>
+            ))}
+          </div>
         </div>
-        <button className="dark-mode-toggle" onClick={() => setDarkMode(!darkMode)}>
-          {darkMode ? '☀️' : '🌙'}
-        </button>
+        <div className="settings-card">
+          <h4>Modo Escuro</h4>
+          <button className="dark-mode-toggle" onClick={toggleDarkMode}>
+            {darkMode ? '☀️' : '🌙'}
+          </button>
+        </div>
       </div>
-      <div className="flipbook-content" style={contentStyle}>
-        <div className="flipbook-page">
-          <h3>{chapters[currentPage].titulo}</h3>
-          <p>{chapters[currentPage].conteudo}</p>
-        </div>
+      <div className="flipbook-content" style={{ fontSize: `${fontSize}px`, fontFamily }}>
+        {chapters.length > 0 && (
+          <div className="page-content">
+            <h3>{chapters[currentPage].titulo}</h3>
+            <p>{chapters[currentPage].conteudo}</p>
+          </div>
+        )}
         <div className="navigation-buttons">
-          <button onClick={handlePrevPage} disabled={currentPage === 0}>
-            Anterior
-          </button>
-          <button onClick={handleNextPage} disabled={currentPage === chapters.length - 1}>
-            Próximo
-          </button>
+          <button onClick={handlePrevPage} disabled={currentPage === 0}>Anterior</button>
+          <button onClick={handleNextPage} disabled={currentPage === chapters.length - 1}>Próximo</button>
         </div>
       </div>
     </div>
