@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import FlipPage from './FlipPage'; 
 import '../styles/BookDetails.css';
 import Header from './Header';
 
@@ -9,9 +10,7 @@ const BookDetails = () => {
   const { id } = useParams();
   const [bookDetails, setBookDetails] = useState({});
   const [error, setError] = useState(null);
-  const [selectedChapter, setSelectedChapter] = useState(null);
-  const [showSummary, setShowSummary] = useState(true);
-  const [readingProgress, setReadingProgress] = useState(0);
+  const [isFlipbookOpen, setIsFlipbookOpen] = useState(false);
 
   useEffect(() => {
     const fetchBookDetails = async () => {
@@ -27,31 +26,6 @@ const BookDetails = () => {
     fetchBookDetails();
   }, [id]);
 
-  const handleChapterClick = (chapter) => {
-    setSelectedChapter(chapter);
-    setShowSummary(true);
-  };
-
-  const showSummaryForChapter = (chapter) => {
-    return !selectedChapter || selectedChapter.id !== chapter.id;
-  };
-
-  const handleMarkAsCompleted = () => {
-    // Simulação de lógica para marcar o capítulo como concluído
-    // Atualiza o progresso de leitura
-    setReadingProgress((prevProgress) => prevProgress + 10);
-  };
-
-  const handleAddToFavorites = () => {
-    // Lógica para adicionar o capítulo aos favoritos
-    // Você pode adicionar sua própria lógica aqui
-  };
-
-  const handleReportError = () => {
-    // Lógica para reportar um erro no capítulo
-    // Você pode adicionar sua própria lógica aqui
-  };
-
   return (
     <div>
       <Header />
@@ -61,52 +35,15 @@ const BookDetails = () => {
         ) : (
           <>
             <div className="book-info">
-              <h2 className="book-title">{bookDetails.titulo}</h2>
-              <img
-                className="book-cover"
-                src={`http://localhost:5000${bookDetails.coverImage}`}
-                alt={`Capa de ${bookDetails.titulo}`}
+              {/* Informações do livro */}
+              <button onClick={() => setIsFlipbookOpen(true)}>Ler Livro</button>
+            </div>
+            {isFlipbookOpen && bookDetails.capitulos && (
+              <FlipPage
+                chapters={bookDetails.capitulos}
+                onClose={() => setIsFlipbookOpen(false)}
               />
-              <p>Autor: {bookDetails.autor}</p>
-              <p>Editora: {bookDetails.editora}</p>
-              <p>Edição: {bookDetails.edicao}</p>
-              <p>Ano: {bookDetails.ano}</p>
-              <p>Gênero: {bookDetails.genero}</p>
-              <p>Idioma: {bookDetails.idioma}</p>
-              {showSummary && <p>Resenha: {bookDetails.resenha}</p>}
-            </div>
-            <div className="reading-section">
-              <div className="flipbook">
-                {/* Flipbook aqui */}
-              </div>
-              <div className="chapter-list">
-                {bookDetails.capitulos &&
-                  bookDetails.capitulos.map((capitulo) => (
-                    <li key={capitulo.id}>
-                      <div className="chapter-card" onClick={() => handleChapterClick(capitulo)}>
-                        <h3 className="chapter-title">{capitulo.titulo}</h3>
-                        {showSummaryForChapter(capitulo) && (
-                          <p className="chapter-summary">Resumo: {capitulo.resumo}</p>
-                        )}
-                        <div className={`chapter-content ${selectedChapter === capitulo ? 'active' : ''}`}>
-                          <p>{capitulo.conteudo}</p>
-                        </div>
-                        <div className="action-buttons">
-                          <button onClick={handleMarkAsCompleted}>Parte Concluída</button>
-                          <button onClick={handleAddToFavorites}>Adicionar aos Favoritos</button>
-                          <button onClick={handleReportError}>Reportar Erro</button>
-                        </div>
-                      </div>
-                    </li>
-                  ))}
-              </div>
-            </div>
-            <div className="reading-progress">
-              <p>Progresso de Leitura: {readingProgress}%</p>
-              <div className="progress-bar">
-                <div className="progress" style={{ width: `${readingProgress}%` }}></div>
-              </div>
-            </div>
+            )}
           </>
         )}
       </div>
