@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../styles/FlipPage.css'; // Assegure-se de que o caminho está correto
+import '../styles/FlipPage.css'; 
 
 const FlipPage = ({ chapters, onClose }) => {
   const [currentPage, setCurrentPage] = useState(0);
@@ -11,28 +11,22 @@ const FlipPage = ({ chapters, onClose }) => {
   const handleNextPage = () => setCurrentPage((prevPage) => Math.min(prevPage + 1, chapters.length - 1));
   const toggleDarkMode = () => setDarkMode(!darkMode);
 
-  const contentStyle = {
-    fontSize: `${fontSize}px`,
-    fontFamily: fontFamily,
-    color: darkMode ? '#FFFFFF' : '#000000', // Cor do texto baseada no modo escuro
-    backgroundColor: darkMode ? '#333333' : '#FFFFFF', // Cor de fundo baseada no modo escuro
-  };
-
   return (
     <div className={`flipbook-overlay ${darkMode ? 'dark-mode' : ''}`}>
       <div className="settings-panel">
-        <button onClick={onClose} className="close-button">Fechar</button>
+        <h1>Configurações</h1>
+        <button onClick={onClose} className="close-button">&times;</button>
         <div className="settings-card">
           <h4>Tamanho da Fonte</h4>
           <div className="settings-control">
-            <button onClick={() => setFontSize(fontSize + 1)}>+</button>
-            <span>{fontSize}px</span>
             <button onClick={() => setFontSize(Math.max(fontSize - 1, 12))}>-</button>
+            <span>{fontSize}px</span>
+            <button onClick={() => setFontSize(fontSize + 1)}>+</button>
           </div>
         </div>
         <div className="settings-card">
           <h4>Tipo de Fonte</h4>
-          <div className="settings-control font-family">
+          <div className="font-family">
             {['Arial', 'Georgia', 'Times New Roman'].map((font) => (
               <button
                 key={font}
@@ -47,16 +41,18 @@ const FlipPage = ({ chapters, onClose }) => {
         <div className="settings-card">
           <h4>Modo Escuro</h4>
           <button className="dark-mode-toggle" onClick={toggleDarkMode}>
-            {darkMode ? '☀️' : '🌙'}
+            {darkMode ? '☀️ Modo Claro' : '🌙 Modo Escuro'}
           </button>
         </div>
       </div>
       <div className="flipbook-content" style={{ fontSize: `${fontSize}px`, fontFamily }}>
-        {chapters.length > 0 && (
-          <div className="page-content">
+        {chapters.length > 0 ? (
+          <article>
             <h3>{chapters[currentPage].titulo}</h3>
             <p>{chapters[currentPage].conteudo}</p>
-          </div>
+          </article>
+        ) : (
+          <p>Nenhum conteúdo disponível.</p>
         )}
         <div className="navigation-buttons">
           <button onClick={handlePrevPage} disabled={currentPage === 0}>Anterior</button>
