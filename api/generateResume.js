@@ -30,14 +30,13 @@ fs.readdirSync(resumosFolderPath).forEach(file => {
         let ignoreFirstLine = true; // Variável para ignorar a primeira linha do conteúdo
         linhas.forEach((linha, index) => {
             if (linha.match(/^\d+\./)) {
-                // Checar se há um capítulo anterior a este
                 if (Object.keys(capitulo).length !== 0) {
                     capitulo.resumo = resumo.trim();
-                    capitulo.conteudo = conteudoCapitulo.trim(); // Adicionado para incluir o conteúdo antes do resumo
+                    capitulo.conteudo = conteudoCapitulo.trim();
                     livro.capitulos.push(capitulo);
                     capitulo = {};
                     resumo = '';
-                    conteudoCapitulo = ''; // Limpar o conteúdo do capítulo atual
+                    conteudoCapitulo = '';
                 }
                 const numeroCapitulo = parseInt(linha.split('.')[0].trim());
                 const tituloCapitulo = linha.split('.')[1].trim();
@@ -47,10 +46,15 @@ fs.readdirSync(resumosFolderPath).forEach(file => {
                 };
             } else if (linha.startsWith('Titulo:')) {
                 if (!tituloEncontrado) {
-                    livro.nome = linha.replace('Titulo:', '').trim(); // Extrai o nome do livro
-                    const nomeDaImagem = nomeDoArquivoSemExtensao.toLowerCase().replace(/\s+/g, '-'); // Converte para minúsculas e substitui espaços por hífens
-                    livro.coverImage = `/capas/${nomeDaImagem}.jpg`; // Adiciona o caminho da imagem
-                    tituloEncontrado = true; // Marca que o título foi encontrado
+                    livro.nome = linha.replace('Titulo:', '').trim();
+                    const nomeDaImagem = nomeDoArquivoSemExtensao
+                        .toLowerCase()
+                        .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // Remove acentos
+                        .replace(/\s+/g, '-') // Substitui espaços por hífens
+                        .replace(/[^a-z0-9\-]/g, ''); // Mantém apenas caracteres alfanuméricos e hífens
+                    livro.coverImage = `/capas/${nomeDaImagem}.jpg`;
+                    console.log(`Capa do livro ${livro.nome} encontrada!`);
+                    tituloEncontrado = true;
                 }
             } else if (linha.startsWith('Resumo:')) {
                 resumo = linha.replace('Resumo:', '').trim();
@@ -92,13 +96,13 @@ fs.readdirSync(resumosFolderPath).forEach(file => {
 
 // Objeto para armazenar os livros no formato JSON
 const data = {
-    livro: livros,
+    livros: livros,
 };
 
 // Caminho para o arquivo de saída JSON
-const outputFilePath = path.join(__dirname, 'booksInfo', 'livro.json');
+const outputFilePath = path.join(__dirname, 'booksInfo', 'livros.json');
 
 // Escrita dos dados em formato JSON no arquivo de saída
 fs.writeFileSync(outputFilePath, JSON.stringify(data, null, 2));
 
-console.log('Todos os resumos foram processados e salvos com sucesso no arquivo livro.json');
+console.log('Todos os resumos foram processados e salvos com sucesso no arquivo livros.json');

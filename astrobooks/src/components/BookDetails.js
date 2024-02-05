@@ -1,10 +1,9 @@
-// BookDetails.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import FlipPage from './FlipPage'; 
+import FlipPage from './FlipPage';
 import '../styles/BookDetails.css';
-import Header from './Header';
+import Header from './Header'; 
 
 const BookDetails = () => {
   const { id } = useParams();
@@ -35,8 +34,25 @@ const BookDetails = () => {
         ) : (
           <>
             <div className="book-info">
-              {/* Informações do livro */}
+              <h1>{bookDetails.nome}</h1>
+              <img src={bookDetails.coverImage} alt="Capa do livro" className="book-cover" />
+              <p>Autor: {bookDetails.autor}</p>
+              <p>Editora: {bookDetails.editora}, Edição: {bookDetails.edicao}</p>
+              <p>Ano: {bookDetails.ano}</p>
+              <p>Gênero: {bookDetails.genero}</p>
+              <p>Idioma: {bookDetails.idioma}</p>
+              <div className="book-description">
+                <p>{bookDetails.resenha}</p>
+              </div>
               <button onClick={() => setIsFlipbookOpen(true)}>Ler Livro</button>
+            </div>
+            <div className="chapter-list">
+              {bookDetails.capitulos && bookDetails.capitulos.map((capitulo, index) => (
+                <div key={index} className="chapter-card">
+                  <h3 className="chapter-title">{capitulo.titulo}</h3>
+                  <p className="chapter-summary">{capitulo.resumo || "Sem resumo disponível."}</p>
+                </div>
+              ))}
             </div>
             {isFlipbookOpen && bookDetails.capitulos && (
               <FlipPage
