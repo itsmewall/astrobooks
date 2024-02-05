@@ -1,173 +1,88 @@
-/* BookDetails.css */
-
 * {
-  list-style: none;
-  box-sizing: border-box;
-} 
-
-body {
-  margin-top: 90px;
-  font-family: 'Helvetica Neue', sans-serif;
-  background-color: #f4f4f4;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  list-style: none;
 }
 
-.header {
-  z-index: 2;
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f0f2f5;
+  color: #333;
+  padding-top: 90px; /* Ajuste se você tiver um cabeçalho fixo */
 }
 
 .container {
-  max-width: 100%;
-  margin: 0;
+  width: 100vw;
   display: flex;
-  margin-top: 100px;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 20px;
+  flex-wrap: wrap;
 }
 
-.error-message {
-  color: red;
-  font-size: 18px;
-  text-align: center;
-  margin-top: 20px;
+.book-details-card, .chapter-list-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  padding: 20px;
+  margin-bottom: 20px;
 }
 
-.book-info {
-  padding: 2%;
-  background-color: #f9f9f9;
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s ease;
-  margin-right: 20px;
+.book-details-card {
+  width: calc(90% - 10px); /* Ajusta para metade da largura da tela menos a metade do gap */
+  max-width: 600px; /* Limita a largura máxima do card para manter a legibilidade */
 }
 
-.book-info:hover {
-  background-color: #e0e0e0; /* Ajuste na cor ao passar o mouse */
+.chapter-list-card {
+  width: calc(90% - 10px); /* Ajusta para metade da largura da tela menos a metade do gap */
+  max-width: 600px; /* Limita a largura máxima do card para manter a legibilidade */
+  overflow-y: auto; /* Permite rolagem se a lista de capítulos for muito longa */
 }
 
-.book-title {
-  font-size: 24px;
-  margin-bottom: 10px;
-  color: #333;
+.book-details-card:hover, .chapter-list-card:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .book-cover {
   max-width: 100%;
   height: auto;
-  border-radius: 10px;
-  margin-bottom: 15px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease;
-}
-
-.book-cover:hover {
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-}
-
-.book-info p {
-  font-size: 16px;
-  margin-bottom: 8px;
-  color: #555;
-  font-weight: normal; /* Remova o negrito padrão */
-}
-
-.chapter-list {
-  flex-basis: 55%;
-  padding: 20px;
-  background-color: #fff;
   border-radius: 8px;
-  overflow-y: auto;
+  margin-bottom: 20px;
+}
+
+.book-description, .chapter-summary {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 15px;
 }
 
 .chapter-card {
-  background-color: #fff;
-  border-radius: 10px;
-  margin-bottom: 20px; /* Ajuste na margem inferior */
-  padding: 20px;
-  cursor: pointer;
-  transition: box-shadow 0.3s ease;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #e3f2fd;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 15px;
 }
 
 .chapter-card:hover {
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  background-color: #bbdefb; /* Clareia o fundo do card ao passar o mouse */
 }
 
 .chapter-title {
-  font-size: 20px;
-  margin-bottom: 15px;
-  color: #007bff;
+  font-size: 1.25rem;
+  color: #0d47a1;
+  margin-bottom: 10px;
 }
 
-.chapter-summary {
-  color: #666;
-  margin-bottom: 15px;
-}
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
 
-.chapter-content {
-  display: none;
-  margin-top: 15px;
-}
-
-.chapter-content.active {
-  display: block;
-}
-
-.action-buttons {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
-}
-
-.action-buttons button {
-  padding: 10px;
-  margin: 10px;
-  background-color: #007bff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.action-buttons button:hover {
-  background-color: #001935;
-  color: white;
-}
-
-.reading-progress {
-  flex-basis: 20%;
-  height: min-content;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-  margin-left: 20px;
-}
-
-.progress-bar {
-  height: 20px;
-  background-color: #ddd;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.progress {
-  height: 100%;
-  background-color: #4caf50;
-  border-radius: 10px;
-  transition: width 0.3s ease;
-}
-
-.book-action-button {
-  padding: 10px 15px;
-  margin-right: 10px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.book-action-button:hover {
-  background-color: #0056b3;
+  .book-details-card, .chapter-list-card {
+    width: 100%; /* Os cards ocupam a largura total em telas menores */
+    max-width: none; /* Remove a largura máxima em telas menores */
+  }
 }
