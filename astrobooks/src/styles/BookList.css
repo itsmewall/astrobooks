@@ -46,3 +46,14 @@
   font-size: 14px;
   color: #666;
 }
+
+/* Adaptação para telas entre 780px e 1000px */
+@media screen and (min-width: 780px) and (max-width: 1400px) {
+  .book-list {
+    justify-content: space-evenly; 
+  }
+
+  .book-card {
+    width: 48%; 
+  }
+}
