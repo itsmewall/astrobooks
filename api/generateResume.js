@@ -100,7 +100,7 @@ const data = {
 };
 
 // Caminho para o arquivo de saída JSON
-const outputFilePath = path.join(__dirname, 'booksInfo', 'livros.json');
+const outputFilePath = path.join(__dirname, 'booksInfo', 'livro.json');
 
 // Escrita dos dados em formato JSON no arquivo de saída
 fs.writeFileSync(outputFilePath, JSON.stringify(data, null, 2));

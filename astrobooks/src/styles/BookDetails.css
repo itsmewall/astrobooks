@@ -32,14 +32,15 @@ body {
 }
 
 .book-details-card {
-  width: calc(90% - 10px); /* Ajusta para metade da largura da tela menos a metade do gap */
-  max-width: 600px; /* Limita a largura máxima do card para manter a legibilidade */
+  max-width: 70%;  
+  flex: 1;
+  padding: 20px;
 }
 
 .chapter-list-card {
-  width: calc(90% - 10px); /* Ajusta para metade da largura da tela menos a metade do gap */
-  max-width: 600px; /* Limita a largura máxima do card para manter a legibilidade */
-  overflow-y: auto; /* Permite rolagem se a lista de capítulos for muito longa */
+  max-width: 70%;
+  flex: 1;
+  padding: 30px;
 }
 
 .book-details-card:hover, .chapter-list-card:hover {
