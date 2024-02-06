@@ -1,89 +1,70 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  list-style: none;
+:root {
+  --primary-color: #0d47a1;
+  --secondary-color: #bbdefb;
+  --background-color: #f0f2f5;
+  --text-color: #333;
+  --hover-color: #e3f2fd;
+  --error-color: #e57373;
 }
 
 body {
   font-family: 'Roboto', sans-serif;
-  background-color: #f0f2f5;
-  color: #333;
-  padding-top: 90px; /* Ajuste se você tiver um cabeçalho fixo */
+  background-color: var(--background-color);
+  color: var(--text-color);
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .container {
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 20px;
-  padding: 20px;
-  flex-wrap: wrap;
-}
-
-.book-details-card, .chapter-list-card {
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-  padding: 20px;
-  margin-bottom: 20px;
-}
-
-.book-details-card {
-  max-width: 70%;  
-  flex: 1;
-  padding: 20px;
-}
-
-.chapter-list-card {
-  max-width: 70%;
-  flex: 1;
-  padding: 30px;
-}
-
-.book-details-card:hover, .chapter-list-card:hover {
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
-
-.book-cover {
   max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-  margin-bottom: 20px;
+  height: calc(100vh - 90px); /* Ajusta para a altura total da tela menos o cabeçalho */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column; /* Organiza os elementos em coluna */
 }
 
-.book-description, .chapter-summary {
-  font-size: 1rem;
-  color: #555;
-  margin-bottom: 15px;
+/* Estilo do card principal que contém a imagem e os detalhes do livro */
+.book-details-card {
+  display: flex;
+  flex-direction: column; /* Organiza os elementos internos em coluna */
+  height: 100%; /* Faz o card crescer para ocupar a altura disponível */
 }
 
+/* Ajusta a imagem para ser responsiva e manter a proporção */
+.book-cover {
+  width: 60%; /* Faz a imagem ser responsiva na largura */
+  object-fit: cover; /* Mantém a proporção da imagem */
+  border-radius: 0; /* Se preferir, remova o arredondamento das bordas da imagem */
+}
+
+/* Estilos para a descrição do livro */
+.book-description {
+  overflow: auto; /* Adiciona barra de rolagem se o conteúdo for muito grande */
+  margin-top: auto; /* Empurra a descrição para baixo se houver espaço */
+}
+
+/* Estilo para a lista de capítulos */
+.chapter-list-card {
+  height: 100%; /* Faz o card dos capítulos crescer para ocupar a altura disponível */
+  overflow: auto; /* Adiciona barra de rolagem se o conteúdo for muito grande */
+}
+
+/* Estilo do card individual do capítulo */
 .chapter-card {
-  background-color: #e3f2fd;
-  border-radius: 8px;
-  padding: 15px;
-  margin-bottom: 15px;
+  flex: none; /* Evita que o card do capítulo cresça e ocupe mais do que o necessário */
 }
 
-.chapter-card:hover {
-  background-color: #bbdefb; /* Clareia o fundo do card ao passar o mouse */
-}
-
-.chapter-title {
-  font-size: 1.25rem;
-  color: #0d47a1;
-  margin-bottom: 10px;
-}
-
+/* Estilos para dispositivos móveis */
 @media (max-width: 768px) {
   .container {
-    flex-direction: column;
+    flex-direction: column; /* Empilha os cards verticalmente em dispositivos móveis */
   }
 
   .book-details-card, .chapter-list-card {
-    width: 100%; /* Os cards ocupam a largura total em telas menores */
-    max-width: none; /* Remove a largura máxima em telas menores */
+    height: auto; /* Altura automática para dispositivos móveis */
+    max-width: none;
   }
 }
