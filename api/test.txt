@@ -9,9 +9,10 @@ const livros = [];
 
 // Iterar sobre cada arquivo na pasta de resumos
 fs.readdirSync(resumosFolderPath).forEach(file => {
+    // Verificar se é um arquivo TXT
     if (path.extname(file) === '.txt') {
         const filePath = path.join(resumosFolderPath, file);
-        const nomeDoArquivoSemExtensao = path.parse(file).name;
+        const nomeDoArquivoSemExtensao = path.parse(file).name; // Obter o nome do arquivo sem extensão
 
         let livro = {
             id: livros.length + 1,
@@ -22,10 +23,11 @@ fs.readdirSync(resumosFolderPath).forEach(file => {
 
         let capitulo = {};
         let resumo = '';
-        let conteudoCapitulo = '';
-        let tituloEncontrado = false;
+        let conteudoCapitulo = ''; // Adicionado para armazenar o conteúdo antes do resumo
+        let tituloEncontrado = false; // Variável para controlar se o título foi encontrado
 
-        let ignoreFirstLine = true;
+        // Iterar sobre as linhas para extrair os dados do livro
+        let ignoreFirstLine = true; // Variável para ignorar a primeira linha do conteúdo
         linhas.forEach((linha, index) => {
             if (linha.match(/^\d+\./)) {
                 if (Object.keys(capitulo).length !== 0) {
@@ -44,15 +46,15 @@ fs.readdirSync(resumosFolderPath).forEach(file => {
                 };
             } else if (linha.startsWith('Titulo:')) {
                 if (!tituloEncontrado) {
-                    livro.nome = linha.replace('Titulo:', '').trim(); // Extrai o nome do livro
+                    livro.nome = linha.replace('Titulo:', '').trim();
                     const nomeDaImagem = nomeDoArquivoSemExtensao
-                    .toLowerCase()
-                    .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // Remove acentos
-                    .replace(/\s+/g, '-') // Substitui espaços por hífens
-                    .replace(/[^a-z0-9\-]/g, ''); // Mantém apenas caracteres alfanuméricos e hífens
-                livro.coverImage = `/capas/${nomeDaImagem}.jpg`;
-                console.log(`Capa do livro ${livro.nome} encontrada!`);
-                tituloEncontrado = true;
+                        .toLowerCase()
+                        .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // Remove acentos
+                        .replace(/\s+/g, '-') // Substitui espaços por hífens
+                        .replace(/[^a-z0-9\-]/g, ''); // Mantém apenas caracteres alfanuméricos e hífens
+                    livro.coverImage = `/capas/${nomeDaImagem}.jpg`;
+                    console.log(`Capa do livro ${livro.nome} encontrada!`);
+                    tituloEncontrado = true;
                 }
             } else if (linha.startsWith('Resumo:')) {
                 resumo = linha.replace('Resumo:', '').trim();
@@ -94,13 +96,13 @@ fs.readdirSync(resumosFolderPath).forEach(file => {
 
 // Objeto para armazenar os livros no formato JSON
 const data = {
-    livro: livros,
+    livros: livros,
 };
 
 // Caminho para o arquivo de saída JSON
-const outputFilePath = path.join(__dirname, 'booksInfo', 'livro.json');
+const outputFilePath = path.join(__dirname, 'booksInfo', 'livros.json');
 
 // Escrita dos dados em formato JSON no arquivo de saída
 fs.writeFileSync(outputFilePath, JSON.stringify(data, null, 2));
 
-console.log('Todos os resumos foram processados e salvos com sucesso no arquivo livro.json');
+console.log('Todos os resumos foram processados e salvos com sucesso no arquivo livros.json');

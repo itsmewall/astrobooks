@@ -39,20 +39,19 @@ try {
 // Rota para obter todos os livros
 app.get('/livros', (req, res) => {
   try {
-    res.json(livros.livros);
+    res.json(livros.livro);
   } catch (error) {
     console.error('Erro ao obter livros:', error);
     res.status(500).json({ error: 'Erro ao obter livros' });
   }
 });
 
-
 // Rota para obter um livro específico pelo ID
 app.get('/livros/:id', (req, res) => {
   const livroId = parseInt(req.params.id);
 
   try {
-    const livro = livros.find((livro) => livro.id === livroId);
+    const livro = livros.livro.find((livro) => livro.id === livroId);
 
     if (livro) {
       res.json(livro);
