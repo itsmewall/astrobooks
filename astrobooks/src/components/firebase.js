@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth'; // Import auth from 'firebase/auth'
-import { getFirestore } from 'firebase/firestore'; // Import firestore from 'firebase/firestore'
+import { getAuth } from 'firebase/auth';
+import { getFirestore } from 'firebase/firestore'; 
 
 const firebaseConfig = {
   apiKey: "AIzaSyB_ZPnhP8TzOAbHt8Qa2XaGgbtCFuy3uOY",
@@ -12,11 +12,9 @@ const firebaseConfig = {
   measurementId: "G-4EW3SD16RP"
 };
 
-// Inicializa o Firebase e exporta as instâncias necessárias
 const app = initializeApp(firebaseConfig);
 
 // Get instances of auth and firestore
-const authInstance = getAuth(app); // Change the variable name to authInstance
-const firestoreInstance = getFirestore(app); // Change the variable name to firestoreInstance
-
+const authInstance = getAuth(app); 
+const firestoreInstance = getFirestore(app);
 export { authInstance as auth, firestoreInstance as firestore };
