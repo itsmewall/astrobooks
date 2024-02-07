@@ -1,39 +1,69 @@
-import React, { useEffect, useState } from 'react';
-import { auth, firestore } from './firebase';
-import { doc, onSnapshot } from 'firebase/firestore';
+import React, { useState, useEffect } from 'react';
+import { useAuth } from './AuthContext'; // Importe o hook de autenticação
+import { firestore } from './firebase'; // Ajuste conforme necessário
+import { doc, getDoc, updateDoc } from 'firebase/firestore';
+import '../styles/Profile.css';
 
-const Profile = () => {
-  const [userProfile, setUserProfile] = useState(null);
+function Profile() {
+  const { currentUser } = useAuth();
+  const [name, setName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const authUser = auth.currentUser;
-  
-    if (authUser) {
-      const userDoc = doc(firestore, `users/${authUser.uid}`);
-      
-      const unsubscribe = onSnapshot(userDoc, (snapshot) => {
-        console.log('Snapshot data:', snapshot.data());
-        setUserProfile(snapshot.data());
-      });
-  
-      return () => {
-        unsubscribe();
+    if (currentUser) {
+      const fetchData = async () => {
+        const docRef = doc(firestore, "users", currentUser.uid);
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+          setName(docSnap.data().name || '');
+          setLastName(docSnap.data().lastName || '');
+        }
       };
+
+      fetchData();
     }
-  }, []);  
+  }, [currentUser]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!currentUser) return;
+
+    setLoading(true);
+    const docRef = doc(firestore, "users", currentUser.uid);
+    try {
+      await updateDoc(docRef, {
+        name: name,
+        lastName: lastName,
+      });
+      alert('Perfil atualizado com sucesso!');
+    } catch (error) {
+      alert('Erro ao atualizar perfil: ', error.message);
+    }
+    setLoading(false);
+  };
 
   return (
-    <div>
-      <h2>Profile</h2>
-      {userProfile && (
-        <>
-          <p>Name: {userProfile.name}</p>
-          <p>Email: {userProfile.email}</p>
-          {/* Adicione mais informações de perfil conforme necessário */}
-        </>
-      )}
+    <div className="profile-container">
+      <h2>Perfil</h2>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Nome"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Sobrenome"
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
+        />
+        <button type="submit" disabled={loading}>Atualizar Perfil</button>
+      </form>
     </div>
   );
-};
+}
 
 export default Profile;

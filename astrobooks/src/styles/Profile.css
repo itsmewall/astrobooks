@@ -1,0 +1,33 @@
+/* Adicione isso ao seu arquivo CSS */
+.profile-container {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .profile-container h2 {
+    text-align: center;
+  }
+  
+  .profile-container form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .profile-container form input,
+  .profile-container form button {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .profile-container form button {
+    background: #1a73e8;
+    color: white;
+    cursor: pointer;
+  }
+  
