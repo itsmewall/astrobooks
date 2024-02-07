@@ -29,7 +29,7 @@ const Header = () => {
             </Link>
           </nav>
           <button className="login-button">
-            <Link to="/register">
+            <Link to="/profile">
               <FaUser />
             </Link>
           </button>

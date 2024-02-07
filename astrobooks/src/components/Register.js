@@ -10,16 +10,17 @@ function Register() {
     try {
       await registerUser(email, password);
       console.log('Usuário registrado com sucesso!');
-      // Redirecione o usuário ou mostre uma mensagem de sucesso
     } catch (error) {
       console.error("Falha no registro:", error.message);
     }
   };
 
   return (
-    <div>
+    <div className="auth-container"> 
       <h2>Registrar</h2>
-      <form onSubmit={handleSubmit}>
+      <form className="auth-form" onSubmit={handleSubmit}>
+        <input type="text" placeholder="Nome" />
+        <input type="text" placeholder="Sobrenome" />
         <input
           type="email"
           placeholder="Email"
@@ -33,6 +34,9 @@ function Register() {
           onChange={(e) => setPassword(e.target.value)}
         />
         <button type="submit">Registrar</button>
+        <p>
+          Já tem uma conta? <a href="/login">Login</a> 
+        </p>
       </form>
     </div>
   );
