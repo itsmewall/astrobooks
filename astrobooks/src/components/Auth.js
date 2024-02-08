@@ -50,15 +50,16 @@ const authStateObserver = (callback) => {
 
 // Login/Registro com o Google
 const loginWithGoogle = async () => {
-  const provider = new GoogleAuthProvider();
-  try {
-    const result = await signInWithPopup(auth, provider);
-    console.log("Login com Google bem-sucedido:", result.user);
-    return result.user;
-  } catch (error) {
-    console.error("Erro no login com Google:", error.message);
-    throw error;
-  }
-};
+    const provider = new GoogleAuthProvider();
+    try {
+      const result = await signInWithPopup(auth, provider);
+      console.log("Login com Google bem-sucedido:", result.user);
+      return result.user; // Retorna o usuário em caso de sucesso
+    } catch (error) {
+      console.error("Erro no login com Google:", error.message);
+      throw error; // Lança o erro para ser capturado pelo componente
+    }
+  };
+  
 
 export { registerUser, loginUser, logoutUser, authStateObserver, loginWithGoogle };

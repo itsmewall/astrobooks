@@ -1,33 +1,32 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
-import { auth } from './firebase'; 
+import React, { createContext, useContext, useEffect, useState } from 'react';
+import { auth, firestore } from './firebase';
+import { doc, getDoc } from 'firebase/firestore';
 import { onAuthStateChanged } from 'firebase/auth';
 
-const AuthContext = createContext();
+export const AuthContext = createContext(); // Exporting AuthContext directly
 
-export function useAuth() {
-  return useContext(AuthContext);
-}
+export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [isSubscribed, setIsSubscribed] = useState(false); 
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, user => {
+    const unsubscribe = onAuthStateChanged(auth, async user => {
       setCurrentUser(user);
-      setLoading(false);
+      if (user) {
+        const userRef = doc(firestore, "users", user.uid);
+        const docSnap = await getDoc(userRef);
+        setIsSubscribed(docSnap.exists() && docSnap.data().assinaturaAtiva); 
+      }
     });
 
     return unsubscribe;
   }, []);
 
-  const value = {
-    currentUser
-  };
-
   return (
-    <AuthContext.Provider value={value}>
-      {!loading && children}
+    <AuthContext.Provider value={{ currentUser, isSubscribed }}>
+      {children}
     </AuthContext.Provider>
   );
 };

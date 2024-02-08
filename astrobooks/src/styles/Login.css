@@ -72,3 +72,23 @@
     background-color: #357ae8;
   }
   
+  .error-message {
+    color: red;
+    margin: 10px 0;
+    text-align: center;
+  }  
+
+  .register-link {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .register-link a {
+    color: #007bff; /* Cor azul padrão para links, ajuste conforme necessário */
+    text-decoration: none; /* Remove o sublinhado do link */
+  }
+  
+  .register-link a:hover {
+    text-decoration: underline; /* Adiciona sublinhado ao passar o mouse para melhorar a acessibilidade */
+  }
+  

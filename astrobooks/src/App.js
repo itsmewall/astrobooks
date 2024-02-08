@@ -9,25 +9,24 @@ import Register from './components/Register';
 import { AuthProvider } from './components/AuthContext';   
 import PrivateRoute from './components/PrivateRoute'; 
 import BookList from './components/BookList';
+import SubscriptionPage from './components/SubscriptionPage';
 
 const App = () => {
   return (
     <Router>
       <AuthProvider>
-        <div>
-          <Routes>
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/" element={<Home />} />
-
-            <Route element={<PrivateRoute />}>
-              <Route path="/messages" element={<Messages />} />
-              <Route path="/livros/:id" element={<BookDetails />} />
-              <Route path="/profile" element={<Profile />} />
-              <Route path="/livros" element={<BookList />} />
-            </Route>
-          </Routes>
-        </div>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/assinatura" element={<SubscriptionPage />} /> 
+          <Route element={<PrivateRoute />}>
+            <Route path="/messages" element={<Messages />} />
+            <Route path="/livros/:id" element={<BookDetails />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/livros" element={<BookList />} />
+          </Route>
+        </Routes>
       </AuthProvider>
     </Router>
   );
