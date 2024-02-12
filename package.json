@@ -4,22 +4,18 @@
     "scripts": {
         "start": "concurrently \"npm run update\" \"npm run start:backend\" \"npm run start:frontend\" \"npm run start:firebase\"",
         "update": "cd api && node generateResume.js",
-        "start:backend": "cd api && node server.js",
-        "start:frontend": "cd astrobooks && npm start",
-        "start:firebase": "cd firebase && node index.js"
+        "start:backend": "concurrently \"cd api && npm install\" \"cd api && node server.js\"",
+        "start:frontend": "concurrently \"cd api && npm install\" \"cd astrobooks && npm start\"",
+        "start:firebase": "concurrently \"cd firebase && npm install express\" \"cd firebase && node index.js\""
     },
     "devDependencies": {
         "concurrently": "^8.2.2"
     },
     "dependencies": {
-        "@emotion/react": "^11.11.3",
-        "@emotion/styled": "^11.11.0",
-        "@mui/material": "^5.15.7",
         "axios": "^1.6.7",
         "cors": "^2.8.5",
         "express": "^4.18.2",
         "firebase-admin": "^12.0.0",
-        "md5": "^2.3.0",
-        "mui": "^0.0.1"
+        "md5": "^2.3.0"
     }
 }
