@@ -5,7 +5,7 @@ import { Container, Grid, Card, CardMedia, CardContent, Typography, Button, Card
 import FlipPage from './FlipPage';
 import Header from './Header';
 import '../styles/BookDetails.css';
-const apiUrl = process.env.API_Host || 'http://localhost:5000';
+const apiUrl = process.env.API_Host;
 
 // Hook personalizado para buscar os detalhes do livro
 function useBookDetails(bookId) {
