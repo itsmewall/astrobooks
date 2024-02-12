@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import BookCard from './BookCard';
 import '../styles/BookList.css';
 
+const apiUrl = process.env.API_Host;
+
 const BookList = () => {
   const [books, setBooks] = useState([]);
   const [error, setError] = useState(null);
@@ -11,7 +13,7 @@ const BookList = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/livros/');
+        const response = await axios.get(`${apiUrl}/livros/`);
         setBooks(response.data);
       } catch (error) {
         console.error(error.message);
