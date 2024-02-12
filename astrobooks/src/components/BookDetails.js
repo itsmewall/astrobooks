@@ -5,9 +5,10 @@ import { Container, Grid, Card, CardMedia, CardContent, Typography, Button, Card
 import FlipPage from './FlipPage';
 import Header from './Header';
 import '../styles/BookDetails.css';
+const apiUrl = process.env.API_Host || 'http://localhost:5000';
 
 // Hook personalizado para buscar os detalhes do livro
-const useBookDetails = (bookId) => {
+function useBookDetails(bookId) {
   const [bookDetails, setBookDetails] = useState({});
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -16,7 +17,7 @@ const useBookDetails = (bookId) => {
     const fetchBookDetails = async () => {
       setIsLoading(true);
       try {
-        const response = await axios.get(`http://localhost:5000/livros/${bookId}`);
+        const response = await axios.get(`${apiUrl}/livros/${bookId}`);
         setBookDetails(response.data);
         setError(null);
       } catch (error) {
@@ -31,7 +32,7 @@ const useBookDetails = (bookId) => {
   }, [bookId]);
 
   return { bookDetails, error, isLoading };
-};
+}
 
 const BookDetails = () => {
   const { id } = useParams();
