@@ -6,6 +6,7 @@ const { Server } = require('socket.io');
 const cors = require('cors');
 
 const app = express();
+const port = process.env.PORT || 3333;
 const server = http.createServer(app);
 const io = new Server(server);
 
@@ -89,6 +90,6 @@ io.on('connection', (socket) => {
   socket.emit('message', 'Deu bom o WebSocket!');
 });
 
-server.listen(() => {
-  //console.log(`Servidor rodando na porta ${host}:${port}`);
+server.listen(port, () => {
+  console.log(`Server running on port ${port}`);
 });
