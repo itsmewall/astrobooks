@@ -4,7 +4,7 @@
     "scripts": {
         "start": "concurrently \"npm run update\" \"npm run start:backend\" \"npm run start:frontend\" \"npm run start:firebase\"",
         "update": "cd api && node generateResume.js",
-        "play": "cd astrobooks && serve -s build",
+        "play": "cd astrobooks && npx serve -s build",
         "start:backend": "concurrently \"cd api && npm install\" \"cd api && node server.js\"",
         "start:frontend": "concurrently \"cd api && npm install\" \"cd astrobooks && npm start\"",
         "start:firebase": "concurrently \"cd firebase && npm install express\" \"cd firebase && node index.js\""

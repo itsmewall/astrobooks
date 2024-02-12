@@ -8,14 +8,13 @@ const cors = require('cors');
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
-const port = process.env.PORT || 5000;
-const host = process.env.HOST || 'localhost';
 
 const corsOptions = {
   origin: [
     'http://localhost:3000', 
     'http://192.168.53.68:3000', 
-    'http://192.168.1.9:3000'
+    'http://192.168.1.9:3000',
+    'https://astrobooks.vercel.app/'
   ],
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
@@ -90,6 +89,6 @@ io.on('connection', (socket) => {
   socket.emit('message', 'Deu bom o WebSocket!');
 });
 
-server.listen(port, () => {
-  console.log(`Servidor rodando na porta ${host}:${port}`);
+server.listen(() => {
+  //console.log(`Servidor rodando na porta ${host}:${port}`);
 });
