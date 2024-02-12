@@ -1,10 +1,30 @@
 :root {
-  --primary-color: #0d47a1;
-  --secondary-color: #bbdefb;
-  --background-color: #f0f2f5;
-  --text-color: #333;
-  --hover-color: #e3f2fd;
-  --error-color: #e57373;
+  /* Paleta de cores */
+  --primary-color: #5E35B1; /* Um roxo mais vibrante para a cor primária */
+  --secondary-color: #FFC107; /* Amarelo para a cor secundária */
+  --background-color: #FAFAFA; /* Um cinza muito claro para o fundo */
+  --text-color: #212121; /* Preto suave para o texto */
+  --hover-color: #FFD54F; /* Amarelo mais claro para hover */
+  --error-color: #D32F2F; /* Vermelho para erros */
+
+  /* Espaçamentos */
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 32px;
+  --space-xl: 40px;
+
+  /* Tipografia */
+  --font-size-base: 16px;
+  --font-size-md: 18px;
+  --font-size-lg: 24px;
+  --font-size-xl: 32px;
+
+  /* Bordas */
+  --border-radius: 4px;
+
+  /* Sombra */
+  --box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 body {
@@ -12,59 +32,83 @@ body {
   background-color: var(--background-color);
   color: var(--text-color);
   margin: 0;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-.container {
-  max-width: 100%;
-  height: calc(100vh - 90px); /* Ajusta para a altura total da tela menos o cabeçalho */
-  margin: 0;
   padding: 0;
+}
+
+/* Estilos para o conteúdo principal */
+.container {
+  padding: var(--space-lg);
+}
+
+.card {
+  background: #fff;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.card:hover {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.card-media {
+  height: 0;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+}
+
+.card-content {
+  padding: var(--space-md);
+}
+
+.card-actions {
+  padding: var(--space-md);
   display: flex;
-  flex-direction: column; /* Organiza os elementos em coluna */
+  justify-content: flex-start;
+  border-top: 1px solid #eee;
 }
 
-/* Estilo do card principal que contém a imagem e os detalhes do livro */
-.book-details-card {
-  display: flex;
-  flex-direction: column; /* Organiza os elementos internos em coluna */
-  height: 100%; /* Faz o card crescer para ocupar a altura disponível */
+.button {
+  background-color: var(--primary-color);
+  color: #fff;
+  padding: var(--space-sm) var(--space-md);
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-/* Ajusta a imagem para ser responsiva e manter a proporção */
-.book-cover {
-  width: 60%; /* Faz a imagem ser responsiva na largura */
-  object-fit: cover; /* Mantém a proporção da imagem */
-  border-radius: 0; /* Se preferir, remova o arredondamento das bordas da imagem */
+.button:hover {
+  background-color: var(--hover-color);
 }
 
-/* Estilos para a descrição do livro */
-.book-description {
-  overflow: auto; /* Adiciona barra de rolagem se o conteúdo for muito grande */
-  margin-top: auto; /* Empurra a descrição para baixo se houver espaço */
+/* Tipografia */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--primary-color);
+  margin-top: 0;
 }
 
-/* Estilo para a lista de capítulos */
-.chapter-list-card {
-  height: 100%; /* Faz o card dos capítulos crescer para ocupar a altura disponível */
-  overflow: auto; /* Adiciona barra de rolagem se o conteúdo for muito grande */
+p {
+  margin: 0 0 var(--space-md) 0;
 }
 
-/* Estilo do card individual do capítulo */
-.chapter-card {
-  flex: none; /* Evita que o card do capítulo cresça e ocupe mais do que o necessário */
-}
-
-/* Estilos para dispositivos móveis */
+/* Responsividade */
 @media (max-width: 768px) {
-  .container {
-    flex-direction: column; /* Empilha os cards verticalmente em dispositivos móveis */
+  .grid-container {
+    display: block;
   }
 
-  .book-details-card, .chapter-list-card {
-    height: auto; /* Altura automática para dispositivos móveis */
-    max-width: none;
+  .card {
+    margin-bottom: var(--space-lg);
   }
+}
+
+/* Erro e mensagens de carregamento */
+.error-message, .loading {
+  text-align: center;
+  color: var(--error-color);
+}
+
+.circular-progress {
+  display: block;
+  margin: var(--space-lg) auto;
 }

@@ -8,11 +8,15 @@ const cors = require('cors');
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
-const port = 5000;
-
+const port = process.env.PORT || 5000;
+const host = process.env.HOST || 'localhost';
 
 const corsOptions = {
-  origin: ['http://localhost:3000', 'http://192.168.53.68:3000'],
+  origin: [
+    'http://localhost:3000', 
+    'http://192.168.53.68:3000', 
+    'http://192.168.1.9:3000'
+  ],
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
   optionsSuccessStatus: 204,
@@ -20,23 +24,17 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 app.use(express.json());
-
-// Servir a pasta capas como arquivos estáticos
 app.use('/capas', express.static(path.join(__dirname, 'public', 'capas')))
-
 const caminhoDoArquivoLivros = path.join(__dirname, 'booksInfo', 'livro.json');
-
-// Carregar livros do arquivo
 let livros;
 
 try {
   livros = JSON.parse(fs.readFileSync(caminhoDoArquivoLivros, 'utf-8'));
 } catch (error) {
   console.error('Erro ao ler o arquivo de livros:', error);
-  process.exit(1); // Encerrar o processo em caso de erro
+  process.exit(1);
 }
 
-// Rota para obter todos os livros
 app.get('/livros', (req, res) => {
   try {
     res.json(livros.livro);
@@ -46,13 +44,10 @@ app.get('/livros', (req, res) => {
   }
 });
 
-// Rota para obter um livro específico pelo ID
 app.get('/livros/:id', (req, res) => {
   const livroId = parseInt(req.params.id);
-
   try {
     const livro = livros.livro.find((livro) => livro.id === livroId);
-
     if (livro) {
       res.json(livro);
     } else {
@@ -64,16 +59,12 @@ app.get('/livros/:id', (req, res) => {
   }
 });
 
-// Rota para obter resumos de um livro específico pelo ID
 app.get('/livros/:id/resumos', (req, res) => {
   const livroId = parseInt(req.params.id);
-
   try {
     const resumosDoLivro = livros.livro.find((livro) => livro.id === livroId)?.capitulos;
-
     if (resumosDoLivro) {
       const resumosComIDs = {};
-
       resumosDoLivro.forEach((capitulo) => {
         resumosComIDs[capitulo.titulo] = {
           conteudo: capitulo.resumo,
@@ -81,7 +72,6 @@ app.get('/livros/:id/resumos', (req, res) => {
           capitulo_id: capitulo.id,
         };
       });
-
       res.json({ resumos: resumosComIDs });
     } else {
       res.status(404).json({ message: 'Resumos do livro não encontrados' });
@@ -92,20 +82,14 @@ app.get('/livros/:id/resumos', (req, res) => {
   }
 });
 
-// Configuração do servidor WebSocket
 io.on('connection', (socket) => {
   console.log('Cliente conectado via WebSocket');
-
-  // Exemplo: ouvir mensagens do cliente
   socket.on('message', (message) => {
     console.log('Mensagem do cliente via WebSocket:', message);
-    // Lógica adicional conforme necessário
   });
-
-  // Exemplo: enviar mensagem para o cliente
   socket.emit('message', 'Deu bom o WebSocket!');
 });
 
 server.listen(port, () => {
-  console.log(`Servidor rodando na porta http://localhost:${port}`);
+  console.log(`Servidor rodando na porta ${host}:${port}`);
 });

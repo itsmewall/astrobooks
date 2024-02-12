@@ -1,4 +1,4 @@
-import { auth } from './firebase';
+import { auth, firestore } from './firebase'; // Ajuste o caminho conforme necessário
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -7,15 +7,21 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
 } from 'firebase/auth';
+import { doc, setDoc } from 'firebase/firestore';
 
-// Cadastro de usuário
-const registerUser = async (email, password) => {
+// Função para registrar usuário e salvar seu perfil no Firestore
+const registerUser = async (email, password, name, lastName) => {
   try {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-    console.log("Usuário cadastrado com sucesso:", userCredential.user);
-    return userCredential;
+    const user = userCredential.user;
+    await setDoc(doc(firestore, "users", user.uid), {
+      name,
+      lastName,
+      email,
+    });
+    console.log("Usuário registrado e perfil criado com sucesso.");
   } catch (error) {
-    console.error("Erro ao cadastrar usuário:", error.message);
+    console.error("Erro ao registrar usuário e criar perfil:", error);
     throw error;
   }
 };

@@ -69,6 +69,12 @@ h1 {
   transition: opacity 0.3s ease;
 }
 
+.nav-menu.show {
+  display: flex;
+  opacity: 1;
+  align-items: center;
+}
+
 .nav-menu.open {
   display: flex;
   opacity: 1;
@@ -79,6 +85,25 @@ h1 {
 .login-button a {
   color: #333;
   text-decoration: none;
+}
+
+
+.right-section {
+  transition: transform 0.3s ease;
+}
+
+.right-section.show {
+  transform: translateX(0);
+}
+
+@media (max-width: 768px) {
+  .right-section {
+    transform: translateX(100%);
+  }
+
+  .header-container.menu-open .right-section {
+    transform: translateX(0);
+  }
 }
 
 /* Melhorias na responsividade */

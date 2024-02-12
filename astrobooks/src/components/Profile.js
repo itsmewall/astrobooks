@@ -1,29 +1,34 @@
 import React, { useState, useEffect } from 'react';
-import { useAuth } from './AuthContext'; // Importe o hook de autenticação
-import { firestore } from './firebase'; // Ajuste conforme necessário
+import { useAuth } from './AuthContext';
+import { firestore } from './firebase';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
-import '../styles/Profile.css';
+import Header from './Header';
 
 function Profile() {
   const { currentUser } = useAuth();
   const [name, setName] = useState('');
   const [lastName, setLastName] = useState('');
   const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState('');
 
   useEffect(() => {
-    if (currentUser) {
-      const fetchData = async () => {
+    const fetchData = async () => {
+      if (currentUser) {
+        setLoading(true);
         const docRef = doc(firestore, "users", currentUser.uid);
         const docSnap = await getDoc(docRef);
 
         if (docSnap.exists()) {
           setName(docSnap.data().name || '');
           setLastName(docSnap.data().lastName || '');
+        } else {
+          setMessage('Nenhum dado de perfil encontrado.');
         }
-      };
+        setLoading(false);
+      }
+    };
 
-      fetchData();
-    }
+    fetchData();
   }, [currentUser]);
 
   const handleSubmit = async (e) => {
@@ -37,32 +42,42 @@ function Profile() {
         name: name,
         lastName: lastName,
       });
-      alert('Perfil atualizado com sucesso!');
+      setMessage('Perfil atualizado com sucesso!');
     } catch (error) {
-      alert('Erro ao atualizar perfil: ', error.message);
+      setMessage(`Erro ao atualizar perfil: ${error.message}`);
     }
     setLoading(false);
   };
 
   return (
+    <>
+    <Header />
     <div className="profile-container">
       <h2>Perfil</h2>
+      {message && <div>{message}</div>}
       <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Nome"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Sobrenome"
-          value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
-        />
-        <button type="submit" disabled={loading}>Atualizar Perfil</button>
+        <label>
+          Nome:
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </label>
+        <label>
+          Sobrenome:
+          <input
+            type="text"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+          />
+        </label>
+        <button type="submit" disabled={loading}>
+          {loading ? 'Atualizando...' : 'Atualizar Perfil'}
+        </button>
       </form>
     </div>
+    </>
   );
 }
 

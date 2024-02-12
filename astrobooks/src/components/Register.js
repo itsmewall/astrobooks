@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
-import { registerUser } from './Auth'; // Ajuste o caminho conforme necessário
+import { registerUser } from './Auth'; // Certifique-se de que o caminho está correto
 
 function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
+  const [lastName, setLastName] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await registerUser(email, password);
+      await registerUser(email, password, name, lastName);
       console.log('Usuário registrado com sucesso!');
     } catch (error) {
       console.error("Falha no registro:", error.message);
@@ -19,8 +21,18 @@ function Register() {
     <div className="auth-container"> 
       <h2>Registrar</h2>
       <form className="auth-form" onSubmit={handleSubmit}>
-        <input type="text" placeholder="Nome" />
-        <input type="text" placeholder="Sobrenome" />
+        <input
+          type="text"
+          placeholder="Nome"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Sobrenome"
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
+        />
         <input
           type="email"
           placeholder="Email"
@@ -35,7 +47,7 @@ function Register() {
         />
         <button type="submit">Registrar</button>
         <p>
-          Já tem uma conta? <a href="/login">Login</a> 
+          Já tem uma conta? <a href="/login">Login</a> {/* Considere usar Link do react-router-dom aqui */}
         </p>
       </form>
     </div>

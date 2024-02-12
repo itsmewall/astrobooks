@@ -36,7 +36,6 @@ const SubscriptionPage = () => {
     }
   };
 
-  // Atualiza o status da assinatura no Firestore
   const updateSubscriptionStatus = async (userId, status) => {
     try {
       await setDoc(doc(firestore, "users", userId), { assinaturaAtiva: status }, { merge: true });
@@ -46,6 +45,7 @@ const SubscriptionPage = () => {
       console.error("Erro ao atualizar o status da assinatura:", error);
     }
   };
+
 
   return (
     <>
