@@ -15,7 +15,8 @@ const corsOptions = {
     'http://localhost:3000', 
     'http://192.168.53.68:3000', 
     'http://192.168.1.9:3000',
-    'https://astrobooks.vercel.app/'
+    'https://astrobooks.vercel.app/',
+    'http://172.31.23.118:3000'
   ],
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
