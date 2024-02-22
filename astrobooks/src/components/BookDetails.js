@@ -71,6 +71,7 @@ const BookDetails = () => {
                   Autor: {bookDetails.autor}<br />
                   Editora: {bookDetails.editora}, Edição: {bookDetails.edicao}<br />
                   Ano: {bookDetails.ano}<br />
+                  Gênero: {bookDetails.genero.join(", ")}<br /> 
                   Gênero: {bookDetails.genero}<br />
                   Idioma: {bookDetails.idioma}
                 </Typography>

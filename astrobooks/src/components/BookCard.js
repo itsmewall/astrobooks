@@ -1,4 +1,3 @@
-// Em BookCard.js
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/BookCard.css';
@@ -10,10 +9,12 @@ const BookCard = ({ book }) => {
     navigate(`/livros/${book.id}`);
   };
 
+  const generos = Array.isArray(book.genero) ? book.genero : [book.genero];
+
   return (
     <div className="card" onClick={handleCardClick}>
       {book.coverImage ? (
-      <img src={book.coverImage} alt={book.nome} />
+        <img src={book.coverImage} alt={book.nome} />
       ) : (
         <div className="placeholder-image">Imagem não disponível</div>
       )}

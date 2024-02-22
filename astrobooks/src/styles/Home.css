@@ -1,80 +1,50 @@
 /* src/components/Home.css */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;1,100;1,300;1,400;1,500;1,700;1,800&display=swap');
 
-
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     font-family: 'Montserrat', sans-serif;
-  }
+}
   
-  /* Global styles for the home component */
-  .home {
+/* Global styles for the home component */
+.home {
     font-family: 'Arial', sans-serif;
     background-color: #f8f8f8;
     color: #333;
     padding-top: 80px;
-  }
+}
   
-  /* Container styles */
-  .container {
+/* Container styles */
+.container {
     width: 80%;
     margin: 80px auto 0;
-  }
+}
 
-  /* Navigation styles */
-  .navbar {
+/* Navigation styles */
+.navbar {
     background-color: #444;
     padding: 10px;
-  }
+}
   
-  .nav-link {
+.nav-link {
     color: #fff;
     text-decoration: none;
     margin-right: 20px;
-  }
+}
   
-  /* Content section styles */
-  .content {
+/* Content section styles */
+.content {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     margin-top: 20px;
-  }
+}
   
-  /* Book section styles */
-  .book-section {
-    width: 30%;
-    margin-bottom: 40px;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .book-section h2 {
-    font-size: 1.5em;
-    margin-bottom: 10px;
-  }
-  
-  /* Book list styles */
-  .book-list {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .book-item {
-    margin-bottom: 10px;
-  }
-  
-  .book-title {
-    font-weight: bold;
-  }
-  
-  /* Responsive styles */
-  @media (max-width: 768px) {
+/* Responsive styles */
+@media (max-width: 768px) {
     .book-section {
-      width: 100%;
+        width: 100%;
     }
-  }
-  
+}

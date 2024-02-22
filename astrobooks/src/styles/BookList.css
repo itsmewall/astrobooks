@@ -1,63 +1,40 @@
-* {
-  margin: 0;
+/* Container principal da lista de livros */
+.book-list-container {
+  padding: 20px; /* Espaço ao redor do conteúdo para respiração */
+  display: flex; /* Utiliza um flex container */
+  flex-direction: column; /* Alinha os itens verticalmente */
+  align-items: flex-start; /* Alinha os itens à esquerda da tela */
+  overflow-x: hidden; /* Previne rolagem horizontal na página */
 }
 
-.book-list {
+/* Seção que contém a lista de livros */
+.genre-section {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  flex-wrap: nowrap; /* Impede a quebra de linha */
+  overflow-x: auto; /* Ativa a rolagem horizontal */
+  padding-bottom: 20px; /* Adiciona espaço abaixo para respiração */
 }
 
-.error-message {
-  color: red;
-  font-size: 18px;
-  text-align: center;
-  margin-top: 20px;
-}
-
+/* Estilo dos cards de livros */
 .book-card {
+  min-width: 160px; /* Largura mínima para cada livro */
   background-color: #fff;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  border-radius: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   overflow: hidden;
   text-decoration: none;
   color: #333;
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  flex: 0 0 auto; /* Evita que os livros encolham */
 }
 
-.book-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
-}
-
-.book-card img {
-  width: 100%;
-  height: auto;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-}
-
-.book-card-content {
-  padding: 15px;
-}
-
-.book-card-content h3 {
-  margin-top: 0;
-  color: #333;
-}
-
-.book-card-content p {
-  font-size: 14px;
-  color: #666;
-}
-
-/* Adaptação para telas entre 780px e 1000px */
-@media screen and (min-width: 780px) and (max-width: 1400px) {
-  .book-list {
-    justify-content: space-evenly; 
+/* Ajustes para responsividade */
+@media (max-width: 768px) {
+  .book-list-container {
+    padding: 10px;
   }
 
-  .book-card {
-    width: 48%; 
+  .all-books-section h2, .genre-specific-section h2 {
+    margin-left: 10px;
+    font-size: 20px;
   }
 }
