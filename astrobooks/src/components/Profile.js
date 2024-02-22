@@ -3,6 +3,7 @@ import { useAuth } from './AuthContext';
 import { firestore } from './firebase';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import Header from './Header';
+import { generosDeLivros } from './constants/generos'; // Importa a lista de gêneros
 import '../styles/Profile.css';
 
 function Profile() {
@@ -13,9 +14,10 @@ function Profile() {
     email: '',
     bio: '',
     photoURL: '',
+    generosFavoritos: [], // Adiciona um campo para os gêneros favoritos
   });
   const [loading, setLoading] = useState(false);
-  const [editing, setEditing] = useState(false); // Estado para controlar a exibição vs. edição
+  const [editing, setEditing] = useState(false);
 
   useEffect(() => {
     const fetchUserProfile = async () => {
@@ -23,23 +25,32 @@ function Profile() {
         setLoading(true);
         const docRef = doc(firestore, "users", currentUser.uid);
         const docSnap = await getDoc(docRef);
-
+  
         if (docSnap.exists()) {
+          // Garante que generosFavoritos seja um array
+          const userData = docSnap.data();
           setProfile({
-            ...docSnap.data(),
-            email: currentUser.email,
-            photoURL: currentUser.photoURL || '/default-profile.png',
+            ...userData,
+            email: currentUser.email, // Mantém o e-mail atualizado
+            photoURL: currentUser.photoURL || '/default-profile.png', // Usa a foto do Google, se disponível
+            generosFavoritos: userData.generosFavoritos || [], // Garante que seja um array, mesmo que vazio
           });
         } else {
           console.log("Nenhum dado de perfil encontrado.");
+          setProfile(prev => ({
+            ...prev,
+            email: currentUser.email,
+            photoURL: currentUser.photoURL,
+            generosFavoritos: [],
+          }));
         }
         setLoading(false);
       }
     };
-
+  
     fetchUserProfile();
   }, [currentUser]);
-
+  
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setProfile(prevState => ({
@@ -48,12 +59,22 @@ function Profile() {
     }));
   };
 
+  const handleGenreChange = (e) => {
+    const { value, checked } = e.target;
+    setProfile(prevState => ({
+      ...prevState,
+      generosFavoritos: checked
+        ? [...prevState.generosFavoritos, value]
+        : prevState.generosFavoritos.filter(genre => genre !== value),
+    }));
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
     const docRef = doc(firestore, "users", currentUser.uid);
-    const { email, photoURL, ...updateData } = profile;
+    const { email, photoURL, ...updateData } = profile; // Exclui email e photoURL da atualização
 
     try {
       await updateDoc(docRef, updateData);
@@ -62,24 +83,24 @@ function Profile() {
       console.error("Erro ao atualizar perfil:", error);
     } finally {
       setLoading(false);
-      setEditing(false); // Retorna para o modo de visualização após salvar
+      setEditing(false); // Retorna ao modo de visualização
     }
   };
 
   const renderProfileView = () => (
     <div className="profile-view">
       <img src={profile.photoURL || '/default-profile.png'} alt="Foto do Perfil" className="profile-picture" />
-      <p><strong>Nome:</strong> {profile.name}</p>
-      <p><strong>Sobrenome:</strong> {profile.lastName}</p>
-      <p><strong>E-mail:</strong> {profile.email}</p>
+      <p>{`${profile.name} ${profile.lastName}`}</p>
+      <p>{profile.email}</p>
       <p><strong>Bio:</strong> {profile.bio}</p>
+      <p><strong>Gêneros Favoritos:</strong> {profile.generosFavoritos.join(", ")}</p>
       <button onClick={() => setEditing(true)}>Editar</button>
     </div>
-  );
+  );  
 
   const renderProfileEdit = () => (
     <form onSubmit={handleSubmit} className="profile-form">
-      <div className="form-field">
+       <div className="form-field">
         <label>Nome:</label>
         <input type="text" name="name" value={profile.name} onChange={handleInputChange} />
       </div>
@@ -91,9 +112,27 @@ function Profile() {
         <label>Bio:</label>
         <textarea name="bio" value={profile.bio} onChange={handleInputChange} />
       </div>
-      <button type="submit" disabled={loading}>
-        {loading ? 'Salvando...' : 'Salvar Alterações'}
-      </button>
+      <div className="form-field">
+        
+        <label>Gêneros Favoritos:</label>
+        <div className="genre-selection">
+          {generosDeLivros.map(genero => (
+            <div key={genero} className="genre-item">
+              <input
+                type="checkbox"
+                id={genero}
+                name="generosFavoritos"
+                value={genero}
+                checked={profile.generosFavoritos.includes(genero)}
+                onChange={handleGenreChange}
+              />
+              <label htmlFor={genero} className="genre-label">{genero}</label>
+            </div>
+          ))}
+        </div>
+        
+      </div>
+      <button type="submit" disabled={loading}>{loading ? 'Salvando...' : 'Salvar Alterações'}</button>
       <button type="button" onClick={() => setEditing(false)}>Cancelar</button>
     </form>
   );
