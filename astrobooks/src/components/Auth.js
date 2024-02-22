@@ -10,7 +10,7 @@ import {
 import { doc, setDoc } from 'firebase/firestore';
 
 // Função para registrar usuário e salvar seu perfil no Firestore
-const registerUser = async (email, password, name, lastName) => {
+const registerUser = async (email, password, name, lastName, bio, favoriteGenres, birthDate) => {
   try {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;
@@ -18,6 +18,9 @@ const registerUser = async (email, password, name, lastName) => {
       name,
       lastName,
       email,
+      bio,
+      favoriteGenres,
+      birthDate,
     });
     console.log("Usuário registrado e perfil criado com sucesso.");
   } catch (error) {
@@ -25,6 +28,7 @@ const registerUser = async (email, password, name, lastName) => {
     throw error;
   }
 };
+
 
 // Login de usuário
 const loginUser = async (email, password) => {
