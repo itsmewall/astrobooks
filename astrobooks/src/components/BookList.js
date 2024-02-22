@@ -19,7 +19,7 @@ const BookList = () => {
         const response = await axios.get(`${apiUrl}:${apiPort}/livros/`);
         setBooks(response.data);
         const organizedBooks = organizeBooksByGenre(response.data);
-        setFilteredBooks(organizedBooks); // Armazena livros organizados por gênero
+        setFilteredBooks(organizedBooks);
       } catch (error) {
         console.error(error.message);
         setError('Erro ao obter os livros. Tente novamente mais tarde.');
