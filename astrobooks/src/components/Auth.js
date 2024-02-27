@@ -25,6 +25,7 @@ const registerUser = async (email, password, name, lastName, bio, favoriteGenres
     console.log("Usuário registrado e perfil criado com sucesso.");
   } catch (error) {
     console.error("Erro ao registrar usuário e criar perfil:", error);
+    console.error("Erro ao registrar usuário e criar perfil:", error);
     throw error;
   }
 };
