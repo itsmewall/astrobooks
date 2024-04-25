@@ -6,41 +6,33 @@ import FlipPage from './FlipPage';
 import Header from './Header';
 import '../styles/BookDetails.css';
 
-const apiUrl = process.env.API_Host;
-const apiPort = process.env.API_Port;
+const apiUrl = 'http://localhost:3333';
 
-
-// Hook personalizado para buscar os detalhes do livro
-function useBookDetails(bookId) {
+const BookDetails = () => {
+  const { id } = useParams();
   const [bookDetails, setBookDetails] = useState({});
-  const [error, setError] = useState(null);
+  const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(true);
+  const [isFlipbookOpen, setIsFlipbookOpen] = useState(false);
 
   useEffect(() => {
     const fetchBookDetails = async () => {
+      const url = `${apiUrl}/livros/${id}`;
+      console.log("Tentando acessar:", url);
       setIsLoading(true);
       try {
-        const response = await axios.get(`${apiUrl}:${apiPort}/livros/${bookId}`);
+        const response = await axios.get(`${apiUrl}/livros/${id}`); // Certifique-se de que apiUrl já contém a porta se necessário
         setBookDetails(response.data);
-        setError(null);
+        setIsLoading(false);
       } catch (error) {
         console.error('Erro ao obter dados:', error.message);
         setError('Erro ao obter os detalhes do livro. Tente novamente mais tarde.');
-      } finally {
         setIsLoading(false);
       }
     };
 
     fetchBookDetails();
-  }, [bookId]);
-
-  return { bookDetails, error, isLoading };
-}
-
-const BookDetails = () => {
-  const { id } = useParams();
-  const { bookDetails, error, isLoading } = useBookDetails(id);
-  const [isFlipbookOpen, setIsFlipbookOpen] = useState(false);
+  }, [id]);
 
   if (isLoading) {
     return <CircularProgress style={{ display: 'block', margin: 'auto' }} />;
@@ -49,6 +41,10 @@ const BookDetails = () => {
   if (error) {
     return <Typography color="error" align="center">{error}</Typography>;
   }
+
+  // Certifique-se de tratar `genero` corretamente antes de usá-lo
+  const generoTexto = Array.isArray(bookDetails.genero) ? bookDetails.genero.join(", ") : bookDetails.genero;
+
 
   return (
     <>
@@ -71,13 +67,13 @@ const BookDetails = () => {
                   Autor: {bookDetails.autor}<br />
                   Editora: {bookDetails.editora}, Edição: {bookDetails.edicao}<br />
                   Ano: {bookDetails.ano}<br />
-                  Gênero: {bookDetails.genero.join(", ")}<br /> 
-                  Gênero: {bookDetails.genero}<br />
+                  Gênero: {generoTexto}<br />
                   Idioma: {bookDetails.idioma}
                 </Typography>
                 <Typography variant="body2" color="text.secondary" sx={{ mt: 2 }}>
                   <div className="book-description">
                     {bookDetails.resenha}
+                    
                   </div>
                 </Typography>
               </CardContent>
